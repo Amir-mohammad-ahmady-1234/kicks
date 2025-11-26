@@ -88,7 +88,7 @@ function CardProduct({
                   )}
                 </div>
                 <Button
-                  className="w-full bg-black/80 text-secondary  hover:bg-secondary hover:text-black "
+                  className="w-full bg-black/80 text-secondary  hover:bg-secondary hover:text-black hover:border hover:border-stone-600"
                   variant="secondary"
                 >
                   <ShoppingBag className="w-4 h-4" /> Buy Now
@@ -159,7 +159,7 @@ function CardProduct({
             )}
           </div>
           <Button
-            className="w-full bg-black/80 text-secondary  hover:bg-secondary hover:text-black "
+            className="w-full bg-black/80 text-secondary  hover:bg-secondary hover:text-black hover:border hover:border-stone-600"
             variant="secondary"
           >
             <ShoppingBag className="w-4 h-4" /> Buy Now

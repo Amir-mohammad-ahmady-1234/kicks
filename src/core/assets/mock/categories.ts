@@ -19,7 +19,7 @@ export const categoriesData = [
   },
   {
     id: 4,
-    title: "Skateboarding Shoes",
+    title: "Skateboar Shoes",
     img: "/common/img/main/products/Rectangle8.png",
     bgColor: "#F6F6F6",
   },
@@ -31,7 +31,7 @@ export const categoriesData = [
   },
   {
     id: 6,
-    title: "Skateboarding Shoes",
+    title: "Skateboar Shoes",
     img: "/common/img/main/products/Rectangle8.png",
     bgColor: "#F6F6F6",
   },

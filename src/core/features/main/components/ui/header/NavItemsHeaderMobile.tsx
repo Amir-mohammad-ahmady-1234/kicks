@@ -1,6 +1,13 @@
 import React from "react";
 import Link from "next/link";
-import { User, FileText, Info, Users, Mail } from "lucide-react";
+import {
+  User,
+  FileText,
+  Info,
+  Users,
+  Mail,
+  ShoppingBagIcon,
+} from "lucide-react";
 function NavItemsHeaderMobile() {
   return (
     <nav className="flex flex-col p-4 space-y-0">
@@ -10,6 +17,13 @@ function NavItemsHeaderMobile() {
       >
         <User className="h-4 w-4" />
         Profile
+      </Link>
+      <Link
+        href="#"
+        className="flex items-center gap-3 text-sm font-medium hover:text-primary transition-colors py-2.5 border-b border-border/50 last:border-b-0"
+      >
+        <ShoppingBagIcon className="h-4 w-4" />
+        Shop
       </Link>
 
       <Link

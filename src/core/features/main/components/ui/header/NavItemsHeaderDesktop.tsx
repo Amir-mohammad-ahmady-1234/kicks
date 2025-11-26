@@ -1,56 +1,88 @@
 import React from "react";
 import {
-  DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
+  DropdownMenu,
   DropdownMenuTrigger,
-} from "@radix-ui/react-dropdown-menu";
-import { ChevronDown, FileText, Info, Mail, User, Users } from "lucide-react";
+} from "@/core/components/shadcn/ui/dropdown-menu";
+import {
+  ChevronDown,
+  FileText,
+  User,
+  Users,
+  Shirt,
+  ShoppingBag,
+  Tags,
+  Sparkles,
+} from "lucide-react";
+import Link from "next/link";
+
 function NavItemsHeaderDesktop() {
   return (
-    <nav className="hidden lg:flex items-center gap-6">
-      <span className="flex items-center gap-1">
-        Shop <span className="text-orange-500">👟</span>
-      </span>
+    <nav className="hidden lg:flex items-center gap-4 font-medium text-sm">
+      <Link
+        href="/shop"
+        className="flex items-center gap-1 hover:text-primary transition-colors"
+      >
+        <ShoppingBag className="h-4 w-4" />
+        Shop
+      </Link>
+
       <DropdownMenu>
-        <DropdownMenuTrigger className="flex items-center ">
-          Men
-          <ChevronDown />
+        <DropdownMenuTrigger className="flex items-center gap-1 hover:text-primary transition-colors">
+          Categories
+          <ChevronDown className="h-4 w-4" />
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="bg-background p-2 space-y-1.5 rounded-md">
-          <DropdownMenuLabel className="flex items-center gap-2 text-sm font-medium">
-            <User className="h-4 w-4" />
-            My Account
-          </DropdownMenuLabel>
 
-          <DropdownMenuItem className="flex items-center gap-2 cursor-pointer">
-            <User className="h-4 w-4 text-muted-foreground" />
-            Profile
+        <DropdownMenuContent className="bg-background p-3 rounded-md shadow-xl border min-w-[180px]">
+          <DropdownMenuItem className="flex items-center gap-2 py-2 cursor-pointer hover:bg-muted rounded-md transition">
+            <User className="h-4 w-4 text-primary" />
+            <Link href="/shop/men" className="w-full">
+              Men
+            </Link>
           </DropdownMenuItem>
 
-          <DropdownMenuItem className="flex items-center gap-2 cursor-pointer">
-            <FileText className="h-4 w-4 text-muted-foreground" />
-            Blogs
+          <DropdownMenuItem className="flex items-center gap-2 py-2 cursor-pointer hover:bg-muted rounded-md transition">
+            <Shirt className="h-4 w-4 text-primary" />
+            <Link href="/shop/women" className="w-full">
+              Women
+            </Link>
           </DropdownMenuItem>
 
-          <DropdownMenuItem className="flex items-center gap-2 cursor-pointer">
-            <Info className="h-4 w-4 text-muted-foreground" />
-            About
+          <DropdownMenuItem className="flex items-center gap-2 py-2 cursor-pointer hover:bg-muted rounded-md transition">
+            <Users className="h-4 w-4 text-primary" />
+            <Link href="/shop/kids" className="w-full">
+              Children
+            </Link>
           </DropdownMenuItem>
 
-          <DropdownMenuItem className="flex items-center gap-2 cursor-pointer">
-            <Users className="h-4 w-4 text-muted-foreground" />
-            Team
-          </DropdownMenuItem>
-
-          <DropdownMenuItem className="flex items-center gap-2 cursor-pointer">
-            <Mail className="h-4 w-4 text-muted-foreground" />
-            Contact
+          <DropdownMenuItem className="flex items-center gap-2 py-2 cursor-pointer  rounded-md transition">
+            <Tags className="h-4 w-4 text-accent" />
+            <Link
+              href="/sale"
+              className="w-full text-destructive font-semibold"
+            >
+              Sale 🔥
+            </Link>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
-      <span>Women</span>
+
+      <Link
+        href="/blog"
+        className="flex items-center gap-1 hover:text-primary transition-colors"
+      >
+        <FileText className="h-4 w-4" />
+        Blog
+      </Link>
+
+      <Link
+        href="/new"
+        className="flex items-center gap-1 hover:text-primary transition-colors"
+      >
+        <Sparkles className="h-4 w-4" />
+        New Arrivals
+      </Link>
     </nav>
   );
 }

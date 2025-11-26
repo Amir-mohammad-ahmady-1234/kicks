@@ -43,7 +43,7 @@ function CategoriesSection() {
                   className="object-cover rounded-2xl"
                 />
                 <div className="flex items-center justify-between p-4">
-                  <TypographyH3 className="text-secondary">
+                  <TypographyH3 className="text-secondary md:text-2xl text-sm">
                     {category.title}
                   </TypographyH3>
                   <Button variant="secondary">

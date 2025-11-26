@@ -16,14 +16,13 @@ function ImgNormalCustom({
   if (!src) {
     return null;
   }
-  const placeholderValue =
-    rest.blurDataURL || typeof src !== "string" ? "blur" : "empty";
+  const placeholder = rest.blurDataURL ? "blur" : "empty";
   return (
     <Image
       src={src}
       alt={alt}
       className={className}
-      placeholder={placeholderValue}
+      placeholder={placeholder}
       {...rest}
     />
   );

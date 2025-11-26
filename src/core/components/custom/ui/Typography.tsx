@@ -97,7 +97,7 @@ function TypographyP({
 }: TypographyProps) {
   return (
     <p
-      className={cn("leading-7 [&:not(:first-child)]:mt-3", className)}
+      className={cn("leading-7 [&:not(:first-child)]:mt-2", className)}
       {...props}
     >
       {children || "Lorem ipsum dolor sit amet consectetur adipiscing."}
