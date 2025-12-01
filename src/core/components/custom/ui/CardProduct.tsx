@@ -11,6 +11,7 @@ import {
 import { Button } from "@/core/components/shadcn/ui/button";
 import { ShoppingBag } from "lucide-react";
 import { PropsCardProduct } from "@/core/features/main/components/ui/CardProduct";
+import Link from "next/link";
 
 function CardProduct({
   product,
@@ -87,12 +88,14 @@ function CardProduct({
                     </div>
                   )}
                 </div>
-                <Button
-                  className="w-full bg-black/80 text-secondary  hover:bg-secondary hover:text-black hover:border hover:border-stone-600"
-                  variant="secondary"
-                >
-                  <ShoppingBag className="w-4 h-4" /> Buy Now
-                </Button>
+                <Link href={`/shop/${product.title}`} className="w-full">
+                  <Button
+                    className="w-full bg-black/80  text-secondary  hover:bg-secondary hover:text-black hover:border hover:border-stone-600"
+                    variant="secondary"
+                  >
+                    <ShoppingBag className="w-4 h-4" /> Buy Now
+                  </Button>
+                </Link>
               </CardFooter>
             </Card>
           </div>
@@ -158,12 +161,14 @@ function CardProduct({
               </div>
             )}
           </div>
-          <Button
-            className="w-full bg-black/80 text-secondary  hover:bg-secondary hover:text-black hover:border hover:border-stone-600"
-            variant="secondary"
-          >
-            <ShoppingBag className="w-4 h-4" /> Buy Now
-          </Button>
+          <Link href={`/shop/${product.title}`} className="w-full">
+            <Button
+              className="w-full bg-black/80  text-secondary  hover:bg-secondary hover:text-black hover:border hover:border-stone-600"
+              variant="secondary"
+            >
+              <ShoppingBag className="w-4 h-4" /> Buy Now
+            </Button>
+          </Link>
         </CardFooter>
       </Card>
     </>

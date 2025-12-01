@@ -23,11 +23,13 @@ export default function ProductPage() {
             <ProductAbout product={product} />
           </div>
         </div>
-        <SectionLayout className="mt-16">
-          <TypographyH3 className="text-2xl font-semibold mb-6">
-            You may also like{" "}
-          </TypographyH3>
-          <CardsProduct products={product.related} />
+        <SectionLayout>
+          <div className="mt-16">
+            <TypographyH3 className="text-2xl font-semibold mb-6">
+              You may also like{" "}
+            </TypographyH3>
+            <CardsProduct products={product.related} />
+          </div>
         </SectionLayout>
       </div>
     </SectionLayout>
