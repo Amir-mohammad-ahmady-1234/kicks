@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Header from "@/core/features/main/components/blocks/header/Header";
 import NextTopLoader from "nextjs-toploader";
-import Footer from "@/core/features/main/components/blocks/footer/Footer";
 import { ClerkProvider } from "@clerk/nextjs";
 import { syncClerkUser } from "@/core/api-route/site/actions/auth/syncClerkUser";
 
@@ -35,9 +33,7 @@ export default async function RootLayout({
           className={`${geistSans.variable} ${geistMono.variable} antialiased `}
         >
           <NextTopLoader />
-          <Header />
           {children}
-          <Footer />
         </body>
       </html>
     </ClerkProvider>

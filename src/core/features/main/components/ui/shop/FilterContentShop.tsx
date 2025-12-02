@@ -15,7 +15,7 @@ const colors = [
   "bg-gray-700",
 ];
 const sizes = ["Casual shoes", "Runners", "Hiking", "Soccer", "Tennis", "Golf"];
-const Genders = ["Men", "Women"];
+export const Gendersdata = ["Men", "Women"];
 export default function FilterContentShop() {
   return (
     <div className="space-y-6">
@@ -59,7 +59,7 @@ export default function FilterContentShop() {
       </div>
       <TypographyP className="font-bold">Gender</TypographyP>
       <div className="flex flex-col gap-1">
-        {Genders.map((size) => (
+        {Gendersdata.map((size) => (
           <label key={size} className="flex items-center gap-2 cursor-pointer">
             <input
               type="checkbox"

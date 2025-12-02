@@ -5,7 +5,6 @@ import { currentUser } from "@clerk/nextjs/server";
 
 export async function syncClerkUser() {
   const clerkUser = await currentUser();
-  if (!clerkUser) return null;
 
   const user = await prisma.user.upsert({
     where: { clerkId: clerkUser.id },
@@ -21,7 +20,7 @@ export async function syncClerkUser() {
       email: clerkUser.emailAddresses[0]?.emailAddress ?? "",
       name:
         `${clerkUser.firstName ?? ""} ${clerkUser.lastName ?? ""}`.trim() ||
-        "کاربر جدید",
+        "new user",
       image: clerkUser.imageUrl ?? null,
     },
   });

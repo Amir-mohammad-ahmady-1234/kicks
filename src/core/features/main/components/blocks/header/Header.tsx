@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Logo from "../../ui/Logo";
-import { Search, Menu, LogIn } from "lucide-react";
+import { Search, Menu } from "lucide-react";
 
 import {
   Sheet,
@@ -13,21 +13,12 @@ import {
 import { Button } from "@/core/components/shadcn/ui/button";
 import NavItemsHeaderDesktop from "../../ui/header/NavItemsHeaderDesktop";
 import NavItemsHeaderMobile from "../../ui/header/NavItemsHeaderMobile";
-import {
-  SignInButton,
-  SignUpButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from "@clerk/nextjs";
+
 import { Input } from "@/core/components/shadcn/ui/input";
+import ActionHeader from "../../ui/header/ActionHeader";
 function Header() {
-  const [showisserch, setshowisserch] = useState(false);
   const [open, setOpen] = useState(false);
 
-  function handelshow() {
-    setshowisserch(!showisserch);
-  }
   return (
     <header className="pages-container relative">
       <div className=" bg-background pages-container m-5 rounded-md flex  items-center justify-between relative">
@@ -81,28 +72,7 @@ function Header() {
         <div className="absolute transform left-1/2 -translate-x-1/2">
           <Logo />
         </div>
-        <div className="flex  items-center gap-4">
-          <Search className="hidden lg:flex" onClick={() => handelshow()} />
-          <div
-            className={`transition-all duration-300  ${
-              showisserch ? "w-40 opacity-100" : "w-0 opacity-0"
-            }`}
-          >
-            <Input type="search" className="w-full" />
-          </div>
-
-          <SignedOut>
-            <SignInButton mode="modal" />
-            <SignUpButton mode="modal">
-              <Button variant="outline">
-                Sign Up <LogIn />
-              </Button>
-            </SignUpButton>
-          </SignedOut>
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
-        </div>
+        <ActionHeader />
       </div>
     </header>
   );
