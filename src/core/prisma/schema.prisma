@@ -20,7 +20,76 @@ model User {
   @@map("users")
 }
 
+model Products {
+  id          String    @id @default(cuid())
+  name        String
+  description String
+  specs       Json?
+  price       Int
+  discount    Int?
+  mainImage   String
+  images      String[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime?
+  star        Float?
+  gender Gender @default(men)
+  colors        ColorProduct[]
+
+  suggestedTo   Sugest[] @relation("suggestTo")    
+  suggestedBy   Sugest[] @relation("suggestFrom")   
+
+  size          String[]
+
+  category      Category? @relation(fields: [categoryId], references: [id])
+  categoryId    String?
+
+  @@map("products")
+}
+
+model Sugest {
+  productId   String
+  suggestedId String
+
+  product     Products @relation("suggestFrom", fields: [productId], references: [id])
+
+  suggested   Products @relation("suggestTo", fields: [suggestedId], references: [id])
+
+  @@unique([productId, suggestedId])
+  @@map("suggests")
+}
+
+model ColorProduct {
+  productId String
+  colorId   String
+
+  product   Products @relation(fields: [productId], references: [id])
+  color     Color    @relation(fields: [colorId], references: [id])
+
+  @@id([productId, colorId])
+  @@map("color_products")
+}
+
+model Color{
+  id   String    @id @default(cuid())
+  name String
+  hexCode   String
+  products ColorProduct[]
+  @@map("colors")
+}
+
+model Category {
+  id          String    @id @default(cuid())
+  title       String
+  products Products[]
+
+  @@map("categories")
+}
+
 enum Role {
-  USER
-  ADMIN
+  user
+  admin
+}
+enum Gender {
+  men
+  women
 }
