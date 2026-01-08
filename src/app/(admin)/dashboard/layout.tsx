@@ -1,14 +1,12 @@
-import React from "react";
-
-import SidebarAdmin from "@/core/features/admin/components/blocks/sidebar/SidebarAdmin";
-import HeaderAdmin from "@/core/features/admin/components/blocks/header/HeaderAdmin";
+import TabelData from "@/core/components/custom/blocks/tabel/TabelData";
+import Modal from "@/core/components/custom/ui/Modal";
 import { TypographyH3 } from "@/core/components/custom/ui/Typography";
 import { Button } from "@/core/components/shadcn/ui/button";
+import HeaderAdmin from "@/core/features/admin/components/blocks/header/HeaderAdmin";
+import SidebarAdmin from "@/core/features/admin/components/blocks/sidebar/SidebarAdmin";
+import FormCreateProduct from "@/core/features/admin/components/ui/product/FormCreateProduct";
 import { Plus } from "lucide-react";
-import ProductCardAdmin from "@/core/features/admin/components/blocks/product/ProductCardAdmin";
-import { products } from "@/core/assets/mock/products";
-import Modal from "@/core/components/custom/ui/Modal";
-import FormCreateProduct from "@/core/features/admin/components/ui/FormCreateProduct";
+
 function layout() {
   return (
     <main className="flex gap-1">
@@ -33,11 +31,11 @@ function layout() {
               <FormCreateProduct />
             </Modal>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 m-5">
-            {products.map((item, i) => (
-              <ProductCardAdmin key={i} {...item} />
-            ))}
-          </div>
+          <TabelData
+            CheckboxTabel={true}
+            ShowImage={true}
+            TableTextHead={["Product", "Color", "Category", "Price"]}
+          />
         </div>
       </section>
     </main>

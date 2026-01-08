@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
-import { ClerkProvider } from "@clerk/nextjs";
-import { syncClerkUser } from "@/core/api-route/site/actions/auth/syncClerkUser";
+import { Toaster } from "sonner";
+import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,17 +24,15 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  await syncClerkUser();
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased `}
-        >
-          <NextTopLoader />
-          {children}
-        </body>
-      </html>
-    </ClerkProvider>
+    <html lang="en">
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased `}
+      >
+        <NextTopLoader />
+        <Toaster />
+        {children}
+      </body>
+    </html>
   );
 }
