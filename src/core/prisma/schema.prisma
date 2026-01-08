@@ -4,12 +4,12 @@ generator client {
 }
 
 datasource db {
-  provider  = "postgresql" 
-  url      = env("DATABASE_URL") 
+  provider  = "postgresql"
+  url      = env("DATABASE_URL")
 }
 model User {
-  id        String   @id @default(cuid())           
-  clerkId   String   @unique                      
+  id        String   @id @default(cuid())
+  clerkId   String   @unique
   email     String   @unique
   name      String?
   image     String?
@@ -24,7 +24,7 @@ model Products {
   id          String    @id @default(cuid())
   name        String
   description String
-  specs       Json?
+  specs       String
   price       Int
   discount    Int?
   mainImage   String
@@ -33,15 +33,14 @@ model Products {
   updatedAt   DateTime?
   star        Float?
   gender Gender @default(men)
-  colors        ColorProduct[]
+  colors        String[]
 
-  suggestedTo   Sugest[] @relation("suggestTo")    
-  suggestedBy   Sugest[] @relation("suggestFrom")   
+  suggestedTo   Sugest[] @relation("suggestTo")
+  suggestedBy   Sugest[] @relation("suggestFrom")
 
   size          String[]
 
-  category      Category? @relation(fields: [categoryId], references: [id])
-  categoryId    String?
+  category categoryP @default(crocs)
 
   @@map("products")
 }
@@ -58,32 +57,8 @@ model Sugest {
   @@map("suggests")
 }
 
-model ColorProduct {
-  productId String
-  colorId   String
 
-  product   Products @relation(fields: [productId], references: [id])
-  color     Color    @relation(fields: [colorId], references: [id])
 
-  @@id([productId, colorId])
-  @@map("color_products")
-}
-
-model Color{
-  id   String    @id @default(cuid())
-  name String
-  hexCode   String
-  products ColorProduct[]
-  @@map("colors")
-}
-
-model Category {
-  id          String    @id @default(cuid())
-  title       String
-  products Products[]
-
-  @@map("categories")
-}
 
 enum Role {
   user
@@ -92,4 +67,14 @@ enum Role {
 enum Gender {
   men
   women
+}
+enum categoryP {
+crocs
+nirkenstock
+clarks
+timberland
+allen
+oofos
+sorel
+hunter
 }
