@@ -1,10 +1,10 @@
-import { filterTabel } from "@/core/api-route/admin/handlers/tabel/filterTabel";
+import { filterActionTabel } from "@/core/api-route/admin/handlers/tabel/filterTabel";
 import Modal from "@/core/components/custom/ui/Modal";
 import { TypographyH3 } from "@/core/components/custom/ui/Typography";
 import { Button } from "@/core/components/shadcn/ui/button";
 import FormCreateProduct from "@/core/features/admin/components/ui/product/FormCreateProduct";
 import TabelProducts from "@/core/features/admin/components/ui/product/TabelProducts";
-import { categoryP } from "@prisma/client";
+import { categoryP, Gender } from "@prisma/client";
 import { Plus } from "lucide-react";
 
 async function page({
@@ -13,20 +13,22 @@ async function page({
   searchParams: Promise<{ [key: string]: string | undefined }>;
 }) {
   const params = await searchParams;
+  const sortOrder = params.sortOrder?.toLowerCase();
+  const validSortOrder =
+    sortOrder === "asc" || sortOrder === "desc" ? sortOrder : "asc";
 
-  const Pdata = await filterTabel({
+  const Pdata = await filterActionTabel({
     category: params.category as categoryP,
     limit: params.limit ? Number(params.limit) : 5,
+    gender: params.gender as Gender,
     page: params.page ? Number(params.page) : 1,
     search: params.search ?? "",
-    sortOrder: (params.sortOrder as "desc" | "asc") ?? "asc",
+    sortOrder: validSortOrder,
   });
-
-  console.log(Pdata);
   return (
     <section className="p-4">
       <div className="flex items-center justify-between">
-        <TypographyH3>All Products</TypographyH3>
+        <TypographyH3>Order</TypographyH3>
 
         <Modal
           trigger={
@@ -41,7 +43,11 @@ async function page({
           <FormCreateProduct />
         </Modal>
       </div>
-      <TabelProducts />
+      <TabelProducts
+        ShowFilter={true}
+        data={Pdata?.data ?? []}
+        pagination={Pdata.pagination}
+      />
     </section>
   );
 }
