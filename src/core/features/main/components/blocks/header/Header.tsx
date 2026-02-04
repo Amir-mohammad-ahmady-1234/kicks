@@ -1,8 +1,9 @@
 "use client";
-import React, { useState } from "react";
+import { Menu, Search, User } from "lucide-react";
+import { useState } from "react";
 import Logo from "../../ui/Logo";
-import { Search, Menu } from "lucide-react";
 
+import { Button } from "@/core/components/shadcn/ui/button";
 import {
   Sheet,
   SheetContent,
@@ -10,11 +11,11 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/core/components/shadcn/ui/sheet";
-import { Button } from "@/core/components/shadcn/ui/button";
 import NavItemsHeaderDesktop from "../../ui/header/NavItemsHeaderDesktop";
 import NavItemsHeaderMobile from "../../ui/header/NavItemsHeaderMobile";
 
 import { Input } from "@/core/components/shadcn/ui/input";
+import Link from "next/link";
 import ActionHeader from "../../ui/header/ActionHeader";
 function Header() {
   const [open, setOpen] = useState(false);
@@ -67,12 +68,18 @@ function Header() {
             </div>
           </SheetContent>
         </Sheet>
-
         <NavItemsHeaderDesktop />
         <div className="absolute transform left-1/2 -translate-x-1/2">
           <Logo />
         </div>
-        <ActionHeader />
+        <div className="flex items-center">
+          <div className="mr-3">
+            <ActionHeader />
+          </div>
+          <Link href={"/auth"}>
+            <User />
+          </Link>
+        </div>
       </div>
     </header>
   );

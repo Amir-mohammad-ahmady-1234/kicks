@@ -15,7 +15,7 @@ const colors = [
   "bg-gray-700",
 ];
 const sizes = ["Casual shoes", "Runners", "Hiking", "Soccer", "Tennis", "Golf"];
-export const Gendersdata = ["Men", "Women"];
+export const Gendersdata = ["men", "women"];
 export default function FilterContentShop() {
   return (
     <div className="space-y-6">
