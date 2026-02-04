@@ -1,16 +1,16 @@
 "use client";
 
+import { ChevronDown } from "lucide-react";
 import * as React from "react";
+import { Button } from "../../shadcn/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger,
   DropdownMenuLabel,
   DropdownMenuSeparator,
+  DropdownMenuTrigger,
 } from "../../shadcn/ui/dropdown-menu";
-import { ChevronDown } from "lucide-react";
-import { Button } from "../../shadcn/ui/button";
 
 type Option = {
   value: string;
@@ -48,20 +48,16 @@ export function SimpleDropdown({
   };
 
   return (
-    <div className="flex items-center gap-3">
-      <span className="text-sm font-medium text-muted-foreground whitespace-nowrap">
-        {title}
-      </span>
-
+    <div className="flex items-center gap-1">
       <DropdownMenu open={open} onOpenChange={setOpen}>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" className={className}>
             <span className="font-normal">{selectedLabel}</span>
-            <ChevronDown className="mr-2 h-4 w-4 opacity-60" />
+            <ChevronDown className="mr-2 h-2 w-2 opacity-60" />
           </Button>
         </DropdownMenuTrigger>
 
-        <DropdownMenuContent align="end" className="w-[180px]">
+        <DropdownMenuContent align="end" className="w-[100px]">
           <DropdownMenuLabel className="text-xs text-muted-foreground">
             chose {title}
           </DropdownMenuLabel>

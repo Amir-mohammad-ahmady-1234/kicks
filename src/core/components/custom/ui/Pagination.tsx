@@ -1,36 +1,63 @@
+"use client";
+
 import {
   Pagination,
   PaginationContent,
-  PaginationEllipsis,
   PaginationItem,
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
 } from "@/core/components/shadcn/ui/pagination";
+import { usePathname, useSearchParams } from "next/navigation";
 
-export function Paginations() {
+export function Paginations({
+  pagination,
+}: {
+  pagination?: {
+    limit: number;
+    page: number;
+    total: number;
+  };
+}) {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  console.log(pagination.total);
+
+  const { page, total } = pagination;
+
+  const createPageURL = (pageNumber: number) => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("page", pageNumber.toString());
+    return `${pathname}?${params.toString()}`;
+  };
+  console.log(total);
   return (
     <Pagination>
       <PaginationContent>
         <PaginationItem>
-          <PaginationPrevious href="#" />
+          <PaginationPrevious
+            size="sm"
+            href={page > 1 ? createPageURL(page - 1) : undefined}
+            className={page <= 1 ? "pointer-events-none opacity-50" : ""}
+            aria-label="صفحه قبلی"
+          />
         </PaginationItem>
+
+        <>
+          <PaginationItem>
+            <PaginationLink size="sm" href={createPageURL(total)}>
+              {page}
+            </PaginationLink>
+          </PaginationItem>
+        </>
+
         <PaginationItem>
-          <PaginationLink href="#">1</PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="#" isActive>
-            2
-          </PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="#">3</PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationEllipsis />
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationNext href="#" />
+          <PaginationNext
+            size="sm"
+            href={page < total ? createPageURL(page + 1) : undefined}
+            className={page >= total ? "pointer-events-none opacity-50" : ""}
+            aria-label="صفحه بعدی"
+          />
         </PaginationItem>
       </PaginationContent>
     </Pagination>

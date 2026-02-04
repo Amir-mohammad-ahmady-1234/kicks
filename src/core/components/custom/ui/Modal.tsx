@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Dialog,
   DialogClose,
@@ -9,8 +8,9 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/core/components/shadcn/ui/dialog";
-import { Button } from "../../shadcn/ui/button";
 import { cn } from "@/core/utils/shadcn/utils";
+import React from "react";
+import { Button } from "../../shadcn/ui/button";
 function Modal({
   children,
   title,
