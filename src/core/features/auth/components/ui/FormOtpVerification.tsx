@@ -1,40 +1,30 @@
-// src/core/features/auth/components/blocks/FormOtpVerification.tsx
-
 import {
   TypographyH3,
-  TypographyMuted,
   TypographyP,
 } from "@/core/components/custom/ui/Typography";
-import { Button } from "@/core/components/shadcn/ui/button";
-import {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSlot,
-} from "@/core/components/shadcn/ui/input-otp";
-import Logo from "@/core/features/main/components/ui/Logo";
-import Link from "next/link";
 
-interface FormOtpVerificationProps {
+import Logo from "@/core/features/main/components/ui/Logo";
+import OtoFormAuth from "./OtoFormAuth";
+
+interface FormOtpVerificationTs {
   email: string;
   otp: string;
-  onOtpChange: (value: string) => void;
-  onVerify: () => void;
-  onResend: () => void;
-  isLoading: boolean;
+  OtpChange: (value: string) => void;
+  Verify: () => void;
+  Resend: () => void;
+  Loading: boolean;
   disabled?: boolean;
 }
 
 export default function FormOtpVerification({
   email,
   otp,
-  onOtpChange,
-  onVerify,
-  onResend,
-  isLoading,
+  OtpChange,
+  Verify,
+  Resend,
+  Loading,
   disabled = false,
-}: FormOtpVerificationProps) {
-  const isOtpComplete = otp.length === 6;
-
+}: FormOtpVerificationTs) {
   return (
     <div className="flex flex-col w-full md:p-4 h-screen justify-center items-center space-y-10">
       <Logo width={150} />
@@ -48,55 +38,14 @@ export default function FormOtpVerification({
           <TypographyP className="font-medium">{email}</TypographyP>
         </div>
 
-        <div className="flex flex-col items-center space-y-6">
-          <InputOTP
-            maxLength={6}
-            value={otp}
-            onChange={onOtpChange}
-            containerClassName="group"
-            disabled={isLoading || disabled}
-          >
-            <InputOTPGroup className="gap-3 sm:gap-4">
-              <InputOTPSlot index={0} />
-              <InputOTPSlot index={1} />
-              <InputOTPSlot index={2} />
-              <InputOTPSlot index={3} />
-              <InputOTPSlot index={4} />
-              <InputOTPSlot index={5} />
-            </InputOTPGroup>
-          </InputOTP>
-
-          <Button
-            variant="default"
-            className="w-full max-w-xs"
-            size="lg"
-            disabled={!isOtpComplete || isLoading || disabled}
-            onClick={onVerify}
-          >
-            {isLoading ? "Verifying..." : "Verify & Continue"}
-          </Button>
-
-          <div className="text-center space-y-3 text-sm">
-            <TypographyMuted>
-              Did not receive the code?
-              <button
-                type="button"
-                onClick={onResend}
-                className="text-primary hover:underline font-medium disabled:opacity-50"
-                disabled={isLoading || disabled}
-              >
-                Resend Code
-              </button>
-            </TypographyMuted>
-
-            <Link
-              href="/login"
-              className="text-muted-foreground hover:underline block"
-            >
-              Back to login
-            </Link>
-          </div>
-        </div>
+        <OtoFormAuth
+          otp={otp}
+          OtpChange={OtpChange}
+          Verify={Verify}
+          Resend={Resend}
+          Loading={Loading}
+          disabled={disabled}
+        />
       </div>
     </div>
   );

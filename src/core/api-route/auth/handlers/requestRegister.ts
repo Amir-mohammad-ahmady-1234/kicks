@@ -13,26 +13,26 @@ export async function requestRegistration({
   password: string;
 }): Promise<{ success: boolean; message?: string; error?: string }> {
   try {
-    const normalizedEmail = email.toLowerCase();
+    const emailcase = email.toLowerCase();
 
     const existingUser = await prisma.user.findUnique({
-      where: { email: normalizedEmail },
+      where: { email: emailcase },
     });
     if (existingUser) {
       return { success: false, error: "This email is already registered" };
     }
 
-    const otpResult = await sendOtp(normalizedEmail);
-    if (!otpResult.success) {
+    const sendotp = await sendOtp(emailcase);
+    if (!sendotp.success) {
       return {
         success: false,
-        error: otpResult.error || "Failed to send verification code",
+        error: sendotp.error || "Failed to send verification code",
       };
     }
 
-    const redisregister = `pending:register:${normalizedEmail}`;
+    const redisregister = `pending:register:${emailcase}`;
     await redis.set(redisregister, await hashedPassword(password), {
-      ex: 2 * 60,
+      ex: 5 * 60,
     });
 
     return {

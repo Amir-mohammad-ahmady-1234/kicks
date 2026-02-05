@@ -13,37 +13,30 @@ export default function AuthSection() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [otp, setOtp] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [Loading, setLoading] = useState(false);
 
   const router = useRouter();
 
-  const handleSendOtp = async () => {
+  async function handleSendOtp() {
     if (!email || !password) {
       toast.error("Please enter email and password");
       return;
     }
-
-    setIsLoading(true);
-
+    setLoading(true);
     const result = await requestRegistration({ email, password });
-
     if (result.success) {
       toast.success(result.message || "Verification code sent!");
       setStep("otp");
     } else {
       toast.error(result.error || "Failed to send code");
     }
+    setLoading(false);
+  }
 
-    setIsLoading(false);
-  };
-
-  const handleVerifyOtp = async () => {
+  async function handleVerifyOtp() {
     if (otp.length !== 6) return;
-
-    setIsLoading(true);
-
+    setLoading(true);
     const result = await createUser({ email, otp });
-
     if (result.success) {
       toast.success(result.message || "Account created successfully!");
       router.push("/admin/dashboard");
@@ -51,44 +44,41 @@ export default function AuthSection() {
       toast.error(result.error || "Verification failed");
       setOtp("");
     }
+    setLoading(false);
+  }
 
-    setIsLoading(false);
-  };
-
-  const handleResendOtp = async () => {
-    setIsLoading(true);
+  async function handleResendOtp() {
+    setLoading(true);
     const result = await requestRegistration({ email, password });
     if (result.success) {
       toast.success("New code sent!");
     } else {
       toast.error(result.error || "Failed to resend code");
     }
-    setIsLoading(false);
-  };
+    setLoading(false);
+  }
 
   return (
-    <section className="flex flex-col sm:flex-row min-h-screen md:w-4/5  justify-center">
-      <div>
-        {step === "login" ? (
-          <FormLoginUser
-            email={email}
-            password={password}
-            onEmailChange={setEmail}
-            onPasswordChange={setPassword}
-            onSendOtp={handleSendOtp}
-            isLoading={isLoading}
-          />
-        ) : (
-          <FormOtpVerification
-            email={email}
-            otp={otp}
-            onOtpChange={setOtp}
-            onVerify={handleVerifyOtp}
-            onResend={handleResendOtp}
-            isLoading={isLoading}
-          />
-        )}
-      </div>
-    </section>
+    <div>
+      {step === "login" ? (
+        <FormLoginUser
+          email={email}
+          password={password}
+          EmailChange={setEmail}
+          PasswordChange={setPassword}
+          SendOtp={handleSendOtp}
+          Loading={Loading}
+        />
+      ) : (
+        <FormOtpVerification
+          email={email}
+          otp={otp}
+          OtpChange={setOtp}
+          Verify={handleVerifyOtp}
+          Resend={handleResendOtp}
+          Loading={Loading}
+        />
+      )}
+    </div>
   );
 }
