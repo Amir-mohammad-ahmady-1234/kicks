@@ -14,7 +14,7 @@ export async function sendOtpEmail(to: string, otp: string) {
           <p style="font-size: 24px; font-weight: bold; letter-spacing: 8px; color: #0066cc;">
             ${otp}
           </p>
-          <p>This code is valid for 2 minutes.</p>
+          <p>This code is valid for 5 minutes.</p>
           <p style="color: #666; font-size: 14px;">
             If you have not requested, ignore this email.
           </p>
@@ -28,6 +28,6 @@ export async function sendOtpEmail(to: string, otp: string) {
 
     return { success: true, data };
   } catch {
-    return { success: false, error: "خطا در ارسال ایمیل" };
+    return { success: false, error: "server err" };
   }
 }

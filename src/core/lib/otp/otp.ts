@@ -8,7 +8,7 @@ export async function sendOtp(
   try {
     const otp = generateOtp();
     const key = `otp:${email.toLowerCase()}`;
-    await redis.set(key, otp, { ex: 2 * 60 });
+    await redis.set(key, otp, { ex: 5 * 60 });
     const emailResult = await sendOtpEmail(email, otp);
     if (!emailResult.success) {
       return { success: false, error: "There was a problem sending the email" };
