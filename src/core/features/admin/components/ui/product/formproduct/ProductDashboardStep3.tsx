@@ -1,54 +1,76 @@
 import { Button } from "@/core/components/shadcn/ui/button";
-import { Input } from "@/core/components/shadcn/ui/input";
-import { X } from "lucide-react";
-import { useState } from "react";
 
-function ProductDashboardStep3({ setSizes, sizes }) {
-  const [sizeInput, setSizeInput] = useState<string>("");
-  const addSize = (value: string) => {
-    if (!value.trim()) return;
-    setSizes((prev) => [...prev, value]);
-  };
-  function handeldeletesizes(val: string) {
-    setSizes((prv) => prv.filter((c) => c !== val));
+export const listitems = [
+  "30",
+  "31",
+  "32",
+  "33",
+  "34",
+  "35",
+  "36",
+  "37",
+  "38",
+  "39",
+  "40",
+  "41",
+  "42",
+  "43",
+  "44",
+  "45",
+  "46",
+  "47",
+  "48",
+  "49",
+  "50",
+];
+
+interface ProductDashboardStep3Props {
+  setSizes: React.Dispatch<React.SetStateAction<string[]>>;
+  sizes: string[];
+}
+
+function ProductDashboardStep3({
+  setSizes,
+  sizes,
+}: ProductDashboardStep3Props) {
+  function toggleSize(size: string) {
+    setSizes((prev) => {
+      if (prev.includes(size)) {
+        return prev.filter((s) => s !== size);
+      }
+      return [...prev, size];
+    });
   }
 
+  const SelectItem = (size: string) => sizes.includes(size);
+
   return (
-    <>
-      <Input
-        label="Add Size"
-        name="sizes"
-        value={sizeInput}
-        type="text"
-        onChange={(e) => setSizeInput(e.target.value)}
-        onKeyDown={(e) => {
-          if (e.key === "Enter") {
-            e.preventDefault();
-            addSize(sizeInput);
-            setSizeInput("");
-          }
-        }}
-      />
-      <div className="flex flex-wrap gap-2 mt-2">
-        {sizes.map((s, i) => (
-          <div
-            key={i}
-            className="px-3 py-1 flex items-center rounded-full bg-primary/10 text-primary text-sm font-medium"
-          >
-            {s}
-            <div
-              className="rounded-sm hover:border hover:border-black transition duration-300"
-              onClick={() => handeldeletesizes(s)}
+    <div className="space-y-6">
+      <div>
+        <div className="grid grid-cols-5 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-2">
+          {listitems.map((size) => (
+            <Button
+              key={size}
+              variant={SelectItem(size) ? "default" : "outline"}
+              size="sm"
+              type="button"
+              className={`h-9 text-sm font-medium transition-all ${
+                SelectItem(size)
+                  ? "bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm"
+                  : "hover:bg-muted/50"
+              }`}
+              onClick={() => toggleSize(size)}
             >
-              <X />
-            </div>
-          </div>
-        ))}
+              {size}
+            </Button>
+          ))}
+        </div>
       </div>
-      <Button type="submit" className="w-full mt-4">
+
+      <Button type="submit" className="w-full mt-6">
         Create Product
       </Button>
-    </>
+    </div>
   );
 }
 

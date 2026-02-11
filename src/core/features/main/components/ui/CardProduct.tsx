@@ -1,30 +1,22 @@
 "use client";
 
-import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import CardProduct from "@/core/components/custom/ui/CardProduct";
+import { Products } from "@prisma/client";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Autoplay, Navigation } from "swiper/modules";
-import CardProduct from "@/core/components/custom/ui/CardProduct";
-type Product = {
-  src: string;
-  title: string;
-  price: number;
-  percentOff?: number;
-  rating?: number;
-  inStock?: boolean;
-};
+import { Swiper, SwiperSlide } from "swiper/react";
 
 export type PropsCardProduct = {
-  products?: Product[];
-  product?: Product;
-  listproducts?: Product[];
+  products?: Products[];
+  product?: Products;
+  listproducts?: Products[];
   IsPagination?: boolean;
   gridcss?: string;
   badgecolor?: string;
 };
-
 function CardsProduct({ products, badgecolor = "black/80" }: PropsCardProduct) {
+  console.log(products);
   return (
     <Swiper
       spaceBetween={20}
@@ -33,7 +25,7 @@ function CardsProduct({ products, badgecolor = "black/80" }: PropsCardProduct) {
       modules={[Autoplay, Navigation]}
       autoplay={{ delay: 3000, disableOnInteraction: false }}
       breakpoints={{
-        380: { slidesPerView: 2.2 },
+        330: { slidesPerView: 2.2 },
         768: { slidesPerView: 3 },
         1024: { slidesPerView: 4 },
         1280: { slidesPerView: 5 },

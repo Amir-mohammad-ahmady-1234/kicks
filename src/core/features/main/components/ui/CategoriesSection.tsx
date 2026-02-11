@@ -1,3 +1,6 @@
+"use client";
+
+import { categoriesData } from "@/core/assets/mock/categories";
 import { ImgNormalCustom } from "@/core/components/custom/ui/ImgNormalCustom";
 import {
   TypographyH1,
@@ -5,12 +8,10 @@ import {
 } from "@/core/components/custom/ui/Typography";
 import { Button } from "@/core/components/shadcn/ui/button";
 import { Share } from "lucide-react";
-import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Autoplay, Navigation } from "swiper/modules";
-import { categoriesData } from "@/core/assets/mock/categories";
+import { Swiper, SwiperSlide } from "swiper/react";
 function CategoriesSection() {
   return (
     <section className="bg-foreground ">
@@ -25,7 +26,7 @@ function CategoriesSection() {
           modules={[Autoplay, Navigation]}
           autoplay={{ delay: 3000, disableOnInteraction: false }}
           breakpoints={{
-            380: { slidesPerView: 2.2 },
+            330: { slidesPerView: 2.2 },
             768: { slidesPerView: 3 },
             1024: { slidesPerView: 4 },
             1280: { slidesPerView: 5 },

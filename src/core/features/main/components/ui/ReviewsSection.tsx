@@ -1,3 +1,7 @@
+"use client";
+
+import { testimonialsData } from "@/core/assets/mock/blog";
+import { ImgNormalCustom } from "@/core/components/custom/ui/ImgNormalCustom";
 import {
   TypographyH1,
   TypographyH4,
@@ -5,11 +9,8 @@ import {
   TypographySmall,
 } from "@/core/components/custom/ui/Typography";
 import { Button } from "@/core/components/shadcn/ui/button";
-import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import { ImgNormalCustom } from "@/core/components/custom/ui/ImgNormalCustom";
-import { testimonialsData } from "@/core/assets/mock/blog";
+import { Swiper, SwiperSlide } from "swiper/react";
 function ReviewsSection() {
   return (
     <div>
@@ -20,8 +21,9 @@ function ReviewsSection() {
       <Swiper
         loop
         breakpoints={{
-          380: { slidesPerView: 1.1 },
-
+          330: { slidesPerView: 1.1 },
+          500: { slidesPerView: 1.8 },
+          700: { slidesPerView: 2.1 },
           1280: { slidesPerView: 3 },
         }}
         spaceBetween={20}

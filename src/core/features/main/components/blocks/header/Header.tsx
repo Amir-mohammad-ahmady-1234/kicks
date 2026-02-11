@@ -1,5 +1,5 @@
 "use client";
-import { Menu, Search, User } from "lucide-react";
+import { LogInIcon, Menu, Search, User } from "lucide-react";
 import { useState } from "react";
 import Logo from "../../ui/Logo";
 
@@ -17,7 +17,7 @@ import NavItemsHeaderMobile from "../../ui/header/NavItemsHeaderMobile";
 import { Input } from "@/core/components/shadcn/ui/input";
 import Link from "next/link";
 import ActionHeader from "../../ui/header/ActionHeader";
-function Header() {
+function Header({ isSignUp }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -76,8 +76,8 @@ function Header() {
           <div className="mr-3">
             <ActionHeader />
           </div>
-          <Link href={"/auth"}>
-            <User />
+          <Link href={isSignUp ? "/userpanel" : "/auth"}>
+            {isSignUp ? <User /> : <LogInIcon />}
           </Link>
         </div>
       </div>

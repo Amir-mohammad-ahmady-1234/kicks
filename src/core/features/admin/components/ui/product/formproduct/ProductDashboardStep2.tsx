@@ -11,12 +11,12 @@ import SelectBoxProductsDashboard from "./SelectBoxProductsDashboard";
 function ProductDashboardStep2({ setValues, values }) {
   function handleFileShowImages(
     e: React.ChangeEvent<HTMLInputElement>,
-    key: "mainImage" | "otherImages"
+    key: "mainImage" | "otherImages",
   ) {
     if (!e.target.files) return;
 
     const filesArray = Array.from(e.target.files).map((file) =>
-      URL.createObjectURL(file)
+      URL.createObjectURL(file),
     );
 
     if (key === "mainImage") {
