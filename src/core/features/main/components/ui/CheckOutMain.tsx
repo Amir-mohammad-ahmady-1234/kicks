@@ -1,5 +1,4 @@
 import { ImgNormalCustom } from "@/core/components/custom/ui/ImgNormalCustom";
-import SectionLayout from "@/core/components/custom/ui/SectionLayout";
 import {
   TypographyH3,
   TypographyH4,
@@ -16,9 +15,9 @@ import {
 } from "@/core/components/shadcn/ui/card";
 import { Checkbox } from "@/core/components/shadcn/ui/checkbox";
 import { Input } from "@/core/components/shadcn/ui/input";
-function page() {
+function CheckOutMain() {
   return (
-    <SectionLayout>
+    <>
       <div className="flex flex-col-reverse lg:flex-row">
         <div className="w-full p-5 space-y-2 ">
           <TypographyP>Login and Checkout faster</TypographyP>
@@ -197,8 +196,8 @@ function page() {
           Review AND PAY
         </Button>
       </div>
-    </SectionLayout>
+    </>
   );
 }
 
-export default page;
+export default CheckOutMain;
