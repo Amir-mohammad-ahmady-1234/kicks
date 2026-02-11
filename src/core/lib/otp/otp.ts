@@ -10,6 +10,7 @@ export async function sendOtp(
     const key = `otp:${email.toLowerCase()}`;
     await redis.set(key, otp, { ex: 5 * 60 });
     const emailResult = await sendOtpEmail(email, otp);
+    console.log(emailResult);
     if (!emailResult.success) {
       return { success: false, error: "There was a problem sending the email" };
     }

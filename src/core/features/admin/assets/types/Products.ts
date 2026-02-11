@@ -28,5 +28,6 @@ export type ProductOrderList = {
   images: string[];
   category: string | null;
   gender: string | null;
+  discount?: number;
   price: number;
 };

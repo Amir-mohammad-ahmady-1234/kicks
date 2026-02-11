@@ -1,7 +1,5 @@
 import crypto from "crypto";
 
-export const SECRET1 = process.env.SECRET1 || "fallback-secret-for-dev-only";
-
 export function generateKey(secret1: string, secret2: string): Buffer {
   const combined = secret1 + secret2;
   return crypto.createHash("sha256").update(combined).digest();
@@ -9,7 +7,7 @@ export function generateKey(secret1: string, secret2: string): Buffer {
 
 export function encryptLicense(
   data: object,
-  secret1: string = SECRET1,
+  secret1: string,
   secret2: string,
 ): string {
   const key = generateKey(secret1, secret2);
@@ -28,7 +26,7 @@ export function encryptLicense(
 
 export function decryptLicense(
   encrypted: string,
-  secret1: string = SECRET1,
+  secret1: string,
   secret2: string,
 ): object | null {
   try {

@@ -1,27 +1,41 @@
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider  = "mysql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
 model User {
   id        String   @id @default(cuid())
   email     String   @unique
   name      String?
   image     String?
   password  String
-  role      String @default("USER")
+  role      String   @default("USER")
+
+  phone         String?
+  bio           String?
+  dateOfBirth   DateTime?
+  country       String?
+  city          String?
+  address       String?
+  gender        String?
+  website       String?
+  instagram     String?
+  linkedin      String?
+  github        String?
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-
+  carts     Cart[]
+  favorite  Favorite[]
   @@map("users")
 }
 
 model Products {
-  id          String    @id @default(cuid())
+  id          String     @id @default(cuid())
   name        String
   description String
   specs       String
@@ -29,52 +43,116 @@ model Products {
   discount    Int?
   mainImage   String
   images      Json
-  createdAt   DateTime  @default(now())
+  createdAt   DateTime   @default(now())
   updatedAt   DateTime?
   star        Float?
-  gender Gender @default(men)
-  colors        Json
+  totalStars    Int?   @default(0)
+  totalVotes    Int?   @default(0)
+  averageRating Float? @default(0)
+  cartItems   CartItem[]
+  favoriteItem   FavoriteItem[]
+  gender      Gender     @default(men)
 
-  suggestedTo   Sugest[] @relation("suggestTo")
-  suggestedBy   Sugest[] @relation("suggestFrom")
+  suggestedTo Sugest[] @relation("suggestTo")
+  suggestedBy Sugest[] @relation("suggestFrom")
 
-  size          Json
+  size Json
 
   category categoryP @default(crocs)
 
   @@map("products")
 }
 
+model Cart {
+  id     String @id @default(cuid())
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  items CartItem[]
+
+  @@map("carts")
+}
+
+model CartItem {
+  id     String @id @default(cuid())
+  cartId String
+  cart   Cart   @relation(fields: [cartId], references: [id], onDelete: Cascade)
+
+  productId String
+  product   Products @relation(fields: [productId], references: [id], onDelete: Restrict)
+
+  quantity Int     @default(1)
+  size     String?
+  price    Int
+  discount Int?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([cartId, productId, size])
+  @@map("cart_items")
+}
+
+model Favorite {
+  id     String @id @default(cuid())
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  items FavoriteItem[]
+
+  @@map("favorites")
+}
+
+model FavoriteItem {
+  id     String @id @default(cuid())
+  favoriteId String
+  favorite   Favorite   @relation(fields: [favoriteId], references: [id], onDelete: Cascade)
+
+  productId String
+  product   Products @relation(fields: [productId], references: [id], onDelete: Restrict)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([favoriteId, productId])
+  @@map("favorite_items")
+}
+
 model Sugest {
   productId   String
   suggestedId String
 
-  product     Products @relation("suggestFrom", fields: [productId], references: [id])
+  product Products @relation("suggestFrom", fields: [productId], references: [id])
 
-  suggested   Products @relation("suggestTo", fields: [suggestedId], references: [id])
+  suggested Products @relation("suggestTo", fields: [suggestedId], references: [id])
 
   @@unique([productId, suggestedId])
   @@map("suggests")
 }
 
-
-
-
 enum Role {
   user
   admin
 }
+
 enum Gender {
   men
   women
 }
+
 enum categoryP {
-crocs
-nirkenstock
-clarks
-timberland
-allen
-oofos
-sorel
-hunter
+  crocs
+  nirkenstock
+  clarks
+  timberland
+  allen
+  oofos
+  sorel
+  hunter
 }
