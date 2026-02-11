@@ -16,7 +16,6 @@ export type PropsCardProduct = {
   badgecolor?: string;
 };
 function CardsProduct({ products, badgecolor = "black/80" }: PropsCardProduct) {
-  console.log(products);
   return (
     <Swiper
       spaceBetween={20}

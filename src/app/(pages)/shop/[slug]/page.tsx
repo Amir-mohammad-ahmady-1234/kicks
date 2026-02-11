@@ -38,7 +38,7 @@ export default async function ProductPage({
             </TypographyH3>
 
             {related.length > 0 ? (
-              <CardsProduct products={related || []} />
+              <CardsProduct related={related || []} />
             ) : (
               <p className="text-center text-muted-foreground py-8">
                 No similar products were found in this category
