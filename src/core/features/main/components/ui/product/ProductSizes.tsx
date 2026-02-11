@@ -2,11 +2,17 @@
 
 import { TypographyMuted } from "@/core/components/custom/ui/Typography";
 import { Button } from "@/core/components/shadcn/ui/button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export default function ProductSizes({ product }) {
-  const [selectedSize, setSelectedSize] = useState(product.sizes[0]);
-
+export default function ProductSizes({ product, setsizeselect }) {
+  const sizes = Array.isArray(product?.size) ? product.size : [];
+  console.log(sizes[0]);
+  const [selectedSize, setSelectedSize] = useState(sizes[0] || null);
+  useEffect(() => {
+    if (selectedSize) {
+      setsizeselect(selectedSize);
+    }
+  }, [selectedSize, setsizeselect]);
   return (
     <div>
       <TypographyMuted className="text-sm font-medium mb-2">
@@ -14,7 +20,7 @@ export default function ProductSizes({ product }) {
       </TypographyMuted>
 
       <div className="flex flex-wrap gap-3">
-        {product.sizes.map((s) => (
+        {sizes.map((s) => (
           <Button
             key={s}
             onClick={() => setSelectedSize(s)}

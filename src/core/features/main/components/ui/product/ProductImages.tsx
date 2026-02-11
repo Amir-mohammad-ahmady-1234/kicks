@@ -4,12 +4,17 @@ import { useState } from "react";
 
 export default function ProductImages({ product }) {
   const [selectedImage, setSelectedImage] = useState(0);
-
+  const productimages = [
+    "/common/img/main/products/singlpage/p-1.png",
+    "/common/img/main/products/singlpage/p-2.png",
+    "/common/img/main/products/singlpage/p-3.png",
+    "/common/img/main/products/singlpage/p-4.png",
+  ];
   return (
     <div className="space-y-4">
-      <div className="w-full h-[520px] rounded-xl overflow-hidden border">
+      <div className="w-full sm:h-130 h-70 rounded-xl overflow-hidden border">
         <ImgNormalCustom
-          src={product.images[selectedImage]}
+          src={productimages[selectedImage]}
           alt={product.title}
           width={1200}
           height={1200}
@@ -18,7 +23,7 @@ export default function ProductImages({ product }) {
       </div>
 
       <div className="grid grid-cols-4 gap-3">
-        {product.images.map((img, i) => (
+        {productimages.map((img, i) => (
           <button
             key={img}
             onClick={() => setSelectedImage(i)}

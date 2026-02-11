@@ -1,13 +1,14 @@
 import { TypographyP } from "@/core/components/custom/ui/Typography";
 import {
-  CardContent,
   Card,
+  CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/core/components/shadcn/ui/card";
+import ProductRating from "@/core/utils/handleRating";
 
-export default function ProductAbout({ product }) {
+export default function ProductAbout({ product, pid }) {
   return (
     <Card className="bg-background/50">
       <CardHeader>
@@ -16,24 +17,14 @@ export default function ProductAbout({ product }) {
 
       <CardContent>
         <TypographyP className="text-sm text-muted-foreground">
-          {product.about}
+          {product.description}
         </TypographyP>
 
         <ul className="mt-3 text-sm space-y-1 text-muted-foreground">
-          <li>
-            This product is excluded from all promotional discounts and offers.
-          </li>
-          <li>
-            Pay over time in interest-free installments with Affirm, Klarna or
-            Afterpay.
-          </li>
-          <li>
-            Join adiClub to get unlimited free standard shipping, returns, &
-            exchanges.
-          </li>
+          <li>{product.specs}</li>
         </ul>
+        <ProductRating pid={pid} />
       </CardContent>
-
       <CardFooter />
     </Card>
   );

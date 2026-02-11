@@ -1,20 +1,23 @@
 "use client";
-import { products } from "@/core/assets/mock/products";
 
 import CardProduct from "@/core/components/custom/ui/CardProduct";
 import { Paginations } from "@/core/components/custom/ui/Pagination";
+import { TabelProductsProps } from "@/core/features/admin/components/ui/product/TabelProducts";
+import { getProductImage } from "@/core/utils/randomImage";
 
-function ShopProducts() {
-  const pagination = {
-    limit: 5,
-    page: 1,
-    total: 2,
-    totalPages: 1,
-  };
+function ShopProducts({ data, pagination }: TabelProductsProps) {
+  const tableItems = data.map((product, index) => ({
+    id: product.id,
+    src: getProductImage(index) || "/common/img/placeholder.png",
+    title: product.name,
+    price: product.price,
+    percentOff: product.discount > 0 ? product.discount : undefined,
+    category: product.category,
+  }));
   return (
     <div className="flex flex-col w-full">
       <CardProduct
-        listproducts={products}
+        listproducts={tableItems}
         IsPagination={true}
         gridcss="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5"
       />

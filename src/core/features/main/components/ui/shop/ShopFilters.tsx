@@ -33,8 +33,8 @@ function ShopFilters() {
       </div>
       <Drawer open={isFilterOpen} onOpenChange={setIsFilterOpen}>
         <DrawerContent className="max-h-[85vh]">
-          <div className="p-5 overflow-y-auto">
-            <div className="flex items-center justify-between mb-6">
+          <div className="p-3 overflow-y-auto">
+            <div className="flex items-center justify-between mb-2">
               <DrawerTitle>Filters</DrawerTitle>
               <DrawerClose asChild>
                 <Button variant="ghost" size="sm">
@@ -43,19 +43,6 @@ function ShopFilters() {
               </DrawerClose>
             </div>
             <FilterContentShop />
-            <div className="space-y-6">
-              <div className="flex gap-3 pt-4">
-                <Button
-                  className="flex-1"
-                  onClick={() => setIsFilterOpen(false)}
-                >
-                  Apply filter
-                </Button>
-                <Button variant="outline" className="flex-1">
-                  Clear
-                </Button>
-              </div>
-            </div>
           </div>
         </DrawerContent>
       </Drawer>
