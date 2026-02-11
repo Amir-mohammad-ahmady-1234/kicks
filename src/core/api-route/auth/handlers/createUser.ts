@@ -64,8 +64,8 @@ export async function createUser({
       secretMessage: "cookie created successfully",
     };
 
-    const secret1 = process.env.SECRET1!;
-    const secret2 = `${newUser.id}-${process.env.SECRET2!}`;
+    const secret1 = process.env.SECRET1;
+    const secret2 = process.env.SECRET2;
 
     const encryptedLicense = encryptLicense(licenseData, secret1, secret2);
     const cookiess = await cookies();
