@@ -17,6 +17,7 @@ export function Paginations({
     limit: number;
     page: number;
     total: number;
+    totalPages?: number;
   };
 }) {
   const pathname = usePathname();

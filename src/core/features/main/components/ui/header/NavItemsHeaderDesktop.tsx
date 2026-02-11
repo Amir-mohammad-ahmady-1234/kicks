@@ -34,7 +34,7 @@ function NavItemsHeaderDesktop() {
           <ChevronDown className="h-4 w-4" />
         </DropdownMenuTrigger>
 
-        <DropdownMenuContent className="bg-background p-3 rounded-md shadow-xl border min-w-[180px]">
+        <DropdownMenuContent className="bg-background p-3 rounded-md shadow-xl border min-w-45">
           <DropdownMenuItem className="flex items-center gap-2 py-2 cursor-pointer hover:bg-muted rounded-md transition">
             <User className="h-4 w-4 text-primary" />
             <Link href="/shop/men" className="w-full">

@@ -57,7 +57,7 @@ export function SimpleDropdown({
           </Button>
         </DropdownMenuTrigger>
 
-        <DropdownMenuContent align="end" className="w-[100px]">
+        <DropdownMenuContent align="end" className="w-25">
           <DropdownMenuLabel className="text-xs text-muted-foreground">
             chose {title}
           </DropdownMenuLabel>
