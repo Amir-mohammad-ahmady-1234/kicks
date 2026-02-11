@@ -4,6 +4,7 @@ import { TypographyH3 } from "@/core/components/custom/ui/Typography";
 import { Button } from "@/core/components/shadcn/ui/button";
 import FormCreateProduct from "@/core/features/admin/components/ui/product/FormCreateProduct";
 import TabelProducts from "@/core/features/admin/components/ui/product/TabelProducts";
+import { validSortOrder } from "@/core/utils/validSortOrder";
 import { categoryP, Gender } from "@prisma/client";
 import { Plus } from "lucide-react";
 
@@ -13,9 +14,6 @@ async function page({
   searchParams: Promise<{ [key: string]: string | undefined }>;
 }) {
   const params = await searchParams;
-  const sortOrder = params.sortOrder?.toLowerCase();
-  const validSortOrder =
-    sortOrder === "asc" || sortOrder === "desc" ? sortOrder : "asc";
 
   const Pdata = await filterActionTabel({
     category: params.category as categoryP,
@@ -23,7 +21,7 @@ async function page({
     gender: params.gender as Gender,
     page: params.page ? Number(params.page) : 1,
     search: params.search ?? "",
-    sortOrder: validSortOrder,
+    sortOrder: validSortOrder(params),
   });
   return (
     <section className="p-4">
