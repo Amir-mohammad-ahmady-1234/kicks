@@ -1,13 +1,13 @@
-import HeaderAdmin from "@/core/features/admin/components/blocks/header/HeaderAdmin";
-import SidebarAdmin from "@/core/features/admin/components/blocks/sidebar/SidebarAdmin";
+import HeaderDashboard from "@/core/components/custom/ui/headerdashboard/HeaderDashboard";
+import SidebarDashboard from "@/core/components/custom/ui/sidebar/SidebarDashboard";
 import React from "react";
 
 function layout({ children }: { children: React.ReactNode }) {
   return (
     <main className="relative flex gap-1 w-full h-screen overflow-hidden">
-      <SidebarAdmin />
+      <SidebarDashboard />
       <section className="flex-col flex flex-1 overflow-hidden">
-        <HeaderAdmin />
+        <HeaderDashboard />
         <div className="flex-1 overflow-y-auto">{children}</div>
       </section>
     </main>

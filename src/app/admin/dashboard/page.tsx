@@ -1,9 +1,15 @@
+import { filterActionTabel } from "@/core/api-route/admin/handlers/tabel/filterTabel";
 import { TypographyH4 } from "@/core/components/custom/ui/Typography";
 import { OrdersChart } from "@/core/features/admin/components/ui/product/OrdersChart";
 import SalesChart from "@/core/features/admin/components/ui/product/ShadcnCharts";
-import TabelProducts from "@/core/features/admin/components/ui/product/TabelProducts";
+import Tavel5BestProduct from "@/core/features/admin/components/ui/product/Tavel5BestProduct";
 
-function Page() {
+async function Page() {
+  const Pdata = await filterActionTabel({
+    limit: 8,
+    page: 1,
+  });
+  console.log(Pdata);
   return (
     <section className="p-4 space-y-6">
       <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
@@ -69,10 +75,7 @@ function Page() {
         <OrdersChart />
       </div>
 
-      <div className="bg-card rounded-lg p-4 shadow-sm border">
-        <TypographyH4 className="mb-4">🔥 5 Best Products</TypographyH4>
-        <TabelProducts ShowFilter={false} />
-      </div>
+      <Tavel5BestProduct data={Pdata.data || []} />
     </section>
   );
 }
