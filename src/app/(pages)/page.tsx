@@ -1,16 +1,17 @@
-"use client";
-
 import SectionLayout from "@/core/components/custom/ui/SectionLayout";
 import { TypographyBig } from "@/core/components/custom/ui/Typography";
 import HeroSiperSection from "@/core/features/main/components/ui/HeroSiperSection";
 
-import { products } from "@/core/assets/mock/products";
-import HeadeCardProduct from "@/core/features/main/components/ui/HeadeCardProduct";
-import CategoriesSection from "@/core/features/main/components/ui/CategoriesSection";
-import ReviewsSection from "@/core/features/main/components/ui/ReviewsSection";
+import { findAllProduct } from "@/core/api-route/site/handlers/shop/findallproduct/findAllProduct";
 import CardsProduct from "@/core/features/main/components/ui/CardProduct";
+import CategoriesSection from "@/core/features/main/components/ui/CategoriesSection";
+import HeadeCardProduct from "@/core/features/main/components/ui/HeadeCardProduct";
+import ReviewsSection from "@/core/features/main/components/ui/ReviewsSection";
 
-export default function HeroBannerWithClickableThumbs() {
+export default async function HeroBannerWithClickableThumbs() {
+  const pdata = await findAllProduct();
+  console.log(pdata);
+  const products = pdata.product;
   return (
     <>
       <SectionLayout>

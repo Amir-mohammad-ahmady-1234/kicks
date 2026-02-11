@@ -1,11 +1,5 @@
+import { ImgNormalCustom } from "@/core/components/custom/ui/ImgNormalCustom";
 import SectionLayout from "@/core/components/custom/ui/SectionLayout";
-import React from "react";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-} from "@/core/components/shadcn/ui/card";
 import {
   TypographyH3,
   TypographyH4,
@@ -13,10 +7,15 @@ import {
   TypographyP,
   TypographySmall,
 } from "@/core/components/custom/ui/Typography";
-import { Input } from "@/core/components/shadcn/ui/input";
-import { ImgNormalCustom } from "@/core/components/custom/ui/ImgNormalCustom";
 import { Button } from "@/core/components/shadcn/ui/button";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+} from "@/core/components/shadcn/ui/card";
 import { Checkbox } from "@/core/components/shadcn/ui/checkbox";
+import { Input } from "@/core/components/shadcn/ui/input";
 function page() {
   return (
     <SectionLayout>
