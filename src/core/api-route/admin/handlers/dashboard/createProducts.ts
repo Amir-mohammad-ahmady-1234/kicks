@@ -20,6 +20,7 @@ export async function createProducts(dataP: ProductType, sizes: string[]) {
     });
     return { success: true, message: "Product created successfully" };
   } catch (error) {
+    console.log(error);
     if (error instanceof Prisma.PrismaClientKnownRequestError) {
       if (error.code === "P2002") {
         const target =
