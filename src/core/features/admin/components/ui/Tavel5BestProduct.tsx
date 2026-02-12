@@ -1,5 +1,5 @@
 import { TypographyH4 } from "@/core/components/custom/ui/Typography";
-import { ProductOrderList } from "../../../assets/types/Products";
+import { ProductOrderList } from "../../assets/types/Products";
 import TabelProducts from "./TabelProducts";
 
 function Tavel5BestProduct({ data }: { data: ProductOrderList[] }) {

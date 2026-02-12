@@ -3,7 +3,7 @@ import Modal from "@/core/components/custom/ui/Modal";
 import { TypographyH3 } from "@/core/components/custom/ui/Typography";
 import { Button } from "@/core/components/shadcn/ui/button";
 import FormCreateProduct from "@/core/features/admin/components/ui/product/FormCreateProduct";
-import TabelProducts from "@/core/features/admin/components/ui/product/TabelProducts";
+import TabelProducts from "@/core/features/admin/components/ui/TabelProducts";
 import { validSortOrder } from "@/core/utils/validSortOrder";
 import { categoryP, Gender } from "@prisma/client";
 import { Plus } from "lucide-react";

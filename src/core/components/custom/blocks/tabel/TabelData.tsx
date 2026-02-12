@@ -27,6 +27,7 @@ function TabelData<T extends { id: string | number; productName: string }>({
   ItemsCategory,
   ItemsGender,
   ItemsSize,
+
 }: TabelType<T>) {
   return (
     <>
@@ -89,7 +90,7 @@ function TabelData<T extends { id: string | number; productName: string }>({
                       );
                     })}
 
-                    {ShowActions && <ActionDialog />}
+                    {ShowActions && <ActionDialog item={item} />}
                   </TableRow>
                 ))
               )}

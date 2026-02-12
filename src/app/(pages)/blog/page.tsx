@@ -1,7 +1,5 @@
 import { Paginations } from "@/core/components/custom/ui/Pagination";
 import SectionLayout from "@/core/components/custom/ui/SectionLayout";
-import { TypographyLarge } from "@/core/components/custom/ui/Typography";
-import { Card, CardHeader } from "@/core/components/shadcn/ui/card";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -50,18 +48,17 @@ function page() {
       createdAt: 32,
     },
   ];
+  const pagination = {
+    limit: 5,
+    page: 1,
+    total: 2,
+    totalPages: 1,
+  };
   return (
     <SectionLayout>
       <div className="flex  gap-2">
-        <div className="w-3/12 ">
-          <Card className="h-screen">
-            <CardHeader>
-              <TypographyLarge>archive</TypographyLarge>
-            </CardHeader>
-          </Card>
-        </div>
         <div className="w-full">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {blogs.map((blog) => (
               <div
                 key={blog.id}
@@ -86,8 +83,7 @@ function page() {
             ))}
           </div>
           <div className="mt-2">
-            {" "}
-            <Paginations />
+            <Paginations pagination={pagination} />
           </div>
         </div>
       </div>

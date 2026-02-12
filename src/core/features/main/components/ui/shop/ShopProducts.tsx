@@ -2,7 +2,7 @@
 
 import CardProduct from "@/core/components/custom/ui/CardProduct";
 import { Paginations } from "@/core/components/custom/ui/Pagination";
-import { TabelProductsProps } from "@/core/features/admin/components/ui/product/TabelProducts";
+import { TabelProductsProps } from "@/core/features/admin/components/ui/TabelProducts";
 import { getProductImage } from "@/core/utils/randomImage";
 
 function ShopProducts({ data, pagination }: TabelProductsProps) {

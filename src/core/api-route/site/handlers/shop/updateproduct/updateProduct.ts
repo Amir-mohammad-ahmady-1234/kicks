@@ -2,25 +2,40 @@
 import { ProductType } from "@/core/features/admin/assets/types/Products";
 import prisma from "@/core/lib/db/client";
 import { Prisma } from "@prisma/client";
-export async function createProducts(dataP: ProductType, sizes: string[]) {
+
+export async function updateProduct(
+  productId: string,
+  dataP: ProductType,
+  sizes: string[],
+) {
   try {
-    await prisma.products.create({
+    const existingProduct = await prisma.products.findUnique({
+      where: { id: productId },
+    });
+
+    if (!existingProduct) {
+      return { success: false, error: "Product not found" };
+    }
+
+    await prisma.products.update({
+      where: { id: productId },
       data: {
         description: dataP.description,
         name: dataP.productName,
         price: dataP.price,
         specs: dataP.fullDescription,
         category: dataP.category,
-        mainImage: dataP.mainImage,
-        images: dataP.otherImages,
         gender: dataP.gender,
         discount: dataP.discount,
         size: sizes,
+        updatedAt: new Date(),
       },
     });
-    return { success: true, message: "Product created successfully" };
+
+    return { success: true, message: "Product updated successfully" };
   } catch (error) {
-    console.log(error);
+    console.log("Error updating product:", error);
+
     if (error instanceof Prisma.PrismaClientKnownRequestError) {
       if (error.code === "P2002") {
         const target =
@@ -32,18 +47,21 @@ export async function createProducts(dataP: ProductType, sizes: string[]) {
       }
 
       if (error.code === "P2025") {
-        return { success: false, error: "Record not found" };
+        return { success: false, error: "Product not found" };
+      }
+
+      if (error.code === "P2003") {
+        return { success: false, error: "Invalid category or gender value" };
       }
     }
 
     if (error instanceof Prisma.PrismaClientValidationError) {
       return {
         success: false,
-        error: "Invalid data submitted (e.g., wrong category)",
+        error: "Invalid data format submitted",
       };
     }
 
-    console.error("Error creating product:", error);
-    return { success: false, error: "Server error while creating product" };
+    return { success: false, error: "Server error while updating product" };
   }
 }
