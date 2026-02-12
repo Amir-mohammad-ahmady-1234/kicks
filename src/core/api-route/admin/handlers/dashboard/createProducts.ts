@@ -1,7 +1,7 @@
 "use server";
-import { ProductType } from "@/core/features/admin/assets/types/Products";
 import prisma from "@/core/lib/db/client";
 import { Prisma } from "@prisma/client";
+import { ProductType } from "../../ts/ProductType";
 export async function createProducts(dataP: ProductType, sizes: string[]) {
   try {
     await prisma.products.create({
@@ -20,7 +20,6 @@ export async function createProducts(dataP: ProductType, sizes: string[]) {
     });
     return { success: true, message: "Product created successfully" };
   } catch (error) {
-    console.log(error);
     if (error instanceof Prisma.PrismaClientKnownRequestError) {
       if (error.code === "P2002") {
         const target =
@@ -43,7 +42,6 @@ export async function createProducts(dataP: ProductType, sizes: string[]) {
       };
     }
 
-    console.error("Error creating product:", error);
     return { success: false, error: "Server error while creating product" };
   }
 }

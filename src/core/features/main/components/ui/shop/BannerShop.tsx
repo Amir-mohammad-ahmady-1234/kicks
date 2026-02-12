@@ -3,7 +3,7 @@ import React from "react";
 
 function BannerShop() {
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center mt-35">
       <ImgNormalCustom
         src={"/common/img/main/banshop.png"}
         width={1200}

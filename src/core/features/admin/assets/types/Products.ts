@@ -9,17 +9,6 @@ export enum categoryP {
   hunter = "hunter",
 }
 
-export interface ProductType {
-  productName: string;
-  description: string;
-  fullDescription: string;
-  price: number;
-  discount: number;
-  mainImage: string;
-  otherImages: string[];
-  gender: "men" | "women";
-  category: categoryP;
-}
 export type ProductOrderList = {
   id: string;
   name: string;

@@ -24,3 +24,47 @@ export const testimonialsData = [
     blogImg: "/common/img/main/blog/blog3.png",
   },
 ];
+export const blogspage = [
+  {
+    id: 1,
+    slug: "blog/1",
+    thumbnail: "/common/img/main/blog/blog1.png",
+    title: "title1",
+    createdAt: 12,
+  },
+  {
+    id: 2,
+    slug: "blog/2",
+    thumbnail: "/common/img/main/blog/blog2.png",
+    title: "title2",
+    createdAt: 22,
+  },
+  {
+    id: 3,
+    slug: "blog/3",
+    thumbnail: "/common/img/main/blog/blog3.png",
+    title: "title3",
+    createdAt: 32,
+  },
+  {
+    id: 4,
+    slug: "blog/1",
+    thumbnail: "/common/img/main/blog/blog1.png",
+    title: "title1",
+    createdAt: 12,
+  },
+  {
+    id: 5,
+    slug: "blog/2",
+    thumbnail: "/common/img/main/blog/blog2.png",
+    title: "title2",
+    createdAt: 22,
+  },
+  {
+    id: 6,
+    slug: "blog/3",
+    thumbnail: "/common/img/main/blog/blog3.png",
+    title: "title3",
+    createdAt: 32,
+  },
+];

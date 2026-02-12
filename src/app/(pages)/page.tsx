@@ -10,12 +10,11 @@ import ReviewsSection from "@/core/features/main/components/ui/ReviewsSection";
 
 export default async function HeroBannerWithClickableThumbs() {
   const pdata = await findAllProduct();
-  console.log(pdata);
   const products = pdata.product;
   return (
     <>
       <SectionLayout>
-        <TypographyBig className="tracking-widest ">
+        <TypographyBig className="tracking-widest mt-35">
           DO IT <span className="text-primary">RIGHT</span>
         </TypographyBig>
       </SectionLayout>

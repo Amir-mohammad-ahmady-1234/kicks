@@ -1,18 +1,7 @@
 import prisma from "@/core/lib/db/client";
 import { categoryP, Prisma } from "@prisma/client";
+import { TabelFilter } from "../../ts/TabelFilter";
 export type discountFilterTs = "all" | "discount" | "no-discount";
-export interface TabelFilter {
-  search?: string;
-  category?: categoryP;
-  page?: number;
-  limit?: number;
-  minPrice?: number;
-  maxPrice?: number;
-  discountFilter?: discountFilterTs;
-  size?: string;
-  sortOrder?: "desc" | "asc";
-  gender?: "men" | "women";
-}
 
 export async function filterActionTabel({
   search,

@@ -1,14 +1,6 @@
 "use server";
 import prisma from "@/core/lib/db/client";
-
-interface CreateCartTs {
-  userId: string;
-  productId: string;
-  quantity: number;
-  size: string | null;
-  price?: number;
-  discount?: number | null;
-}
+import { CreateCartTs } from "../../../ts/cart";
 
 export async function createCart({
   userId,

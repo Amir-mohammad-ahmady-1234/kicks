@@ -1,4 +1,4 @@
-import { TabelFilter } from "@/core/api-route/admin/handlers/tabel/filterTabel";
+import { TabelFilter } from "@/core/api-route/admin/ts/TabelFilter";
 import prisma from "@/core/lib/db/client";
 import { categoryP, Prisma } from "@prisma/client";
 

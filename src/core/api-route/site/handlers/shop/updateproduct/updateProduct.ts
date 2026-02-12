@@ -1,5 +1,5 @@
 "use server";
-import { ProductType } from "@/core/features/admin/assets/types/Products";
+import { ProductType } from "@/core/api-route/admin/ts/ProductType";
 import prisma from "@/core/lib/db/client";
 import { Prisma } from "@prisma/client";
 
