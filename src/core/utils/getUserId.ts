@@ -3,7 +3,7 @@ import { decryptLicense } from "../lib/crypto/license";
 
 export async function getUserId(): Promise<string | null> {
   const coocki = await cookies();
-  const license = coocki.get("license").value;
+  const license = coocki.get("license")?.value;
   if (!license) {
     console.log("License cookie not found");
     return null;

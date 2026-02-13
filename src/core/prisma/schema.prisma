@@ -29,6 +29,10 @@ model User {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  messages  Message[]
+  tickets   Ticket[]
+
   carts     Cart[]
   favorite  Favorite[]
   @@map("users")
@@ -96,6 +100,40 @@ model CartItem {
   @@map("cart_items")
 }
 
+model Ticket {
+  id          String   @id @default(cuid())
+  title       String
+  status      StatusChat  @default(open)
+
+
+  lastMessage String?  @db.Text
+  lastMessageAt DateTime?
+  unreadCount Int      @default(0)
+
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  messages    Message[]
+
+  @@map("tickets")
+}
+
+model Message {
+  id        String   @id @default(cuid())
+  content   String   @db.Text
+  ticketId  String
+  userId    String
+  createdAt DateTime @default(now())
+
+  ticket    Ticket   @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("messages")
+}
+
 model Favorite {
   id     String @id @default(cuid())
   userId String @unique
@@ -155,4 +193,9 @@ enum categoryP {
   oofos
   sorel
   hunter
+}
+enum StatusChat {
+  open
+  pending
+  close
 }
