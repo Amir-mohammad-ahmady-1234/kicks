@@ -42,7 +42,7 @@ function Header({ isSignUp }) {
             : "opacity-100 visible translate-y-0"
         }`}
       >
-        <div className="bg-background/80 backdrop-blur-md pages-container m-5 rounded-md flex items-center justify-between relative shadow-sm border border-gray-300/50 dark:border-gray-300/50">
+        <div className="bg-background/80 backdrop-blur-md pages-container m-5  rounded-md flex items-center justify-between relative shadow-sm border border-gray-300/50 dark:border-gray-300/50">
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild className="lg:hidden">
               <Button variant="ghost" size="icon">

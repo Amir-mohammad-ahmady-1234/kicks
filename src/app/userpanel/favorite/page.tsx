@@ -44,7 +44,7 @@ async function FavoritePage() {
           <p className="text-gray-500 mb-6">
             Start adding products you love to your wishlist
           </p>
-          <Link href="/products">
+          <Link href="/shop">
             <Button variant="outline">Browse Products</Button>
           </Link>
         </div>

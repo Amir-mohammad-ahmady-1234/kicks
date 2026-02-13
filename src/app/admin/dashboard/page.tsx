@@ -6,7 +6,7 @@ import Tavel5BestProduct from "@/core/features/admin/components/ui/Tavel5BestPro
 
 async function Page() {
   const Pdata = await filterActionTabel({
-    limit: 8,
+    limit: 5,
     page: 1,
   });
   console.log(Pdata);
