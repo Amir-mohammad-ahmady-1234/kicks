@@ -1,7 +1,7 @@
-import { redirect } from "next/navigation";
+import { permanentRedirect } from "next/navigation";
 
 function page() {
-  redirect("/userpanel/profile");
+  permanentRedirect("/userpanel/profile");
   return <div>page</div>;
 }
 

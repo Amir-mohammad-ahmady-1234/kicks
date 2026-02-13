@@ -5,6 +5,8 @@ import Logo from "@/core/features/main/components/ui/Logo";
 import { useIsMobile } from "@/core/utils/useIsMobile";
 import {
   BlendIcon,
+  ChartBar,
+  ChartBarIcon,
   Heart,
   LayoutDashboard,
   List,
@@ -28,6 +30,7 @@ const itemsDashboardAdmin = [
 const itemsDashboardUser = [
   { name: "favorite", icon: <Heart /> },
   { name: "profile", icon: <UserRoundPen /> },
+  { name: "suppurt", icon: <ChartBarIcon /> },
 ];
 function SidebarDashboard() {
   const isMobile = useIsMobile();
