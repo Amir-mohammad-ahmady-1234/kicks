@@ -1,5 +1,12 @@
 import crypto from "crypto";
 
+interface LicenseData {
+  userId: string;
+  expiration: string;
+  issuedAt: string;
+  secretMessage: string;
+}
+
 export function generateKey(secret1: string, secret2: string): Buffer {
   const combined = secret1 + secret2;
   return crypto.createHash("sha256").update(combined).digest();
@@ -28,7 +35,7 @@ export function decryptLicense(
   encrypted: string,
   secret1: string,
   secret2: string,
-): object | null {
+): LicenseData | null {
   try {
     const key = generateKey(secret1, secret2);
     const [ivHex, encryptedHex, authTagHex] = encrypted.split(":");
