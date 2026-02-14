@@ -1,20 +1,65 @@
+"use client";
+
 import {
   TypographyH4,
   TypographyMuted,
 } from "@/core/components/custom/ui/Typography";
 import { Phone, User } from "lucide-react";
 import ProfileUserDate from "./ProfileUserDate";
+import Image from "next/image";
+import { useRef } from "react";
+import updateProfile from "@/core/api-route/userpanel/handlers/profile/updateuser/updateProfile";
 
 function ProfileInformation({ user }) {
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  function handleEditClicked() {
+    fileInputRef.current.click();
+  }
+
+  async function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const imageUrl = await updateProfile(user.id, file);
+    console.log(imageUrl);
+  }
+
   return (
     <>
       <div className="flex items-start gap-4">
-        <div className="w-16 h-16 rounded-full bg-linear-to-r from-blue-100 to-purple-100 flex items-center justify-center">
-          <span className="text-2xl font-bold text-blue-600">
-            {user.name?.charAt(0).toUpperCase() ||
-              user.email?.charAt(0).toUpperCase()}
-          </span>
+        <div className="relative w-16 h-16">
+          {user.image ? (
+            <Image
+              src={user.image}
+              alt="Profile"
+              className="w-16 h-16 rounded-full object-cover border"
+              fill
+            />
+          ) : (
+            <div className="w-16 h-16 rounded-full bg-linear-to-r from-blue-100 to-purple-100 flex items-center justify-center">
+              <span className="text-2xl font-bold text-blue-600">
+                {user.name?.charAt(0).toUpperCase() ||
+                  user.email?.charAt(0).toUpperCase()}
+              </span>
+            </div>
+          )}
+          <button
+            onClick={handleEditClicked}
+            className="absolute -bottom-1 -right-1 bg-blue-600 text-white text-xs px-2 py-1 rounded-full"
+          >
+            Edit
+          </button>
+
+          <input
+            type="file"
+            accept="image/*"
+            ref={fileInputRef}
+            className="hidden"
+            onChange={handleFileChange}
+          />
         </div>
+
         <div>
           <TypographyH4 className="text-2xl font-bold">
             {user.name || "Anonymous User"}
