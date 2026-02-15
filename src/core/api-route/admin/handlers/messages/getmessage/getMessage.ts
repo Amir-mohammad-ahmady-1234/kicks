@@ -1,27 +1,72 @@
 "use server";
 import prisma from "@/core/lib/db/client";
+import { getUserId } from "@/core/utils/getUserId";
 
-export async function getMessage({ userId, ticketId }) {
+export async function getMessage({ ticketId, userRole }) {
   try {
-    if (!userId) {
-      return { success: false, error: "plase login first" };
-    }
     if (!ticketId) {
       return { error: "TicketId is required" };
     }
-    const ticket = await prisma.ticket.findUnique({
+
+    const userId = await getUserId();
+    if (!userId) {
+      return { error: "User not found" };
+    }
+
+    let ticket = await prisma.ticket.findUnique({
       where: { id: ticketId },
+      include: {
+        user: true,
+      },
     });
 
     if (!ticket) {
-      return { error: "Ticket not found" };
+      const admin = await prisma.user.findFirst({
+        where: { role: "ADMIN" },
+        select: { id: true },
+      });
+
+      if (!admin) {
+        return { error: "No admin found in system" };
+      }
+
+      ticket = await prisma.ticket.create({
+        data: {
+          id: ticketId,
+          title: "Support Chat",
+          status: "open",
+          userId: userId,
+          lastMessage: "Chat started",
+          lastMessageAt: new Date(),
+          unreadCount: 0,
+        },
+        include: {
+          user: {
+            select: {
+              id: true,
+              name: true,
+              image: true,
+              role: true,
+            },
+          },
+        },
+      });
+
+      await prisma.message.create({
+        data: {
+          content: "Hello! How can I help you today?",
+          ticketId: ticket.id,
+          userId: admin.id,
+        },
+      });
     }
-    const user = await prisma.user.findUnique({ where: { id: userId } });
-    if (user.role !== "ADMIN" && ticket.userId !== userId) {
+
+    if (ticket.userId !== userId && userRole !== "ADMIN") {
       return { error: "You don't have permission to view this ticket" };
     }
+
     const messages = await prisma.message.findMany({
-      where: { ticketId },
+      where: { ticketId: ticket.id },
       include: {
         user: {
           select: {
@@ -36,14 +81,19 @@ export async function getMessage({ userId, ticketId }) {
         createdAt: "asc",
       },
     });
-    if (user.role === "ADMIN") {
+
+    if (userRole === "ADMIN") {
       await prisma.ticket.update({
-        where: { id: ticketId },
+        where: { id: ticket.id },
         data: { unreadCount: 0 },
       });
     }
 
-    return { success: true, messages };
+    return {
+      success: true,
+      messages,
+      ticketOwner: ticket.user,
+    };
   } catch {
     return { error: "Internal server error" };
   }
