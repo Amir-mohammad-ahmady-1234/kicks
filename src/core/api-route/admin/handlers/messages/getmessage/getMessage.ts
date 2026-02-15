@@ -40,6 +40,7 @@ export async function getMessage({ ticketId, userRole }) {
           lastMessageAt: new Date(),
           unreadCount: 0,
         },
+
         include: {
           user: {
             select: {
@@ -47,6 +48,10 @@ export async function getMessage({ ticketId, userRole }) {
               name: true,
               image: true,
               role: true,
+              bio: true,
+              country: true,
+              phone: true,
+              email: true,
             },
           },
         },
@@ -74,6 +79,10 @@ export async function getMessage({ ticketId, userRole }) {
             name: true,
             image: true,
             role: true,
+            bio: true,
+            country: true,
+            phone: true,
+            email: true,
           },
         },
       },
