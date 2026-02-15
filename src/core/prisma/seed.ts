@@ -1,4 +1,3 @@
-// prisma/seed.ts
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
 
@@ -10,7 +9,6 @@ async function main() {
   // ========== ۱. پاک کردن دیتای قبلی ==========
   await prisma.message.deleteMany();
   await prisma.ticket.deleteMany();
-  await prisma.user.deleteMany();
 
   console.log("🗑️ Old data cleared");
 
