@@ -14,7 +14,7 @@ function ProfileInformation({ user }) {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   function handleEditClicked() {
-    fileInputRef.current.click();
+    fileInputRef.current?.click();
   }
 
   async function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -27,26 +27,36 @@ function ProfileInformation({ user }) {
 
   return (
     <>
-      <div className="flex items-start gap-4">
-        <div className="relative w-16 h-16">
-          {user.image ? (
-            <Image
-              src={user.image}
-              alt="Profile"
-              className="w-16 h-16 rounded-full object-cover border"
-              fill
-            />
-          ) : (
-            <div className="w-16 h-16 rounded-full bg-linear-to-r from-blue-100 to-purple-100 flex items-center justify-center">
-              <span className="text-2xl font-bold text-blue-600">
-                {user.name?.charAt(0).toUpperCase() ||
-                  user.email?.charAt(0).toUpperCase()}
-              </span>
-            </div>
-          )}
+      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
+        <div className="relative shrink-0">
+          <div className="relative w-18 h-18 sm:w-28 sm:h-28 md:w-20 md:h-20 rounded-full overflow-hidden border-2 border-gray-200 shadow-sm">
+            {user.image ? (
+              <Image
+                src={user.image}
+                alt="Profile picture"
+                fill
+                className="object-cover"
+                sizes="(max-width: 640px) 80px, (max-width: 768px) 112px, 128px"
+              />
+            ) : (
+              <div className="w-full h-full bg-linear-to-r from-blue-100 to-purple-100 flex items-center justify-center">
+                <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-blue-600">
+                  {user.name?.charAt(0)?.toUpperCase() ||
+                    user.email?.charAt(0)?.toUpperCase() ||
+                    "?"}
+                </span>
+              </div>
+            )}
+          </div>
+
           <button
             onClick={handleEditClicked}
-            className="absolute -bottom-1 -right-1 bg-blue-600 text-white text-xs px-2 py-1 rounded-full"
+            className="absolute -bottom-1 -right-1 sm:-bottom-2 sm:-right-2 
+                       bg-blue-600 hover:bg-blue-700 text-white 
+                       text-xs sm:text-sm font-medium 
+                       px-2.5 py-1 sm:px-3 sm:py-1.5 
+                       rounded-full shadow-md transition-all"
+            aria-label="Edit profile picture"
           >
             Edit
           </button>
@@ -60,42 +70,44 @@ function ProfileInformation({ user }) {
           />
         </div>
 
-        <div>
-          <TypographyH4 className="text-2xl font-bold">
+        <div className="flex-1 min-w-0">
+          <TypographyH4 className="text-xl sm:text-2xl md:text-3xl font-bold truncate">
             {user.name || "Anonymous User"}
           </TypographyH4>
-          <TypographyMuted className="text-gray-800 ">
+
+          <TypographyMuted className="text-gray-700 text-sm sm:text-base mt-0.5">
             {user.email}
           </TypographyMuted>
-          <span className="inline-block mt-2 px-3 py-1 bg-gray-100 text-gray-800 text-sm rounded-full">
+
+          <span className="inline-block mt-2 px-3 py-1 bg-gray-100 text-gray-700 text-xs sm:text-sm font-medium rounded-full">
             {user.role}
           </span>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
         <div className="space-y-4">
           <div className="flex items-center gap-3">
-            <Phone className="h-5 w-5 text-gray-400" />
+            <Phone className="h-5 w-5 text-gray-500 shrink-0" />
             <div>
-              <TypographyMuted className="text-sm text-gray-800 ">
+              <TypographyMuted className="text-xs sm:text-sm text-gray-600">
                 Phone
               </TypographyMuted>
-              <TypographyMuted className="font-medium">
+              <p className="font-medium text-gray-900 text-sm sm:text-base">
                 {user.phone || "Not set"}
-              </TypographyMuted>
+              </p>
             </div>
           </div>
 
           <div className="flex items-center gap-3">
-            <User className="h-5 w-5 text-gray-400" />
+            <User className="h-5 w-5 text-gray-500 shrink-0" />
             <div>
-              <TypographyMuted className="text-sm text-gray-800 ">
+              <TypographyMuted className="text-xs sm:text-sm text-gray-600">
                 Gender
               </TypographyMuted>
-              <TypographyMuted className="font-medium">
+              <p className="font-medium text-gray-900 text-sm sm:text-base">
                 {user.gender || "Not set"}
-              </TypographyMuted>
+              </p>
             </div>
           </div>
         </div>

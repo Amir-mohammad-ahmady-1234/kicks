@@ -22,7 +22,6 @@ function FormCreateProduct() {
     category: categoryP.crocs,
   });
   ///
-
   const [sizes, setSizes] = useState<string[]>([]);
 
   const [step, setstep] = useState(1);

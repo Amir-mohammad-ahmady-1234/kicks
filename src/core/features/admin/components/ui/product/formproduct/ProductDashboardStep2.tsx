@@ -7,24 +7,27 @@ import { Input } from "@/core/components/shadcn/ui/input";
 import { Gendersdata } from "@/core/features/main/components/ui/shop/FilterContentShop";
 import { Gender } from "@prisma/client";
 import SelectBoxProductsDashboard from "./SelectBoxProductsDashboard";
+import getImageUrl from "@/core/api-route/admin/handlers/order/getImageUrl";
 
 function ProductDashboardStep2({ setValues, values }) {
-  function handleFileShowImages(
+  async function handleFileShowImages(
     e: React.ChangeEvent<HTMLInputElement>,
     key: "mainImage" | "otherImages",
   ) {
     if (!e.target.files) return;
 
-    const filesArray = Array.from(e.target.files).map((file) =>
-      URL.createObjectURL(file),
-    );
+    // const filesArray = Array.from(e.target.files).map((file) =>
+    // URL.createObjectURL(file),
+    // );
+
+    const result = await getImageUrl(e.target.files[0]);
 
     if (key === "mainImage") {
-      setValues({ ...values, mainImage: filesArray[0] });
+      setValues({ ...values, mainImage: result.imageUrl });
     } else {
       setValues({
         ...values,
-        otherImages: [...values.otherImages, ...filesArray],
+        otherImages: [...values.otherImages, result.imageUrl],
       });
     }
   }
@@ -84,7 +87,7 @@ function ProductDashboardStep2({ setValues, values }) {
       <SelectBoxProductsDashboard setValues={setValues} values={values} />
       <TypographyMuted className="flex items-center">
         select item:
-        <span className="text-stone-800 font-semibold leading-7 [&:not(:first-child)]:mt-2">
+        <span className="text-stone-800 font-semibold leading-7 not-first:mt-2">
           {values.category}
         </span>
       </TypographyMuted>
