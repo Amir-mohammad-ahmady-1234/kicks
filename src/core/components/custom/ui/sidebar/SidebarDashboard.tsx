@@ -40,7 +40,7 @@ function SidebarDashboard() {
   }
   const isUserPanel = path.startsWith("/userpanel");
   const items = isUserPanel ? itemsDashboardUser : itemsDashboardAdmin;
-  const baseurl = items ? "userpanel" : "admin";
+  const baseurl = isUserPanel ? "userpanel" : "admin";
   return isMobile === false || show === true ? (
     <>
       <aside

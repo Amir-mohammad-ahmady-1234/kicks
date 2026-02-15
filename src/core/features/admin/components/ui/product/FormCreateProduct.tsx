@@ -1,10 +1,11 @@
 "use client";
 import { createProducts } from "@/core/api-route/admin/handlers/dashboard/createProducts";
+import { ProductType } from "@/core/api-route/admin/ts/ProductType";
 import { Button } from "@/core/components/shadcn/ui/button";
 import { MoveLeft, MoveRight } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
-import { categoryP, ProductType } from "../../../assets/types/Products";
+import { categoryP } from "../../../assets/types/Products";
 import ProductDashboardStep1 from "./formproduct/ProductDashboardStep1";
 import ProductDashboardStep2 from "./formproduct/ProductDashboardStep2";
 import ProductDashboardStep3 from "./formproduct/ProductDashboardStep3";
