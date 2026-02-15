@@ -36,13 +36,23 @@ export type Ticket = {
   };
 };
 
-export type SuppurtChatProps = {
+export type SuppurtChatTs = {
   id: string;
   userRole: string;
 };
 
-export type SideBarChatProps = {
+export type SideBarChatTs = {
   userId: string;
   userRole: string;
 };
 
+export type TicketOwnerTs = {
+  id: string;
+  name: string;
+  image: string | null;
+  role: string;
+  email: string | null;
+  phone: string | null;
+  bio: string | null;
+  country: string | null;
+};

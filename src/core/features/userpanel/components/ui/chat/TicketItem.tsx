@@ -6,9 +6,9 @@ import {
   AvatarImage,
 } from "@/core/components/shadcn/ui/avatar";
 import { Badge } from "@/core/components/shadcn/ui/badge";
-import { Ticket } from "../../../assets/types/ChatTypes";
-import { formatLastSeen } from "../../../utils/chatUtils";
 import Link from "next/link";
+import { Ticket } from "../../../assets/types/ChatTypes";
+import { formatLastSeen } from "../../../utils/loadMessages";
 
 type TicketItemProps = {
   ticket: Ticket;
@@ -76,4 +76,3 @@ function TicketItem({
 }
 
 export default TicketItem;
-

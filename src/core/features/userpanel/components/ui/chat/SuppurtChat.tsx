@@ -2,56 +2,56 @@
 
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { ChatUser, MessageUserTs, SuppurtChatProps } from "../../../assets/types/ChatTypes";
+import { toast } from "sonner";
 import {
-  convertTicketOwnerToChatUser,
-  loadMessages,
-  refreshMessages,
-  sendMessage,
-} from "../../../utils/chatUtils";
+  ChatUser,
+  MessageUserTs,
+  SuppurtChatTs,
+} from "../../../assets/types/ChatTypes";
+import { convertChatUser } from "../../../utils/convertChatUser";
+import { loadMessages } from "../../../utils/loadMessages";
+import { sendMessage } from "../../../utils/sendMessage";
 import ChatHeader from "./ChatHeader";
 import ChatInput from "./ChatInput";
 import MessageList from "./MessageList";
 
-function SuppurtChat({ id, userRole }: SuppurtChatProps) {
+function SuppurtChat({ id, userRole }: SuppurtChatTs) {
   const params = useParams();
   const ticketId = params.id as string;
   const [messages, setMessages] = useState<MessageUserTs[]>([]);
   const [loading, setLoading] = useState(true);
   const [otherUser, setOtherUser] = useState<ChatUser | null>(null);
-
+  const [refresh, setRefresh] = useState(0);
   useEffect(() => {
-    const loadChatData = async () => {
+    async function loadChatData() {
       setLoading(true);
       const result = await loadMessages(ticketId, userRole);
 
       if (result.success) {
         setMessages(result.messages);
-        const chatUser = convertTicketOwnerToChatUser(result.ticketOwner);
+        const chatUser = convertChatUser(result.ticketOwner);
         setOtherUser(chatUser);
       }
       setLoading(false);
-    };
+    }
 
     loadChatData();
-  }, [ticketId, userRole]);
+  }, [ticketId, userRole, refresh]);
 
-  const handleSendMessage = async (content: string) => {
-    if (!content.trim() || !id) return;
-
+  async function handleSendMessage(content: string) {
     const result = await sendMessage(content, ticketId, userRole);
-
     if (result.success) {
-      const updatedMessages = await refreshMessages(ticketId, userRole);
-      setMessages(updatedMessages);
+      setRefresh((prev) => prev + 1);
+    } else {
+      toast.error(result.error);
     }
-  };
+  }
 
   return (
     <div className="flex-1 flex flex-col h-full bg-foreground w-full rounded-2xl">
       <ChatHeader otherUser={otherUser} />
-      <MessageList messages={messages} currentUserId={id} loading={loading} />
-      <ChatInput onSendMessage={handleSendMessage} disabled={!id} />
+      <MessageList messages={messages} userId={id} loading={loading} />
+      <ChatInput sendMessage={handleSendMessage} disabled={!id} />
     </div>
   );
 }

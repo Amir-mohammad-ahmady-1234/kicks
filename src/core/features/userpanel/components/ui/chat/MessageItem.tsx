@@ -8,26 +8,22 @@ import {
 } from "@/core/components/shadcn/ui/avatar";
 import { Badge } from "@/core/components/shadcn/ui/badge";
 import { MessageUserTs } from "../../../assets/types/ChatTypes";
-import { formatMessageTime } from "../../../utils/chatUtils";
+import { formatMessageTime } from "../../../utils/loadMessages";
 
-type MessageItemProps = {
+type MessageItemTs = {
   message: MessageUserTs;
-  currentUserId: string;
+  userId: string;
 };
 
-function MessageItem({ message, currentUserId }: MessageItemProps) {
-  const isMe = message.user.id === currentUserId;
+function MessageItem({ message, userId }: MessageItemTs) {
+  const isMe = message.user.id === userId;
 
   return (
-    <div
-      className={`flex ${isMe ? "justify-end" : "justify-start"}`}
-    >
+    <div className={`flex ${isMe ? "justify-end" : "justify-start"}`}>
       {!isMe && (
         <Avatar className="h-8 w-8 mr-2 shrink-0">
           <AvatarImage src={message.user.image || ""} />
-          <AvatarFallback>
-            {message.user.name.slice(0, 2)}
-          </AvatarFallback>
+          <AvatarFallback>{message.user.name.slice(0, 2)}</AvatarFallback>
         </Avatar>
       )}
 
@@ -62,4 +58,3 @@ function MessageItem({ message, currentUserId }: MessageItemProps) {
 }
 
 export default MessageItem;
-

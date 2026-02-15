@@ -3,17 +3,17 @@
 import { Button } from "@/core/components/shadcn/ui/button";
 import { User } from "lucide-react";
 
-type MobileChatToggleProps = {
-  onToggle: () => void;
+type MobileChatBtnTs = {
+  isclick: () => void;
 };
 
-function MobileChatToggle({ onToggle }: MobileChatToggleProps) {
+function MobileChatBtn({ isclick }: MobileChatBtnTs) {
   return (
     <div className="lg:hidden fixed bottom-10 left-20 z-50">
       <Button
         variant="outline"
         size="lg"
-        onClick={onToggle}
+        onClick={isclick}
         className="bg-white"
       >
         <User className="h-10 w-10" />
@@ -22,5 +22,4 @@ function MobileChatToggle({ onToggle }: MobileChatToggleProps) {
   );
 }
 
-export default MobileChatToggle;
-
+export default MobileChatBtn;

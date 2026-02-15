@@ -6,7 +6,7 @@ async function page({ params }: { params: Promise<{ id: string }> }) {
   const id = await getIdByTicket({ ticketId });
   return (
     <div className="mt-2 w-full h-full">
-      <SuppurtChat id={id.id} userRole={"USER"} />
+      <SuppurtChat id={id.id} userRole={"ADMIN"} />
     </div>
   );
 }
