@@ -9,7 +9,6 @@ import {
   Heart,
   LayoutDashboard,
   List,
-  Newspaper,
   SquareArrowRightIcon,
   UserRoundPen,
   X,
@@ -24,7 +23,6 @@ const itemsDashboardAdmin = [
   },
   { name: "order", icon: <List /> },
   { name: "blog", icon: <BlendIcon /> },
-  { name: "news", icon: <Newspaper /> },
   { name: "suppurt", icon: <ChartBarIcon /> },
 ];
 const itemsDashboardUser = [

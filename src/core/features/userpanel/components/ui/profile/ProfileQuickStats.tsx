@@ -5,7 +5,7 @@ function ProfileQuickStats({ user }) {
   const cartCount =
     user.carts?.reduce((total, cart) => total + (cart.items?.length || 0), 0) ||
     0;
-  const favoriteCount = user.favorite[0].items.length || 0;
+  const favoriteCount = user?.favorite[0]?.items?.length || 0;
 
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">

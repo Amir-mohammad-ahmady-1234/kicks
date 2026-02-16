@@ -27,7 +27,7 @@ function UserInfoDropdown({ user }: UserInfoDropdownProps) {
       <DropdownMenuLabel className="flex items-center gap-3 p-3">
         <Avatar className="h-12 w-12">
           <AvatarImage src={user.avatar} />
-          <AvatarFallback>{user.name.slice(0, 2)}</AvatarFallback>
+          <AvatarFallback>{user?.name?.slice(0, 2)}</AvatarFallback>
         </Avatar>
         <div>
           <TypographyP className="font-semibold">{user.name}</TypographyP>
@@ -75,7 +75,9 @@ function UserInfoDropdown({ user }: UserInfoDropdownProps) {
         <DropdownMenuItem className="flex items-center gap-3 p-3">
           <UserCircle className="h-4 w-4 text-muted-foreground" />
           <div className="flex-1">
-            <TypographyP className="text-xs text-muted-foreground">Bio</TypographyP>
+            <TypographyP className="text-xs text-muted-foreground">
+              Bio
+            </TypographyP>
             <TypographyP className="text-sm">{user.bio}</TypographyP>
           </div>
         </DropdownMenuItem>
@@ -95,4 +97,3 @@ function UserInfoDropdown({ user }: UserInfoDropdownProps) {
 }
 
 export default UserInfoDropdown;
-
