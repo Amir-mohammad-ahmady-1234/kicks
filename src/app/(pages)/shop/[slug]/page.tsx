@@ -19,7 +19,7 @@ export default async function ProductPage({
   const slug = resolvedParams.slug;
   const { product, related } = await findProductById(slug);
   const findp = await findexsistProductById(slug);
-
+  
   return (
     <SectionLayout>
       <div className="max-w-7xl mx-auto mt-35">
@@ -38,7 +38,7 @@ export default async function ProductPage({
             </TypographyH3>
 
             {related.length > 0 ? (
-              <CardsProduct related={related || []} />
+              <CardsProduct products={related || []} />
             ) : (
               <p className="text-center text-muted-foreground py-8">
                 No similar products were found in this category

@@ -15,7 +15,6 @@ export default async function CartPage() {
   if (!response.success || !response.cart) {
     return <CartEmpty />;
   }
-
   const cart = response.cart;
   const items = cart.items || [];
 

@@ -23,6 +23,7 @@ export async function findProductById(id: string) {
       select: {
         id: true,
         mainImage: true,
+        images: true,
         name: true,
         price: true,
         discount: true,

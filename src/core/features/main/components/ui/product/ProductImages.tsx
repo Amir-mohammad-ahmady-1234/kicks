@@ -4,12 +4,8 @@ import { useState } from "react";
 
 export default function ProductImages({ product }) {
   const [selectedImage, setSelectedImage] = useState(0);
-  const productimages = [
-    "/common/img/main/products/singlpage/p-1.png",
-    "/common/img/main/products/singlpage/p-2.png",
-    "/common/img/main/products/singlpage/p-3.png",
-    "/common/img/main/products/singlpage/p-4.png",
-  ];
+  
+  const productimages = product.images;
   return (
     <div className="space-y-4">
       <div className="w-full sm:h-130 h-70 rounded-xl overflow-hidden border">

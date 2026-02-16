@@ -5,7 +5,7 @@ function ProfileQuickStats({ user }) {
   const cartCount =
     user.carts?.reduce((total, cart) => total + (cart.items?.length || 0), 0) ||
     0;
-  const favoriteCount = user.favorite?.items?.length || 0;
+  const favoriteCount = user.favorite[0].items.length || 0;
 
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
@@ -30,7 +30,7 @@ function ProfileQuickStats({ user }) {
         </Link>
 
         <Link
-          href="/favorites"
+          href="favorite"
           className="flex items-center justify-between p-4 hover:bg-gray-50 rounded-lg transition"
         >
           <div>

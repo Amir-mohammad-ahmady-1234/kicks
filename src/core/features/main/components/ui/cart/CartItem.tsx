@@ -5,10 +5,9 @@ import {
   TypographySmall,
 } from "@/core/components/custom/ui/Typography";
 import CartAction from "@/core/features/main/components/ui/cart/CartAction";
-import { getProductImage } from "@/core/utils/randomImage";
 import { CartItemTs } from "../../../assets/types/CartItemTs";
 
-export default function CartItem({ item, index }: CartItemTs) {
+export default function CartItem({ item }: CartItemTs) {
   const itemTotal = item.price * item.quantity;
   const discountAmount = item.discount ? (itemTotal * item.discount) / 100 : 0;
   const finalPrice = itemTotal - discountAmount;
@@ -17,7 +16,7 @@ export default function CartItem({ item, index }: CartItemTs) {
     <div className="flex flex-col sm:flex-row gap-5 border-b pb-6 last:border-b-0 bg-chart-3 rounded-sm p-2 items-center">
       <div className="w-full sm:w-32 h-32 shrink-0">
         <ImgNormalCustom
-          src={getProductImage(index) || "/placeholder.png"}
+          src={item.product.mainImage || "/placeholder.png"}
           alt={item.product.name}
           width={128}
           height={128}

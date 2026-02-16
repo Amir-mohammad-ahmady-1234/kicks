@@ -10,6 +10,7 @@ import ProductEditDescription from "./ProductEditDescription";
 import ProductEditInfo from "./ProductEditInfo";
 import ProductEditSize from "./ProductEditSize";
 import SubmitProductEdit from "./SubmitProductEdit";
+import ProductEditImage from "./ProductEditImage";
 
 function FormEditProduct() {
   const params = useParams();
@@ -25,6 +26,8 @@ function FormEditProduct() {
   const [gender, setGender] = useState<Gender>("men");
 
   const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
+  const [imageUrl, setImageUrl] = useState<string | null>(null);
+
   const [newSize, setNewSize] = useState("");
   useEffect(() => {
     const fetchProduct = async () => {
@@ -80,6 +83,7 @@ function FormEditProduct() {
       category,
       gender,
       selectedSizes,
+      mainImage: imageUrl || "",
       params: { id: params.id as string },
       router,
       setSubmitting,
@@ -115,6 +119,8 @@ function FormEditProduct() {
         newSize={newSize}
         handleRemoveSize={handleRemoveSize}
       />
+
+      <ProductEditImage imageUrl={imageUrl} setImageUrl={setImageUrl} />
 
       <SubmitProductEdit router={router} submitting={submitting} />
     </form>

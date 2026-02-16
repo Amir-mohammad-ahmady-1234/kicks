@@ -1,7 +1,6 @@
 "use client";
 import TabelData from "@/core/components/custom/blocks/tabel/TabelData";
 import { ImgNormalCustom } from "@/core/components/custom/ui/ImgNormalCustom";
-import { getProductImage } from "@/core/utils/randomImage";
 import { categoryP } from "@prisma/client";
 import { ProductOrderList } from "../../assets/types/Products";
 import { TableItemType } from "../../assets/types/TableItemType";
@@ -17,12 +16,12 @@ export interface TabelProductsProps {
   };
 }
 function TabelProducts({ ShowFilter, data, pagination }: TabelProductsProps) {
-  const tableItems = (data ?? []).map((product, i) => ({
+  const tableItems = (data ?? []).map((product) => ({
     id: product.id,
     productName: product.name,
     name: product.name,
     description: product.description || "-",
-    mainImage: getProductImage(i),
+    mainImage: product.mainImage,
     fallback: product.name.slice(0, 3).toUpperCase(),
     category: product.category || "-",
     price: `${product.price.toLocaleString()} $`,

@@ -11,6 +11,7 @@ export async function handleSubmitEditForm({
   category,
   gender,
   selectedSizes,
+  mainImage,
   params,
   router,
 
@@ -79,6 +80,7 @@ export async function handleSubmitEditForm({
         discount: discount ? Number(discount) : 0,
         category,
         gender,
+        mainImage,
       },
       selectedSizes,
     );

@@ -11,6 +11,7 @@ export interface HandleSubmitEditFormTS {
   gender: Gender;
 
   selectedSizes: string[];
+  mainImage: string;
 
   params: { id: string };
   router: AppRouterInstance;

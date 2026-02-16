@@ -8,7 +8,6 @@ import {
   CardContent,
   CardFooter,
 } from "@/core/components/shadcn/ui/card";
-import { getProductImage } from "@/core/utils/randomImage";
 import { Heart } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
@@ -17,8 +16,7 @@ import { ProductFavoriteCardTs } from "../../assets/types/ProductFavoriteCardTs"
 
 export function ProductFavoriteCard({
   product,
-  index,
-  userId,
+    userId,
 }: ProductFavoriteCardTs) {
   const [isRemoving, setIsRemoving] = useState(false);
   const [isRemoved, setIsRemoved] = useState(false);
@@ -51,7 +49,7 @@ export function ProductFavoriteCard({
       <div className="relative  overflow-hidden">
         <Link href={`/shop/${product.id}`}>
           <ImgNormalCustom
-            src={getProductImage(index) || "/placeholder-product.jpg"}
+            src={product.mainImage || "/placeholder-product.jpg"}
             alt={product.name}
             width={1000}
             height={1000}

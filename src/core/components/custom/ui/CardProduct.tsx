@@ -9,7 +9,6 @@ import {
 
 import { Button } from "@/core/components/shadcn/ui/button";
 import { PropsCardProduct } from "@/core/features/main/components/ui/CardProduct";
-import { getProductImage } from "@/core/utils/randomImage";
 import { ShoppingBag } from "lucide-react";
 import Link from "next/link";
 
@@ -24,14 +23,14 @@ function CardProduct({
   if (IsPagination) {
     return (
       <div className={gridcss ? gridcss : ""}>
-        {listproducts.map((product, i) => (
+        {listproducts.map((product) => (
           <div
             key={product.name}
             className="gap-4 relative max-w-sm rounded-md bg-background border border-border shadow-sm hover:shadow-lg transition-all"
           >
             <ImgNormalCustom
               src={
-                getProductImage(i) ||
+                product.mainImage ||
                 "https://placehold.jp/80x80.png?css=%7B%22border-radius%22%3A%2215px%22%7D?text=defult-img"
               }
               alt={product.name}
@@ -110,7 +109,7 @@ function CardProduct({
     <>
       <ImgNormalCustom
         src={
-          getProductImage(Math.floor(Math.random() * 10)) ||
+          product.mainImage ||
           "https://placehold.jp/80x80.png?css=%7B%22border-radius%22%3A%2215px%22%7D?text=defult-img"
         }
         alt={product.name}

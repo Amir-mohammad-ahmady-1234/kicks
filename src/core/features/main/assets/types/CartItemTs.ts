@@ -3,7 +3,7 @@ export type CartItemTs = {
     id: string;
     cartId: string;
     productId: string;
-    product: { name: string; category: string };
+    product: { name: string; category: string; mainImage: string };
     price: number;
     quantity: number;
     discount?: number;

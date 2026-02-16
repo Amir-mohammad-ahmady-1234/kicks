@@ -21,7 +21,7 @@ function ProductDashboardStep2({ setValues, values }) {
     // );
 
     const result = await getImageUrl(e.target.files[0]);
-
+    
     if (key === "mainImage") {
       setValues({ ...values, mainImage: result.imageUrl });
     } else {

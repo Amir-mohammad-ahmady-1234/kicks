@@ -5,7 +5,7 @@ import { Prisma } from "@prisma/client";
 
 export async function updateProduct(
   productId: string,
-  dataP: ProductType,
+  dataP: Omit<ProductType, "otherImages">,
   sizes: string[],
 ) {
   try {
@@ -28,6 +28,7 @@ export async function updateProduct(
         gender: dataP.gender,
         discount: dataP.discount,
         size: sizes,
+        mainImage: dataP.mainImage,
         updatedAt: new Date(),
       },
     });
