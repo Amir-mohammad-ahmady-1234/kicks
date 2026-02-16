@@ -7,9 +7,12 @@ import CardsProduct from "@/core/features/main/components/ui/CardProduct";
 import CategoriesSection from "@/core/features/main/components/ui/CategoriesSection";
 import HeadeCardProduct from "@/core/features/main/components/ui/HeadeCardProduct";
 import ReviewsSection from "@/core/features/main/components/ui/ReviewsSection";
+import { getUserId } from "@/core/utils/getUserId";
 
 export default async function HeroBannerWithClickableThumbs() {
   const pdata = await findAllProduct();
+  const id = await getUserId();
+  console.log(id);
   const products = pdata.product;
   return (
     <>

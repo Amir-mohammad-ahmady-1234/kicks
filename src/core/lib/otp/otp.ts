@@ -30,7 +30,9 @@ export async function verifyOtp(
     if (!stored) {
       return { success: false, error: "Code has expired or does not exist" };
     }
-
+    console.log(String(stored) !== String(code));
+    console.log(String(code));
+    console.log(String(stored));
     if (String(stored) !== String(code)) {
       return { success: false, error: "code is wrong" };
     }

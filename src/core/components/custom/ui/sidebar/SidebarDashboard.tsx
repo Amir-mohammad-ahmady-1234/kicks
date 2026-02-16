@@ -5,6 +5,7 @@ import Logo from "@/core/features/main/components/ui/Logo";
 import { useIsMobile } from "@/core/utils/useIsMobile";
 import {
   BlendIcon,
+  ChartBarIcon,
   Heart,
   LayoutDashboard,
   List,
@@ -24,12 +25,14 @@ const itemsDashboardAdmin = [
   { name: "order", icon: <List /> },
   { name: "blog", icon: <BlendIcon /> },
   { name: "news", icon: <Newspaper /> },
+  { name: "suppurt", icon: <ChartBarIcon /> },
 ];
 const itemsDashboardUser = [
   { name: "favorite", icon: <Heart /> },
   { name: "profile", icon: <UserRoundPen /> },
+  { name: "suppurt", icon: <ChartBarIcon /> },
 ];
-function SidebarDashboard() {
+function SidebarDashboard({ userid }) {
   const isMobile = useIsMobile();
   const path = usePathname();
 
@@ -39,8 +42,17 @@ function SidebarDashboard() {
     setshow(true);
   }
   const isUserPanel = path.startsWith("/userpanel");
-  const items = isUserPanel ? itemsDashboardUser : itemsDashboardAdmin;
+  const issuppurt = path.startsWith("/suppurt");
+  const items =
+    isUserPanel || issuppurt ? itemsDashboardUser : itemsDashboardAdmin;
   const baseurl = isUserPanel ? "userpanel" : "admin";
+  const getSuppurtLink = () => {
+    if (isUserPanel) {
+      return `/${baseurl}/suppurt/${userid}`;
+    } else {
+      return `/${baseurl}/suppurt`;
+    }
+  };
   return isMobile === false || show === true ? (
     <>
       <aside
@@ -59,15 +71,19 @@ function SidebarDashboard() {
               <hr className="text-accent w-full mt-3 mb-3" />
             </div>
             <div className="flex-col  flex items-center justify-center gap-y-3">
-              {items.map((items) => (
-                <Button key={items.name} className="w-full">
+              {items.map((item) => (
+                <Button key={item.name} className="w-full">
                   <Link
-                    href={`/${baseurl}/${items.name}`}
+                    href={
+                      item.name === "suppurt"
+                        ? getSuppurtLink()
+                        : `/${baseurl}/${item.name}`
+                    }
                     className=" rounded-md text-white  w-full flex items-center gap-1 "
                   >
-                    {items.icon}
+                    {item.icon}
 
-                    <TypographySmall>{items.name}</TypographySmall>
+                    <TypographySmall>{item.name}</TypographySmall>
                   </Link>
                 </Button>
               ))}
