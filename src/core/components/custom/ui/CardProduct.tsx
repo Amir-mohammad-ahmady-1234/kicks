@@ -25,7 +25,7 @@ function CardProduct({
       <div className={gridcss ? gridcss : ""}>
         {listproducts.map((product) => (
           <div
-            key={product.name}
+            key={product.id}
             className="gap-4 relative max-w-sm rounded-md bg-background border border-border shadow-sm hover:shadow-lg transition-all"
           >
             <ImgNormalCustom

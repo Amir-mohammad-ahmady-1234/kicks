@@ -88,6 +88,9 @@ function FormEditProduct() {
       router,
       setSubmitting,
     });
+
+    router.push("/admin/order");
+    router.refresh();
   }
 
   return (

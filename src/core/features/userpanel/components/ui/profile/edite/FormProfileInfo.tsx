@@ -93,6 +93,8 @@ function FormProfileInfo({ userId }) {
       const updateinfouser = await updateUser(userId, formData);
       if (updateinfouser) {
         toast.message("update user data");
+        router.push("/userpanel/profile");
+        router.refresh();
       } else {
         toast.error("error");
       }

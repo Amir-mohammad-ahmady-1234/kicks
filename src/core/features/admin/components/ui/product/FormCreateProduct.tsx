@@ -9,7 +9,11 @@ import { categoryP } from "../../../assets/types/Products";
 import ProductDashboardStep1 from "./formproduct/ProductDashboardStep1";
 import ProductDashboardStep2 from "./formproduct/ProductDashboardStep2";
 import ProductDashboardStep3 from "./formproduct/ProductDashboardStep3";
+import { useRouter } from "next/navigation";
+
 function FormCreateProduct() {
+  const router = useRouter();
+
   const [values, setValues] = useState<ProductType>({
     productName: "",
     description: "",
@@ -30,6 +34,9 @@ function FormCreateProduct() {
     const res = await createProducts(values, sizes);
     if (res.success) {
       toast.success(res.message);
+
+      router.push("/admin/order");
+      router.refresh();
     } else {
       toast.error(res.error);
     }

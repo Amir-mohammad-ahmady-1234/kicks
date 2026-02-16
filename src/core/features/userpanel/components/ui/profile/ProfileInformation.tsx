@@ -9,9 +9,11 @@ import ProfileUserDate from "./ProfileUserDate";
 import Image from "next/image";
 import { useRef } from "react";
 import updateProfile from "@/core/api-route/userpanel/handlers/profile/updateuser/updateProfile";
+import { useRouter } from "next/navigation";
 
 function ProfileInformation({ user }) {
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const router = useRouter();
 
   function handleEditClicked() {
     fileInputRef.current?.click();
@@ -22,6 +24,7 @@ function ProfileInformation({ user }) {
     if (!file) return;
 
     const imageUrl = await updateProfile(user.id, file);
+    router.refresh();
     console.log(imageUrl);
   }
 
