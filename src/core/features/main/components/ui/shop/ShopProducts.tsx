@@ -11,6 +11,7 @@ function ShopProducts({ data, pagination }: TabelProductsProps) {
     src: getProductImage(index) || "/common/img/placeholder.png",
     title: product.name,
     price: product.price,
+    mainImage: product.mainImage,
     percentOff: product.discount > 0 ? product.discount : undefined,
     category: product.category,
   }));
@@ -19,7 +20,7 @@ function ShopProducts({ data, pagination }: TabelProductsProps) {
       <CardProduct
         listproducts={tableItems}
         IsPagination={true}
-        gridcss="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5"
+        gridcss="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-6"
       />
       <div className="flex justify-center mt-12">
         <Paginations pagination={pagination} />

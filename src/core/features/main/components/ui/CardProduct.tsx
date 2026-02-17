@@ -1,16 +1,17 @@
 "use client";
 
-import CardProduct from "@/core/components/custom/ui/CardProduct";
-import { Products } from "@prisma/client";
+import CardProduct, {
+  ProductCardItem,
+} from "@/core/components/custom/ui/CardProduct";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Autoplay, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 export type PropsCardProduct = {
-  products?: Products[];
-  product?: Products;
-  listproducts?: Products[];
+  products?: ProductCardItem[];
+  product?: ProductCardItem;
+  listproducts?: ProductCardItem[];
   IsPagination?: boolean;
   gridcss?: string;
   badgecolor?: string;
