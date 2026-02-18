@@ -13,7 +13,18 @@ export default async function HeroBannerWithClickableThumbs() {
   const pdata = await findAllProduct();
   const id = await getUserId();
   console.log(id);
-  const products = pdata.product;
+  const products =
+    pdata?.product?.map((item) => ({
+      id: item.id,
+      src: item.mainImage,
+      title: item.name,
+      price: item.price,
+      percentOff: item.discount,
+      mainImage: item.mainImage,
+      category: item.category,
+      star: item.star,
+    })) ?? [];
+
   return (
     <>
       <SectionLayout>

@@ -3,7 +3,8 @@
 import prisma from "@/core/lib/db/client";
 import { sendOtp } from "@/core/lib/otp/otp";
 import { redis } from "@/core/lib/redis/redis";
-import { hashedPassword } from "@/core/utils/hashPassword";
+import { hashedPassword, verifyPassword } from "@/core/utils/hashPassword";
+import { createLoginSession } from "./createLoginSession";
 
 export async function requestRegistration({
   email,
@@ -11,7 +12,13 @@ export async function requestRegistration({
 }: {
   email: string;
   password: string;
-}): Promise<{ success: boolean; message?: string; error?: string }> {
+}): Promise<{
+  success: boolean;
+  message?: string;
+  login?: boolean;
+  register?: boolean;
+  error?: string;
+}> {
   try {
     const emailcase = email.toLowerCase();
 
@@ -19,7 +26,21 @@ export async function requestRegistration({
       where: { email: emailcase },
     });
     if (existingUser) {
-      return { success: false, error: "This email is already registered" };
+      const isValid = await verifyPassword(password, existingUser.password);
+      if (isValid) {
+        await createLoginSession({
+          id: existingUser.id,
+          email: existingUser.email,
+          role: existingUser.role,
+        });
+        return {
+          success: true,
+          message: "logged in successfully",
+          login: true,
+        };
+      } else {
+        return { success: false, error: "incorrect password" };
+      }
     }
 
     const sendotp = await sendOtp(emailcase);
@@ -38,6 +59,7 @@ export async function requestRegistration({
     return {
       success: true,
       message: "Verification code sent to your email",
+      register: true,
     };
   } catch {
     return { success: false, error: "Server error" };

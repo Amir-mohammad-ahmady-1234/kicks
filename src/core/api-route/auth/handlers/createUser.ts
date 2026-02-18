@@ -1,11 +1,10 @@
 "use server";
 
-import { encryptLicense } from "@/core/lib/crypto/license";
 import prisma from "@/core/lib/db/client";
 import { verifyOtp } from "@/core/lib/otp/otp";
 import { redis } from "@/core/lib/redis/redis";
 import { Prisma } from "@prisma/client";
-import { cookies } from "next/headers";
+import { createLoginSession } from "./createLoginSession";
 export async function createUser({
   email,
   otp,
@@ -51,32 +50,7 @@ export async function createUser({
 
     await redis.del(redisregister);
 
-    const expiration = new Date(
-      Date.now() + 30 * 24 * 60 * 60 * 1000,
-    ).toISOString();
-
-    const licenseData = {
-      userId: newUser.id,
-      email: newUser.email,
-      expiration,
-      role,
-      issuedAt: new Date().toISOString(),
-      secretMessage: "cookie created successfully",
-    };
-
-    const secret1 = process.env.SECRET1;
-    const secret2 = process.env.SECRET2;
-
-    const encryptedLicense = encryptLicense(licenseData, secret1, secret2);
-    const cookiess = await cookies();
-
-    cookiess.set("license", encryptedLicense, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
-      path: "/",
-      maxAge: 30 * 24 * 60 * 60,
-    });
+    await createLoginSession({ id: newUser.id, email: newUser.email, role });
     return {
       success: true,
       message: "Account created successfully",

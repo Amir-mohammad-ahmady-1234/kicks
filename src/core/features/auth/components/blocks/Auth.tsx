@@ -24,7 +24,10 @@ export default function AuthSection() {
     }
     setLoading(true);
     const result = await requestRegistration({ email, password });
-    if (result.success) {
+    if (result.success && result.login) {
+      toast.success(result.message || "login was successfully");
+      router.push("/");
+    } else if (result.success && result.register) {
       toast.success(result.message || "Verification code sent!");
       setStep("otp");
     } else {
