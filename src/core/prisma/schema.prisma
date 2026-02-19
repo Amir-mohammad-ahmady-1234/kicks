@@ -36,8 +36,27 @@ model User {
 
   carts     Cart[]
   favorite  Favorite[]
+  searches Searches[]
+
   @@map("users")
 }
+
+model Searches {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  text      String
+  count     Int      @default(1)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("searches")
+}
+
+
+
 
 model Products {
   id          String     @id @default(cuid())

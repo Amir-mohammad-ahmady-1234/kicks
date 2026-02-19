@@ -7,6 +7,7 @@ export async function sendOtp(
 ): Promise<{ success: boolean; error?: string }> {
   try {
     const otp = generateOtp();
+    console.log(otp);
     const key = `otp:${email.toLowerCase()}`;
     await redis.set(key, otp, { ex: 5 * 60 });
     const emailResult = await sendOtpEmail(email, otp);

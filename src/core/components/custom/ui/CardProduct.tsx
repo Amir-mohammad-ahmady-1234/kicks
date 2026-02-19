@@ -8,9 +8,27 @@ import {
 } from "@/core/components/shadcn/ui/card";
 
 import { Button } from "@/core/components/shadcn/ui/button";
-import { PropsCardProduct } from "@/core/features/main/components/ui/CardProduct";
 import { ShoppingBag } from "lucide-react";
 import Link from "next/link";
+
+export type ProductCardItem = {
+  id: string;
+  src: string;
+  title: string;
+  price: number;
+  mainImage: string;
+  percentOff: number;
+  category: string;
+  star?: number;
+};
+
+type PropsCardProduct = {
+  product?: ProductCardItem;
+  listproducts?: ProductCardItem[];
+  badgecolor?: string;
+  IsPagination?: boolean;
+  gridcss?: string;
+};
 
 function CardProduct({
   product,
@@ -19,7 +37,6 @@ function CardProduct({
   IsPagination = false,
   gridcss = "",
 }: PropsCardProduct) {
-  console.log(product);
   if (IsPagination) {
     return (
       <div className={gridcss ? gridcss : ""}>
@@ -33,18 +50,18 @@ function CardProduct({
                 product.mainImage ||
                 "https://placehold.jp/80x80.png?css=%7B%22border-radius%22%3A%2215px%22%7D?text=product"
               }
-              alt={product.name}
+              alt={product.title}
               width={240}
               height={240}
               className="object-cover object-center w-full p-2 rounded-t-md"
             />
 
-            {product.discount ? (
+            {product.percentOff ? (
               <Badge
                 variant="secondary"
                 className={`absolute top-3 left-3 bg-${badgecolor} text-white px-3 py-1 rounded-bl-md text-xs `}
               >
-                -{product.discount}% OFF
+                -{product.percentOff}% OFF
               </Badge>
             ) : (
               <>
@@ -60,7 +77,7 @@ function CardProduct({
             <Card className="border-none bg-background mt-2 p-3">
               <CardHeader className="p-0">
                 <CardTitle className="text-sm font-medium line-clamp-2 text-foreground/90">
-                  {product.name}
+                  {product.title}
                 </CardTitle>
               </CardHeader>
 
@@ -70,12 +87,13 @@ function CardProduct({
                     <span className="text-lg font-bold text-foreground">
                       ${product.price}
                     </span>
-                    {product.discount && (
+                    {product.percentOff && (
                       <span className="text-sm text-muted-foreground line-through">
                         $
-                        {(product.price / (1 - product.discount / 100)).toFixed(
-                          0,
-                        )}
+                        {(
+                          product.price /
+                          (1 - product.percentOff / 100)
+                        ).toFixed(0)}
                       </span>
                     )}
                   </div>
@@ -112,18 +130,18 @@ function CardProduct({
           product.mainImage ||
           "https://placehold.jp/80x80.png?css=%7B%22border-radius%22%3A%2215px%22%7D?text=product"
         }
-        alt={product.name}
+        alt={product.title}
         width={240}
         height={240}
         className="object-cover object-center w-full p-2 rounded-t-md"
       />
 
-      {product.discount ? (
+      {product.percentOff ? (
         <Badge
           variant="secondary"
           className={`absolute top-3 left-3 bg-${badgecolor} text-white px-3 py-1 rounded-bl-md text-xs `}
         >
-          -{product.discount}% OFF
+          -{product.percentOff}% OFF
         </Badge>
       ) : (
         <>
@@ -139,7 +157,7 @@ function CardProduct({
       <Card className="border-none bg-background mt-2 p-3">
         <CardHeader className="p-0">
           <CardTitle className="text-sm font-medium line-clamp-2 text-foreground/90">
-            {product.name}
+            {product.title}
           </CardTitle>
         </CardHeader>
 
@@ -150,16 +168,16 @@ function CardProduct({
                 $
                 {(() => {
                   let finalPrice = product.price;
-                  if (product.discount > 0) {
-                    finalPrice = product.price - product.discount;
-                  } else if (product.discount > 0) {
-                    finalPrice = product.price * (1 - product.discount / 100);
+                  if (product.percentOff > 0) {
+                    finalPrice = product.price - product.percentOff;
+                  } else if (product.percentOff > 0) {
+                    finalPrice = product.price * (1 - product.percentOff / 100);
                   }
                   return finalPrice.toFixed(2);
                 })()}
               </span>
 
-              {product.discount > 0 && (
+              {product.percentOff > 0 && (
                 <>
                   <span className="text-sm text-muted-foreground line-through">
                     ${product.price.toFixed(2)}

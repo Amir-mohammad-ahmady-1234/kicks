@@ -28,7 +28,6 @@ async function page({
     maxPrice: Number(params.maxPrice),
     minPrice: Number(params.minPrice),
   });
-  console.log(pdata);
   return (
     <SectionLayout>
       <BannerShop />
