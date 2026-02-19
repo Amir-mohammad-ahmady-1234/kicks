@@ -22,7 +22,7 @@ export default function SearchModal() {
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setSearchValue(e.target.value);
 
-    if (e.target.value.length > 2) {
+    if (e.target.value.trim().length > 2) {
       setSearchingMode(true);
     } else {
       setSearchingMode(false);
@@ -67,7 +67,12 @@ export default function SearchModal() {
               <PopularSearches />
             </>
           ) : (
-            <SearchResult serachValue={searchValue} />
+            <SearchResult
+              serachValue={searchValue.trim()}
+              setSearchValue={setSearchValue}
+              setSearchingMode={setSearchingMode}
+              setSearchModalOpen={setSearchModalOpen}
+            />
           )}
 
           <Button
