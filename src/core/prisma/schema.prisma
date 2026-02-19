@@ -16,7 +16,6 @@ model User {
   image     String?
   password  String
   role      String   @default("USER")
-
   phone         String?
   bio           String?
   dateOfBirth   DateTime?
@@ -176,6 +175,21 @@ model Sugest {
   @@map("suggests")
 }
 
+model Blog {
+  id String @id @default(cuid())
+  title String
+  slug String  @unique
+  excerpt String
+  content String @db.LongText
+  Image String
+  author String
+  category String
+  tags Json
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  status BlogStatus @default(PUBLISHED)
+}
+
 enum Role {
   user
   admin
@@ -200,4 +214,10 @@ enum StatusChat {
   open
   pending
   close
+}
+
+enum BlogStatus {
+  PUBLISHED
+  DRAFT
+  ARCHIVED
 }

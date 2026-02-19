@@ -1,62 +1,149 @@
 "use client";
 
-import { testimonialsData } from "@/core/assets/mock/blog";
 import { ImgNormalCustom } from "@/core/components/custom/ui/ImgNormalCustom";
 import {
   TypographyH1,
   TypographyH4,
-  TypographyP,
-  TypographySmall,
+  TypographyMuted,
 } from "@/core/components/custom/ui/Typography";
-import { Button } from "@/core/components/shadcn/ui/button";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/core/components/shadcn/ui/avatar";
+import { Badge } from "@/core/components/shadcn/ui/badge";
+import { BlogItemType } from "@/core/features/admin/assets/types/BlogTypes";
+import { formatDate } from "@/core/utils/formatDate";
+import { Calendar, ChevronRight, Clock } from "lucide-react";
+import Link from "next/link";
 import "swiper/css";
+import "swiper/css/autoplay";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import {
+  Autoplay,
+  EffectCoverflow,
+  Navigation,
+  Pagination,
+} from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-function ReviewsSection() {
-  return (
-    <div>
-      <div className="flex items-center justify-between">
-        <TypographyH1>Reviews</TypographyH1>
-        <Button>See all</Button>
-      </div>
-      <Swiper
-        loop
-        breakpoints={{
-          330: { slidesPerView: 1.1 },
-          500: { slidesPerView: 1.8 },
-          700: { slidesPerView: 2.1 },
-          1280: { slidesPerView: 3 },
-        }}
-        spaceBetween={20}
-        slidesPerView={3}
-        className="mt-6"
-      >
-        {testimonialsData.map((item) => (
-          <SwiperSlide key={item.id}>
-            <div className="bg-background rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
-              <div className="p-4 flex items-center justify-between">
-                <div className="max-w-[70%]">
-                  <TypographyH4>{item.name}</TypographyH4>
-                  <TypographySmall>{item.review}</TypographySmall>
-                  <TypographyP>
-                    {item.rating} {"⭐".repeat(item.rating)}
-                  </TypographyP>
-                </div>
-                <ImgNormalCustom
-                  alt={item.name}
-                  src={item.userImg}
-                  width={70}
-                  height={70}
-                  className="rounded-full object-cover"
-                />
-              </div>
+import { calculateReadingTime } from "../../utils/calculateReadingTime";
 
-              <ImgNormalCustom
-                src={item.blogImg}
-                alt={item.name}
-                width={400}
-                height={250}
-                className="w-full h-[250px] object-cover"
-              />
+function ReviewsSection({ blog }) {
+  if (!blog || blog.length === 0) {
+    return (
+      <div className="text-center py-12">
+        <TypographyH4>No reviews yet</TypographyH4>
+      </div>
+    );
+  }
+
+  return (
+    <div className="relative group">
+      <div className="flex items-center justify-between mb-8 relative">
+        <TypographyH1>Reviews</TypographyH1>
+      </div>
+
+      <Swiper
+        loop={true}
+        autoplay={{
+          delay: 5000,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+        }}
+        pagination={{
+          clickable: true,
+          dynamicBullets: true,
+        }}
+        navigation={{
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        }}
+        modules={[Pagination, Navigation, Autoplay, EffectCoverflow]}
+        breakpoints={{
+          320: { slidesPerView: 1.1, spaceBetween: 15 },
+          480: { slidesPerView: 1.5, spaceBetween: 20 },
+          640: { slidesPerView: 2, spaceBetween: 25 },
+          768: { slidesPerView: 2.2, spaceBetween: 25 },
+          1024: { slidesPerView: 3, spaceBetween: 30 },
+          1280: { slidesPerView: 3.5, spaceBetween: 30 },
+          1536: { slidesPerView: 4, spaceBetween: 35 },
+        }}
+      >
+        {blog.map((item: BlogItemType, index: number) => (
+          <SwiperSlide key={item.id}>
+            <div className="h-full group/card">
+              <div className="relative bg-linear-to-br from-background to-background/90 backdrop-blur-sm rounded-2xl overflow-hidden border border-border/50 hover:border-primary/30 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 h-full flex flex-col">
+                {index === 0 && (
+                  <div className="absolute top-4 right-4 z-10">
+                    <Badge className="bg-red-500 hover:bg-red-600 text-white border-0 animate-pulse">
+                      🔥 Hot
+                    </Badge>
+                  </div>
+                )}
+
+                <div className="relative overflow-hidden aspect-4/3">
+                  <ImgNormalCustom
+                    src={item.Image}
+                    alt={item.title}
+                    width={400}
+                    height={300}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-110"
+                  />
+
+                  <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500" />
+                </div>
+
+                <div className="p-5 flex-1 flex flex-col">
+                  <div className="flex items-center gap-3 text-xs text-muted-foreground mb-3">
+                    <span className="flex items-center gap-1">
+                      <Calendar className="h-3 w-3" />
+                      {formatDate(item.createdAt)}
+                    </span>
+                    <span className="w-1 h-1 rounded-full bg-muted-foreground/30" />
+                    <span className="flex items-center gap-1">
+                      <Clock className="h-3 w-3" />
+                      {calculateReadingTime(item.content)} min read
+                    </span>
+                  </div>
+
+                  <TypographyH4 className="font-bold line-clamp-2 mb-2 group-hover/card:text-primary transition-colors">
+                    {item.title}
+                  </TypographyH4>
+
+                  {item.excerpt && (
+                    <p className="text-sm text-muted-foreground line-clamp-2 mb-4">
+                      {item.excerpt}
+                    </p>
+                  )}
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center flex-wrap gap-2 mt-auto">
+                      <Badge variant="secondary" className="text-xs">
+                        {item.category}
+                      </Badge>
+                    </div>{" "}
+                    <Link href={`/blog/${item.slug}`}>
+                      <TypographyMuted className="flex items-center underline">
+                        Read More <ChevronRight size={15} />
+                      </TypographyMuted>
+                    </Link>
+                  </div>
+
+                  <div className="flex items-center justify-between mt-4 pt-4 border-t border-border/50">
+                    <div className="flex items-center gap-2">
+                      <Avatar className="h-6 w-6">
+                        <AvatarImage
+                          src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${item.author}`}
+                        />
+                        <AvatarFallback>{item.author[0]}</AvatarFallback>
+                      </Avatar>
+                      <span className="text-xs font-medium">
+                        {item.author}
+                      </span>{" "}
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </SwiperSlide>
         ))}

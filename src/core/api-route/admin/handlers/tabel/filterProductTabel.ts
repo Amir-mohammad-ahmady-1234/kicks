@@ -3,7 +3,7 @@ import { categoryP, Prisma } from "@prisma/client";
 import { TabelFilter } from "../../ts/TabelFilter";
 export type discountFilterTs = "all" | "discount" | "no-discount";
 
-export async function filterActionTabel({
+export async function filterProductTabel({
   search,
   category,
   sortOrder = "asc",
@@ -87,26 +87,10 @@ export async function filterActionTabel({
         totalPages: Math.ceil(total / limit),
       },
     };
-  } catch (error) {
-    console.error("Filter products error:", error);
-
-    let errorMessage = "خطای سرور";
-
-    if (error instanceof Prisma.PrismaClientKnownRequestError) {
-      if (error.code === "P2002") {
-        const target = error.meta?.target?.[0] || "نام محصول";
-        errorMessage = `محصول با این ${target} قبلاً وجود دارد`;
-      } else if (error.code === "P2025") {
-        errorMessage = "رکورد مورد نظر پیدا نشد";
-      }
-    } else if (error instanceof Prisma.PrismaClientValidationError) {
-      errorMessage =
-        "داده‌های ارسالی معتبر نیست (مثل دسته‌بندی یا جنسیت اشتباه)";
-    }
-
+  } catch {
     return {
       success: false,
-      error: errorMessage,
+      error: "Filter products error",
       data: [],
       pagination: {
         total: 0,

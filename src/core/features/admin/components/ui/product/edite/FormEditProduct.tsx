@@ -7,10 +7,10 @@ import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import ProductEditDescription from "./ProductEditDescription";
+import BoxUploaderImage from "./ProductEditImage";
 import ProductEditInfo from "./ProductEditInfo";
 import ProductEditSize from "./ProductEditSize";
 import SubmitProductEdit from "./SubmitProductEdit";
-import ProductEditImage from "./ProductEditImage";
 
 function FormEditProduct() {
   const params = useParams();
@@ -123,7 +123,7 @@ function FormEditProduct() {
         handleRemoveSize={handleRemoveSize}
       />
 
-      <ProductEditImage imageUrl={imageUrl} setImageUrl={setImageUrl} />
+      <BoxUploaderImage setImageUrl={setImageUrl} />
 
       <SubmitProductEdit router={router} submitting={submitting} />
     </form>

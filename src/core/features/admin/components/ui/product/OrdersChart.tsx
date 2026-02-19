@@ -43,7 +43,7 @@ export function OrdersChart() {
       </CardHeader>
 
       <CardContent>
-        <ChartContainer config={chartConfig} className="h-[280px] w-full">
+        <ChartContainer config={chartConfig} className="h-70 w-full">
           <BarChart data={ordersData}>
             <CartesianGrid
               vertical={false}

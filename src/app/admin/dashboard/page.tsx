@@ -1,11 +1,11 @@
-import { filterActionTabel } from "@/core/api-route/admin/handlers/tabel/filterTabel";
+import { filterProductTabel } from "@/core/api-route/admin/handlers/tabel/filterProductTabel";
 import { TypographyH4 } from "@/core/components/custom/ui/Typography";
 import { OrdersChart } from "@/core/features/admin/components/ui/product/OrdersChart";
 import SalesChart from "@/core/features/admin/components/ui/ShadcnCharts";
 import Tavel5BestProduct from "@/core/features/admin/components/ui/Tavel5BestProduct";
 
 async function Page() {
-  const Pdata = await filterActionTabel({
+  const Pdata = await filterProductTabel({
     limit: 5,
     page: 1,
   });

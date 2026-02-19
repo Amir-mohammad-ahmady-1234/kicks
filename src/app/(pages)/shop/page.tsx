@@ -1,4 +1,4 @@
-import { discountFilterTs } from "@/core/api-route/admin/handlers/tabel/filterTabel";
+import { discountFilterTs } from "@/core/api-route/admin/handlers/tabel/filterProductTabel";
 import { filterProductsShop } from "@/core/api-route/site/handlers/filterproducts/filterProductsShop";
 import SectionLayout from "@/core/components/custom/ui/SectionLayout";
 

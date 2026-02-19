@@ -5,7 +5,7 @@ import { categoryP } from "@prisma/client";
 import { ProductOrderList } from "../../assets/types/Products";
 import { TableItemType } from "../../assets/types/TableItemType";
 
-export interface TabelProductsProps {
+export interface TabelProductsTs {
   ShowFilter?: boolean;
   data: ProductOrderList[];
   pagination?: {
@@ -15,7 +15,7 @@ export interface TabelProductsProps {
     totalPages: number;
   };
 }
-function TabelProducts({ ShowFilter, data, pagination }: TabelProductsProps) {
+function TabelProducts({ ShowFilter, data, pagination }: TabelProductsTs) {
   const tableItems = (data ?? []).map((product) => ({
     id: product.id,
     productName: product.name,
@@ -56,7 +56,7 @@ function TabelProducts({ ShowFilter, data, pagination }: TabelProductsProps) {
               <ImgNormalCustom
                 src={
                   row.mainImage ||
-                  "https://placehold.jp/80x80.png?css=%7B%22border-radius%22%3A%2215px%22%7D?text=defult-img"
+                  "https://placehold.jp/80x80.png?css=%7B%22border-radius%22%3A%2215px%22%7D?text=product"
                 }
                 alt={row.model}
                 width={80}

@@ -1,9 +1,9 @@
-import { categoryP } from "@prisma/client";
+import { categoriesBlog } from "@/core/features/admin/assets/mock/categoriesBlog";
 import { discountFilterTs } from "../handlers/tabel/filterProductTabel";
 
-export interface TabelFilter {
+export interface TabelBlogFilter {
   search?: string;
-  category?: categoryP;
+  category?: categoriesBlog;
   page?: number;
   limit?: number;
   minPrice?: number;

@@ -1,18 +1,18 @@
 "use client";
 import { createProducts } from "@/core/api-route/admin/handlers/dashboard/createProducts";
 import { ProductType } from "@/core/api-route/admin/ts/ProductType";
-import { Button } from "@/core/components/shadcn/ui/button";
-import { MoveLeft, MoveRight } from "lucide-react";
+import BtnSubmitForm from "@/core/components/custom/ui/BtnSubmitForm";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
 import { categoryP } from "../../../assets/types/Products";
 import ProductDashboardStep1 from "./formproduct/ProductDashboardStep1";
 import ProductDashboardStep2 from "./formproduct/ProductDashboardStep2";
 import ProductDashboardStep3 from "./formproduct/ProductDashboardStep3";
-import { useRouter } from "next/navigation";
 
 function FormCreateProduct() {
   const router = useRouter();
+  const [isSubmit, setIsSubmit] = useState(false);
 
   const [values, setValues] = useState<ProductType>({
     productName: "",
@@ -30,27 +30,33 @@ function FormCreateProduct() {
 
   const [step, setstep] = useState(1);
   ///
-  async function PostProducct() {
-    const res = await createProducts(values, sizes);
-    if (res.success) {
-      toast.success(res.message);
+  async function handleSubmit() {
+    try {
+      setIsSubmit(true);
+      toast.loading("Creating product...", { id: "create-product" });
+      const res = await createProducts(values, sizes);
+      if (res.success) {
+        toast.success(res.message);
 
-      router.push("/admin/order");
-      router.refresh();
-    } else {
-      toast.error(res.error);
+        router.push("/admin/order");
+        router.refresh();
+      } else {
+        toast.error(res.error);
+      }
+    } catch {
+      toast.error("error");
+    } finally {
+      setIsSubmit(false);
     }
   }
   ///
-
-  ////////
 
   return (
     <>
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          PostProducct();
+          handleSubmit();
         }}
       >
         {step === 1 && (
@@ -63,20 +69,12 @@ function FormCreateProduct() {
           <ProductDashboardStep3 setSizes={setSizes} sizes={sizes} />
         )}
       </form>
-      <Button
-        variant="secondary"
-        onClick={() => setstep((prev) => Math.max(1, prev - 1))}
-        className="mt-5"
-      >
-        <MoveLeft />
-      </Button>
-
-      <Button
-        variant="secondary"
-        onClick={() => setstep((prev) => Math.min(3, prev + 1))}
-      >
-        <MoveRight />
-      </Button>
+      <BtnSubmitForm
+        isSubmit={isSubmit}
+        setStep={setstep}
+        step={step}
+        handleSubmit={handleSubmit}
+      />
     </>
   );
 }

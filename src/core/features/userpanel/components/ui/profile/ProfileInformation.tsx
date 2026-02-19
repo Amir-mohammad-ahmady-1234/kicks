@@ -1,31 +1,43 @@
 "use client";
 
+import updateProfile from "@/core/api-route/userpanel/handlers/profile/updateuser/updateProfile";
 import {
   TypographyH4,
   TypographyMuted,
 } from "@/core/components/custom/ui/Typography";
-import { Phone, User } from "lucide-react";
-import ProfileUserDate from "./ProfileUserDate";
+import { Loader2, Phone, User } from "lucide-react";
 import Image from "next/image";
-import { useRef } from "react";
-import updateProfile from "@/core/api-route/userpanel/handlers/profile/updateuser/updateProfile";
-import { useRouter } from "next/navigation";
+import { useRef, useState } from "react";
+import { toast } from "sonner";
+import ProfileUserDate from "./ProfileUserDate";
 
 function ProfileInformation({ user }) {
+  const [IsUploading, setIsUploading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const router = useRouter();
 
   function handleEditClicked() {
     fileInputRef.current?.click();
   }
-
-  async function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
+  async function handleChangeImage(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    const imageUrl = await updateProfile(user.id, file);
-    router.refresh();
-    console.log(imageUrl);
+    try {
+      setIsUploading(true);
+      toast.loading("Uploading image...", { id: "upload" });
+
+      const url = await updateProfile(user.id, file);
+
+      if (url.success) {
+        toast.success("Image uploaded successfully", { id: "upload" });
+      } else {
+        toast.error("Failed to upload image", { id: "upload" });
+      }
+    } catch {
+      toast.error("Error uploading image", { id: "upload" });
+    } finally {
+      setIsUploading(false);
+    }
   }
 
   return (
@@ -54,10 +66,10 @@ function ProfileInformation({ user }) {
 
           <button
             onClick={handleEditClicked}
-            className="absolute -bottom-1 -right-1 sm:-bottom-2 sm:-right-2 
-                       bg-blue-600 hover:bg-blue-700 text-white 
-                       text-xs sm:text-sm font-medium 
-                       px-2.5 py-1 sm:px-3 sm:py-1.5 
+            className="absolute -bottom-1 -right-1 sm:-bottom-2 sm:-right-2
+                       bg-blue-600 hover:bg-blue-700 text-white
+                       text-xs sm:text-sm font-medium
+                       px-2.5 py-1 sm:px-3 sm:py-1.5
                        rounded-full shadow-md transition-all"
             aria-label="Edit profile picture"
           >
@@ -69,8 +81,13 @@ function ProfileInformation({ user }) {
             accept="image/*"
             ref={fileInputRef}
             className="hidden"
-            onChange={handleFileChange}
+            onChange={handleChangeImage}
           />
+          {IsUploading && (
+            <div className="flex items-center gap-2">
+              <Loader2 className="h-4 w-4 animate-spin" />
+            </div>
+          )}
         </div>
 
         <div className="flex-1 min-w-0">

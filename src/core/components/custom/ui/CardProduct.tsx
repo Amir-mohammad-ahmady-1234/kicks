@@ -31,7 +31,7 @@ function CardProduct({
             <ImgNormalCustom
               src={
                 product.mainImage ||
-                "https://placehold.jp/80x80.png?css=%7B%22border-radius%22%3A%2215px%22%7D?text=defult-img"
+                "https://placehold.jp/80x80.png?css=%7B%22border-radius%22%3A%2215px%22%7D?text=product"
               }
               alt={product.name}
               width={240}
@@ -110,7 +110,7 @@ function CardProduct({
       <ImgNormalCustom
         src={
           product.mainImage ||
-          "https://placehold.jp/80x80.png?css=%7B%22border-radius%22%3A%2215px%22%7D?text=defult-img"
+          "https://placehold.jp/80x80.png?css=%7B%22border-radius%22%3A%2215px%22%7D?text=product"
         }
         alt={product.name}
         width={240}

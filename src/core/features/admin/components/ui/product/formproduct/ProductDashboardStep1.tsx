@@ -3,7 +3,7 @@ import { Textarea } from "@/core/components/shadcn/ui/textarea";
 
 function ProductDashboardStep1({ setValues, values }) {
   return (
-    <>
+    <div className="space-y-4 p-2">
       <Input
         label="Product Name"
         name="name"
@@ -52,7 +52,7 @@ function ProductDashboardStep1({ setValues, values }) {
           setValues({ ...values, discount: Number(e.target.value) })
         }
       />
-    </>
+    </div>
   );
 }
 

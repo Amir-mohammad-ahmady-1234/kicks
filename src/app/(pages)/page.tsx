@@ -2,6 +2,7 @@ import SectionLayout from "@/core/components/custom/ui/SectionLayout";
 import { TypographyBig } from "@/core/components/custom/ui/Typography";
 import HeroSiperSection from "@/core/features/main/components/ui/HeroSiperSection";
 
+import { findAllBlog } from "@/core/api-route/site/handlers/blog/findallblog/findAllBlog";
 import { findAllProduct } from "@/core/api-route/site/handlers/shop/findallproduct/findAllProduct";
 import CardsProduct from "@/core/features/main/components/ui/CardProduct";
 import CategoriesSection from "@/core/features/main/components/ui/CategoriesSection";
@@ -11,9 +12,11 @@ import { getUserId } from "@/core/utils/getUserId";
 
 export default async function HeroBannerWithClickableThumbs() {
   const pdata = await findAllProduct();
+  const pdatablog = await findAllBlog();
   const id = await getUserId();
   console.log(id);
   const products = pdata.product;
+  const blog = pdatablog.blog;
   return (
     <>
       <SectionLayout>
@@ -31,7 +34,7 @@ export default async function HeroBannerWithClickableThumbs() {
       <CategoriesSection />
 
       <SectionLayout>
-        <ReviewsSection />
+        <ReviewsSection blog={blog} />
       </SectionLayout>
     </>
   );

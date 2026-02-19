@@ -1,4 +1,4 @@
-import { filterActionTabel } from "@/core/api-route/admin/handlers/tabel/filterTabel";
+import { filterProductTabel } from "@/core/api-route/admin/handlers/tabel/filterProductTabel";
 import Modal from "@/core/components/custom/ui/Modal";
 import { TypographyH3 } from "@/core/components/custom/ui/Typography";
 import { Button } from "@/core/components/shadcn/ui/button";
@@ -15,7 +15,7 @@ async function page({
 }) {
   const params = await searchParams;
 
-  const Pdata = await filterActionTabel({
+  const Pdata = await filterProductTabel({
     category: params.category as categoryP,
     limit: params.limit ? Number(params.limit) : 5,
     gender: params.gender as Gender,

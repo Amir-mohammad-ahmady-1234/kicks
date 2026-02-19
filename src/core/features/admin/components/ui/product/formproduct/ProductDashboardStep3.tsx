@@ -45,7 +45,7 @@ function ProductDashboardStep3({
   const SelectItem = (size: string) => sizes.includes(size);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 p-2">
       <div>
         <div className="grid grid-cols-5 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-2">
           {listitems.map((size) => (
