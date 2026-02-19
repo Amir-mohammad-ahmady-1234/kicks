@@ -2,11 +2,11 @@ import { findCartUser } from "@/core/api-route/site/handlers/cart/findcartuser/f
 import { getUserId } from "@/core/utils/getUserId";
 
 import SectionLayout from "@/core/components/custom/ui/SectionLayout";
-import CartCheck from "@/core/features/main/components/ui/cart/CartCheck";
-import CartEmpty from "@/core/features/main/components/ui/cart/CartEmpty";
-import CartItemsList from "@/core/features/main/components/ui/cart/CartItemsList";
-import CartPromoBanner from "@/core/features/main/components/ui/cart/CartPromoBanner";
-import CartRelatedProducts from "@/core/features/main/components/ui/cart/CartRelatedProducts";
+import CartCheck from "@/core/features/main/components/blocks/cart/CartCheck";
+import CartEmpty from "@/core/features/main/components/blocks/cart/CartEmpty";
+import CartItemsList from "@/core/features/main/components/blocks/cart/CartItemsList";
+import CartPromoBanner from "@/core/features/main/components/blocks/cart/CartPromoBanner";
+import CartRelatedProducts from "@/core/features/main/components/blocks/cart/CartRelatedProducts";
 
 export default async function CartPage() {
   const userId = await getUserId();

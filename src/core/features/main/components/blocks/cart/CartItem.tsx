@@ -4,7 +4,7 @@ import {
   TypographyP,
   TypographySmall,
 } from "@/core/components/custom/ui/Typography";
-import CartAction from "@/core/features/main/components/ui/cart/CartAction";
+import CartAction from "@/core/features/main/components/blocks/cart/CartAction";
 import { CartItemTs } from "../../../assets/types/CartItemTs";
 
 export default function CartItem({ item }: CartItemTs) {

@@ -73,7 +73,7 @@ function ReviewsSection({ blog }) {
         {blog.map((item: BlogItemType, index: number) => (
           <SwiperSlide key={item.id}>
             <div className="h-full group/card">
-              <div className="relative bg-linear-to-br from-background to-background/90 backdrop-blur-sm rounded-2xl overflow-hidden border border-border/50 hover:border-primary/30 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 h-full flex flex-col">
+              <div className="relative bg-linear-to-br from-background to-background/90 backdrop-blur-sm rounded-2xl overflow-hidden border border-border/50 hover:border-primary/30  transition-all duration-500 hover:-translate-y-2 h-full flex flex-col">
                 {index === 0 && (
                   <div className="absolute top-4 right-4 z-10">
                     <Badge className="bg-red-500 hover:bg-red-600 text-white border-0 animate-pulse">
