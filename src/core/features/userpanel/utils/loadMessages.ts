@@ -38,6 +38,6 @@ export function formatLastSeen(date: Date | null): string {
   return new Date(date).toLocaleDateString();
 }
 
-export function formatMessageTime(dateString: string): string {
-  return new Date(dateString).toLocaleTimeString();
+export function formatMessageTime(date: string | Date): string {
+  return new Date(date).toLocaleTimeString();
 }

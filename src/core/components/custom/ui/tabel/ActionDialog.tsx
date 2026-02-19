@@ -26,7 +26,7 @@ interface ActionDialogProps<T> {
   isEditing?: boolean;
 }
 
-function ActionDialog<T extends { id: string | number; productName: string }>({
+function ActionDialog<T extends { id: string | number; productName?: string }>({
   item,
 }: ActionDialogProps<T>) {
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);

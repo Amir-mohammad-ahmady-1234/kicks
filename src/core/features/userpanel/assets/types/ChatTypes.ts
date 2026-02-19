@@ -12,7 +12,7 @@ export type ChatUser = {
 export type MessageUserTs = {
   id: string;
   content: string;
-  createdAt: string;
+  createdAt: string | Date;
   userId: string;
   ticketId: string;
   user: {

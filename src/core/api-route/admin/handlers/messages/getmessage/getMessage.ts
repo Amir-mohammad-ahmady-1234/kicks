@@ -42,18 +42,7 @@ export async function getMessage({ ticketId, userRole }) {
         },
 
         include: {
-          user: {
-            select: {
-              id: true,
-              name: true,
-              image: true,
-              role: true,
-              bio: true,
-              country: true,
-              phone: true,
-              email: true,
-            },
-          },
+          user: true,
         },
       });
 

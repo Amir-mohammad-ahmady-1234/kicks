@@ -1,10 +1,23 @@
 import { findAllProduct } from "@/core/api-route/site/handlers/shop/findallproduct/findAllProduct";
 import { TypographyH2 } from "@/core/components/custom/ui/Typography";
 import CardsProduct from "@/core/features/main/components/ui/CardProduct";
+import type { ProductCardItem } from "@/core/components/custom/ui/CardProduct";
 
 export default async function CartRelatedProducts() {
   const pdata = await findAllProduct();
-  const products = pdata.product;
+  const rawProducts = pdata?.product ?? [];
+
+  const products: ProductCardItem[] = rawProducts.map((product) => ({
+    id: product.id,
+    src: product.mainImage ?? "",
+    mainImage: product.mainImage ?? "",
+    title: product.name,
+    price: product.price,
+    percentOff: product.discount ?? 0,
+    category: String(product.category ?? ""),
+    star: product.star ? Number(product.star) : 0,
+  }));
+
   return (
     <div className="mt-10 lg:mt-12">
       <TypographyH2 className="mb-6">You may also like</TypographyH2>

@@ -27,6 +27,7 @@ export async function findProductById(id: string) {
         name: true,
         price: true,
         discount: true,
+        category: true,
         star: true,
       },
     });

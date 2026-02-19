@@ -14,7 +14,7 @@ import { TypographyMuted } from "../../ui/Typography";
 import ActionDialog from "../../ui/tabel/ActionDialog";
 import FilterTabel from "../../ui/tabel/FilterTabel";
 
-function TabelData<T extends { id: string | number; productName: string }>({
+function TabelData<T extends { id: string | number }>({
   Data,
   CheckboxTabel = true,
   TableTextHead,

@@ -1,3 +1,4 @@
+import { TabelBlogFilter } from "@/core/api-route/admin/ts/TabelBlogFilter";
 import prisma from "@/core/lib/db/client";
 import { Prisma } from "@prisma/client";
 export type discountFilterTs = "all" | "discount" | "no-discount";

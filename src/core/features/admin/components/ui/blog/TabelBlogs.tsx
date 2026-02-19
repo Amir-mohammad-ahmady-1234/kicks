@@ -1,28 +1,24 @@
 "use client";
 import TabelData from "@/core/components/custom/blocks/tabel/TabelData";
-import { ImgNormalCustom } from "@/core/components/custom/ui/ImgNormalCustom";
+
 import { formatDate } from "@/core/utils/formatDate";
-import { BlogItemType, TabelBlogsTs } from "../../../assets/types/BlogTypes";
+import { TabelBlogsTs } from "../../../assets/types/BlogTypes";
+import { ImgNormalCustom } from "@/core/components/custom/ui/ImgNormalCustom";
+
+type BlogTableRow = {
+  id: string;
+  title: string;
+  excerpt: string;
+  Image: string;
+  fallback: string;
+  author: string;
+  category: string;
+  publishedAt: string;
+  status: string;
+  tags: string;
+};
 
 function TabelBlogs({ ShowFilter, data, pagination }: TabelBlogsTs) {
-  const tableItems = (data ?? []).map((blog) => ({
-    id: blog.id,
-    title: blog.title,
-    excerpt: blog.excerpt,
-    Image: blog.Image,
-    fallback: blog.title.slice(0, 3).toUpperCase(),
-    author: blog.author,
-    category: blog.category,
-    publishedAt: formatDate(blog.createdAt),
-    status:
-      blog.status === "PUBLISHED"
-        ? "published"
-        : blog.status === "DRAFT"
-          ? "draft"
-          : "archived",
-    tags: blog.tags.join(", "),
-  }));
-
   const blogCategories = [
     { item: "Guide" },
     { item: "Fashion & Trends" },
@@ -33,11 +29,27 @@ function TabelBlogs({ ShowFilter, data, pagination }: TabelBlogsTs) {
   ];
 
   return (
-    <TabelData<BlogItemType>
+    <TabelData<BlogTableRow>
       ShowFilter={ShowFilter}
       ShowMoreFilter={true}
       pagination={pagination}
-      Data={tableItems}
+      Data={(data ?? []).map((blog) => ({
+        id: blog.id,
+        title: blog.title,
+        excerpt: blog.excerpt,
+        Image: blog.Image,
+        fallback: blog.title.slice(0, 3).toUpperCase(),
+        author: blog.author,
+        category: blog.category,
+        publishedAt: formatDate(blog.createdAt),
+        status:
+          blog.status === "PUBLISHED"
+            ? "published"
+            : blog.status === "DRAFT"
+              ? "draft"
+              : "archived",
+        tags: blog.tags.join(", "),
+      }))}
       TextPlaceholder={"Search articles..."}
       Columns={[
         {
@@ -53,7 +65,7 @@ function TabelBlogs({ ShowFilter, data, pagination }: TabelBlogsTs) {
                 alt={row.title}
                 width={80}
                 height={80}
-                unoptimized={true}
+                className="rounded-[15px] object-cover"
               />
               <div>
                 <div className="font-medium">{row.title}</div>

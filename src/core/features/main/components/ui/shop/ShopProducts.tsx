@@ -2,10 +2,10 @@
 
 import CardProduct from "@/core/components/custom/ui/CardProduct";
 import { Paginations } from "@/core/components/custom/ui/Pagination";
-import { TabelProductsProps } from "@/core/features/admin/components/ui/TabelProducts";
+import { TabelProductsTs } from "@/core/features/admin/components/ui/TabelProducts";
 import { getProductImage } from "@/core/utils/randomImage";
 
-function ShopProducts({ data, pagination }: TabelProductsProps) {
+function ShopProducts({ data, pagination }: TabelProductsTs) {
   const tableItems = data.map((product, index) => ({
     id: product.id,
     src: getProductImage(index) || "/common/img/placeholder.png",
@@ -20,7 +20,7 @@ function ShopProducts({ data, pagination }: TabelProductsProps) {
       <CardProduct
         listproducts={tableItems}
         IsPagination={true}
-        gridcss="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-6"
+        gridcss="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-4 gap-6"
       />
       <div className="flex justify-center mt-12">
         <Paginations pagination={pagination} />
