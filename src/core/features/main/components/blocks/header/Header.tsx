@@ -2,9 +2,9 @@
 
 import { useEffect } from "react";
 
-import ScrolledHeader from "./ScrolledHeader";
-import SearchModal from "./SearchModal";
-import TopHeader from "./TopHeader";
+import ScrolledHeader from "../../ui/header/ScrolledHeader";
+import SearchModal from "../../ui/header/SearchModal";
+import TopHeader from "../../ui/header/TopHeader";
 import { useHeader } from "../../../context/HeaderContext";
 
 function Header({ isSignUp }) {

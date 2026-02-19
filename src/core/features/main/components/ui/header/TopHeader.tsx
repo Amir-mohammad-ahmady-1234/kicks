@@ -1,6 +1,6 @@
 import React from "react";
 import { LogInIcon, Menu, Search, User } from "lucide-react";
-import Logo from "../../ui/Logo";
+import Logo from "../Logo";
 import { Button } from "@/core/components/shadcn/ui/button";
 import {
   Sheet,
@@ -9,8 +9,8 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/core/components/shadcn/ui/sheet";
-import NavItemsHeaderDesktop from "../../ui/header/NavItemsHeaderDesktop";
-import NavItemsHeaderMobile from "../../ui/header/NavItemsHeaderMobile";
+import NavItemsHeaderDesktop from "./NavItemsHeaderDesktop";
+import NavItemsHeaderMobile from "./NavItemsHeaderMobile";
 import Link from "next/link";
 import { useHeader } from "../../../context/HeaderContext";
 
