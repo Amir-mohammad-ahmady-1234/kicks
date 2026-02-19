@@ -1,5 +1,5 @@
 import { TypographyMuted } from "@/core/components/custom/ui/Typography";
-import { calculateAge } from "@/core/utils/calculateAge";
+import { calculateAge } from "@/core/features/userpanel/utils/calculateAge";
 import { formatDate } from "@/core/utils/formatDate";
 import { Calendar } from "lucide-react";
 

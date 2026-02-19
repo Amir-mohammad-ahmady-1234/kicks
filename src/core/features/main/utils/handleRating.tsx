@@ -1,7 +1,7 @@
 import { Star } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
-import { rateProduct } from "../api-route/site/handlers/rate/rateProduct";
+import { rateProduct } from "../../../api-route/site/handlers/rate/rateProduct";
 
 function ProductRating({ pid }) {
   const [rating, setRating] = useState(0);

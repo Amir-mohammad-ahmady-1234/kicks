@@ -6,7 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/core/components/shadcn/ui/card";
-import ProductRating from "@/core/utils/handleRating";
+import ProductRating from "@/core/features/main/utils/handleRating";
 
 export default function ProductAbout({ product, pid }) {
   return (
