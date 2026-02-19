@@ -51,7 +51,6 @@ function Header({ isSignUp, userId }: Props) {
   return (
     <>
       <SearchModal userId={userId} />
-
       <TopHeader isSignUp={isSignUp} />
 
       <ScrolledHeader isSignUp={isSignUp} />

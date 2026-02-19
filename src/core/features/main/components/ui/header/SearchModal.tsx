@@ -1,17 +1,17 @@
 "use client";
-import React, { useState } from "react";
-import { Input } from "@/core/components/shadcn/ui/input";
+import { Button } from "@/core/components/shadcn/ui/button";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
 } from "@/core/components/shadcn/ui/dialog";
-import { Search, X, ArrowRight } from "lucide-react";
+import { Input } from "@/core/components/shadcn/ui/input";
+import { ArrowRight, Search, X } from "lucide-react";
+import React, { useState } from "react";
 import { useHeader } from "../../../context/HeaderContext";
-import { Button } from "@/core/components/shadcn/ui/button";
-import RecentSearches from "./RecentSearches";
 import PopularSearches from "./PopularSearches";
+import RecentSearches from "./RecentSearches";
 import SearchResult from "./SearchResult";
 
 export default function SearchModal({ userId }: { userId: string }) {
@@ -31,7 +31,7 @@ export default function SearchModal({ userId }: { userId: string }) {
 
   return (
     <Dialog open={searchModalOpen} onOpenChange={setSearchModalOpen}>
-      <DialogContent className="max-w-full h-screen sm:max-w-150 flex flex-col p-0 gap-0">
+      <DialogContent className="max-w-full h-max sm:max-w-150  flex flex-col p-0 gap-0">
         <DialogHeader className="p-4 border-b">
           <div className="flex items-center justify-between">
             <DialogTitle className="text-xl font-bold">Search</DialogTitle>
@@ -46,15 +46,15 @@ export default function SearchModal({ userId }: { userId: string }) {
           </div>
         </DialogHeader>
 
-        <div className="p-4 border-b">
+        <div className="p-2 border-b">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+            <Search className="absolute left-3 top-1/2 mt-1 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
             <Input
               value={searchValue}
               onChange={handleChange}
               type="search"
               placeholder="Search products..."
-              className="w-full pl-10 pr-4 py-6 text-lg rounded-xl border-2 focus:border-primary"
+              className="w-full pl-10 pr-4 py-5 text-lg rounded-xl border focus:border-primary"
               autoFocus
             />
           </div>

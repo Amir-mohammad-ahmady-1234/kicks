@@ -1,6 +1,3 @@
-import React from "react";
-import { LogInIcon, Menu, Search, User } from "lucide-react";
-import Logo from "../Logo";
 import { Button } from "@/core/components/shadcn/ui/button";
 import {
   Sheet,
@@ -9,10 +6,12 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/core/components/shadcn/ui/sheet";
-import NavItemsHeaderDesktop from "./NavItemsHeaderDesktop";
-import NavItemsHeaderMobile from "./NavItemsHeaderMobile";
+import { LogInIcon, Menu, Search, User } from "lucide-react";
 import Link from "next/link";
 import { useHeader } from "../../../context/HeaderContext";
+import Logo from "../Logo";
+import NavItemsHeaderDesktop from "./NavItemsHeaderDesktop";
+import NavItemsHeaderMobile from "./NavItemsHeaderMobile";
 
 export default function TopHeader({ isSignUp }: { isSignUp: boolean }) {
   const { open, setOpen, scrolled, setSearchModalOpen } = useHeader();
@@ -63,15 +62,6 @@ export default function TopHeader({ isSignUp }: { isSignUp: boolean }) {
               </div>
             </SheetContent>
           </Sheet>
-
-          <Button
-            variant="ghost"
-            size="icon"
-            className="lg:hidden"
-            onClick={() => setSearchModalOpen(true)}
-          >
-            <Search className="h-6 w-6" />
-          </Button>
         </div>
 
         <NavItemsHeaderDesktop />
@@ -80,17 +70,15 @@ export default function TopHeader({ isSignUp }: { isSignUp: boolean }) {
           <Logo />
         </div>
 
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-4">
           <Button
             variant="ghost"
             size="icon"
-            className="hidden lg:flex"
             onClick={() => setSearchModalOpen(true)}
           >
             <Search className="h-8 w-8 scale-120" />
           </Button>
 
-          {/* <ActionHeader /> */}
           <Link href={isSignUp ? "/userpanel" : "/auth"}>
             {isSignUp ? (
               <User className="h-5 w-5" />

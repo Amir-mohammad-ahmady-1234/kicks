@@ -45,16 +45,18 @@ function CardProduct({
             key={product.id}
             className="gap-4 relative max-w-sm rounded-md bg-background border border-border shadow-sm hover:shadow-lg transition-all"
           >
-            <ImgNormalCustom
-              src={
-                product.mainImage ||
-                "https://placehold.jp/80x80.png?css=%7B%22border-radius%22%3A%2215px%22%7D?text=product"
-              }
-              alt={product.title}
-              width={240}
-              height={240}
-              className="object-cover object-center w-full p-2 rounded-t-md"
-            />
+            <div className="w-full aspect-square overflow-hidden rounded-t-md bg-gray-100">
+              <ImgNormalCustom
+                src={
+                  product.mainImage ||
+                  "https://placehold.jp/240x240.png?text=default-img"
+                }
+                alt={product.title}
+                width={240}
+                height={240}
+                className="object-cover object-center w-full h-full"
+              />
+            </div>
 
             {product.percentOff ? (
               <Badge
@@ -125,16 +127,18 @@ function CardProduct({
   }
   return (
     <>
-      <ImgNormalCustom
-        src={
-          product.mainImage ||
-          "https://placehold.jp/80x80.png?css=%7B%22border-radius%22%3A%2215px%22%7D?text=product"
-        }
-        alt={product.title}
-        width={240}
-        height={240}
-        className="object-cover object-center w-full p-2 rounded-t-md"
-      />
+      <div className="w-full aspect-square overflow-hidden rounded-t-md bg-gray-100">
+        <ImgNormalCustom
+          src={
+            product.mainImage ||
+            "https://placehold.jp/240x240.png?text=default-img"
+          }
+          alt={product.title}
+          width={240}
+          height={240}
+          className="object-cover object-center w-full h-full"
+        />
+      </div>
 
       {product.percentOff ? (
         <Badge
