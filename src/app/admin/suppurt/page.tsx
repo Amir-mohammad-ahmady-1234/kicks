@@ -16,10 +16,11 @@ function page() {
               </div>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold bg-linear-to-r from-gray-600 via-gray-400 to-primary bg-clip-text text-transparent mb-3">
-              گفتگوی خود را شروع کنید
+              Start your conversation.
             </h2>
             <p className="text-gray-500  text-base md:text-lg mb-8 leading-relaxed">
-              هنوز هیچ چتی انتخاب نکردی! از لیست سمت چپ یک گفتگو رو انتخاب کن
+              You have not selected any chats yet! Select a conversation from
+              the list on the left.
             </p>
           </div>
         </div>

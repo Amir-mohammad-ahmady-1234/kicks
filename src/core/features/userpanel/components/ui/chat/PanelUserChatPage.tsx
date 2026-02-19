@@ -1,22 +1,15 @@
 "use client";
-
-import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
-import { toast } from "sonner";
-import {
-  ChatUser,
-  MessageUserTs,
-  SuppurtChatTs,
-} from "../../../assets/types/ChatTypes";
-import { convertChatUser } from "../../../utils/convertChatUser";
-import { loadMessages } from "../../../utils/loadMessages";
-import { sendMessage } from "../../../utils/sendMessage";
 import ChatHeader from "./ChatHeader";
 import ChatInput from "./ChatInput";
 import SuppurtChatMessage from "./SuppurtChatMessage";
 
-function SuppurtChat({ id, userRole }: SuppurtChatTs) {
-  const params = useParams();
+import { useEffect, useState } from "react";
+import { toast } from "sonner";
+import { ChatUser, MessageUserTs } from "../../../assets/types/ChatTypes";
+import { convertChatUser } from "../../../utils/convertChatUser";
+import { loadMessages } from "../../../utils/loadMessages";
+import { sendMessage } from "../../../utils/sendMessage";
+function PanelUserChatPage({ params }) {
   const ticketId = params.id as string;
   const [messages, setMessages] = useState<MessageUserTs[]>([]);
   const [loading, setLoading] = useState(true);
@@ -47,7 +40,6 @@ function SuppurtChat({ id, userRole }: SuppurtChatTs) {
       toast.error(result.error);
     }
   }
-
   return (
     <div className="flex-1 flex flex-col h-full bg-foreground w-full rounded-2xl">
       <ChatHeader otherUser={otherUser} />
@@ -64,4 +56,4 @@ function SuppurtChat({ id, userRole }: SuppurtChatTs) {
   );
 }
 
-export default SuppurtChat;
+export default PanelUserChatPage;

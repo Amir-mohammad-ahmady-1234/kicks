@@ -3,7 +3,7 @@ import { TypographyBig } from "@/core/components/custom/ui/Typography";
 import HeroSiperSection from "@/core/features/main/components/ui/HeroSiperSection";
 import ProductAndReviews from "@/core/features/main/components/ui/ProductAndReviews";
 
-export default async function page() {
+export default function page() {
   return (
     <>
       <SectionLayout>
