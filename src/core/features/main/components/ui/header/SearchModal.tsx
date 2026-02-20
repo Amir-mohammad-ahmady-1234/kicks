@@ -14,7 +14,7 @@ import RecentSearches from "./RecentSearches";
 import PopularSearches from "./PopularSearches";
 import SearchResult from "./SearchResult";
 
-export default function SearchModal() {
+export default function SearchModal({ userId }: { userId: string }) {
   const { searchModalOpen, setSearchModalOpen } = useHeader();
   const [searchValue, setSearchValue] = useState("");
   const [searchingMode, setSearchingMode] = useState(false);
@@ -63,7 +63,7 @@ export default function SearchModal() {
         <div className="flex-1 overflow-y-auto p-4 space-y-6">
           {!searchingMode ? (
             <>
-              <RecentSearches />
+              <RecentSearches userId={userId} />
               <PopularSearches />
             </>
           ) : (
@@ -72,6 +72,7 @@ export default function SearchModal() {
               setSearchValue={setSearchValue}
               setSearchingMode={setSearchingMode}
               setSearchModalOpen={setSearchModalOpen}
+               userId={userId}
             />
           )}
 

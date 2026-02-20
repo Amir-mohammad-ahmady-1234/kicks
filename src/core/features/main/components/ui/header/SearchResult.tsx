@@ -4,12 +4,14 @@ import React, { useEffect, useState } from "react";
 import { searchProducts } from "@/core/api-route/site/handlers/searchProducts/searchProducts";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { saveSearch } from "@/core/api-route/site/handlers/searchProducts/saveSearch";
 
 interface Props {
   serachValue: string;
   setSearchValue: React.Dispatch<React.SetStateAction<string>>;
   setSearchModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   setSearchingMode: React.Dispatch<React.SetStateAction<boolean>>;
+  userId: string;
 }
 
 interface Product {
@@ -25,12 +27,18 @@ export default function SearchResult({
   setSearchValue,
   setSearchModalOpen,
   setSearchingMode,
+  userId,
 }: Props) {
   const router = useRouter();
   const [results, setResults] = useState<Product[]>([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    if (!serachValue || serachValue.trim().length < 3) {
+      setResults([]);
+      return;
+    }
+
     let isCancelled = false;
 
     async function getResult() {
@@ -61,8 +69,18 @@ export default function SearchResult({
   if (results.length === 0)
     return <div>No results found for {`"${serachValue}"`}</div>;
 
-  function handleProductClicked(productId) {
+  async function handleProductClicked(productId: string) {
+    const text = serachValue.trim();
+    if (text.length > 0) {
+      try {
+        await saveSearch({ userId, text });
+      } catch (err) {
+        console.error("Failed to save search:", err);
+      }
+    }
+
     router.push(`/shop/${productId}`);
+
     setSearchModalOpen(false);
     setSearchValue("");
     setSearchingMode(false);
@@ -74,7 +92,7 @@ export default function SearchResult({
         <div
           key={product.id}
           onClick={() => handleProductClicked(product.id)}
-          className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors border"
+          className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors border cursor-pointer"
         >
           <Image
             src={product.mainImage || "/images/default.png"}

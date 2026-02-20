@@ -7,7 +7,12 @@ import SearchModal from "../../ui/header/SearchModal";
 import TopHeader from "../../ui/header/TopHeader";
 import { useHeader } from "../../../context/HeaderContext";
 
-function Header({ isSignUp }) {
+interface Props {
+  isSignUp: boolean;
+  userId: string;
+}
+
+function Header({ isSignUp, userId }: Props) {
   const { setScrolled, searchModalOpen, setSearchModalOpen } = useHeader();
 
   useEffect(() => {
@@ -45,7 +50,7 @@ function Header({ isSignUp }) {
 
   return (
     <>
-      <SearchModal />
+      <SearchModal userId={userId} />
 
       <TopHeader isSignUp={isSignUp} />
 
