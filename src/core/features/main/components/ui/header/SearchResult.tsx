@@ -5,11 +5,11 @@ import { searchProducts } from "@/core/api-route/site/handlers/searchProducts/se
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { saveSearch } from "@/core/api-route/site/handlers/searchProducts/saveSearch";
+import { useHeader } from "../../../context/HeaderContext";
 
 interface Props {
   serachValue: string;
   setSearchValue: React.Dispatch<React.SetStateAction<string>>;
-  setSearchModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   setSearchingMode: React.Dispatch<React.SetStateAction<boolean>>;
   userId: string;
 }
@@ -25,11 +25,11 @@ interface Product {
 export default function SearchResult({
   serachValue,
   setSearchValue,
-  setSearchModalOpen,
   setSearchingMode,
   userId,
 }: Props) {
   const router = useRouter();
+  const { setSearchModalOpen } = useHeader();
   const [results, setResults] = useState<Product[]>([]);
   const [loading, setLoading] = useState(false);
 

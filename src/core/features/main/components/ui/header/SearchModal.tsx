@@ -71,8 +71,7 @@ export default function SearchModal({ userId }: { userId: string }) {
               serachValue={searchValue.trim()}
               setSearchValue={setSearchValue}
               setSearchingMode={setSearchingMode}
-              setSearchModalOpen={setSearchModalOpen}
-               userId={userId}
+              userId={userId}
             />
           )}
 

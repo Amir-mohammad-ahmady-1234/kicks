@@ -2,9 +2,13 @@ import { clearSearches } from "@/core/api-route/site/handlers/searchProducts/cle
 import { getLatestSearches } from "@/core/api-route/site/handlers/searchProducts/getLatestSearches";
 import { Button } from "@/core/components/shadcn/ui/button";
 import { Clock } from "lucide-react";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
+import { useHeader } from "../../../context/HeaderContext";
 
 export default function RecentSearches({ userId }: { userId: string }) {
+  const router = useRouter();
+  const { setSearchModalOpen } = useHeader();
   const [latestSearches, setLatestSearches] = useState([]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
@@ -30,7 +34,13 @@ export default function RecentSearches({ userId }: { userId: string }) {
           <Clock className="h-4 w-4" />
           Your Recent Searches
         </h3>
-        <form action={() => clearSearches(userId)}>
+        <form
+          action={async () => {
+            await clearSearches(userId);
+            router.refresh();
+            setSearchModalOpen(false);
+          }}
+        >
           <Button type="submit" variant="ghost" size="sm" className="text-xs">
             Clear All
           </Button>
