@@ -21,8 +21,7 @@
 
 ---
 
-## 🏗️ معماری پروژه:
-# Next.js 16 Modular Clean Architecture with DDD Approach
+## 🏗️ معماری پروژه: **Next.js 16 Modular Clean Architecture with DDD Approach** 
 
 ### 📐 لایه‌های معماری
 
@@ -106,9 +105,9 @@ npx prisma migrate dev --name init
 npx prisma generate
 
 # پر کردن دیتابیس با داده‌های اولیه
-npm run seed      # کاربر اولیه
-npm run seedproduct # محصولات نمونه (15+ محصول)
-npm run seedblog  # مقالات نمونه (8+ مقاله)
+npm run seed      # ادمین
+npm run seedproduct # محصولات نمونه (6+ محصول)
+npm run seedblog  # مقالات نمونه (3+ مقاله)
 
 # اجرای پروژه
 npm run dev
