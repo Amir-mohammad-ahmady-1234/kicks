@@ -1,16 +1,16 @@
 "use client";
-import React, { useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay, EffectFade } from "swiper/modules";
 import { ImgNormalCustom } from "@/core/components/custom/ui/ImgNormalCustom";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/effect-fade";
 import {
   TypographyH3,
   TypographyP,
 } from "@/core/components/custom/ui/Typography";
 import { Button } from "@/core/components/shadcn/ui/button";
+import { useState } from "react";
+import "swiper/css";
+import "swiper/css/effect-fade";
+import "swiper/css/navigation";
+import { Autoplay, EffectFade, Navigation } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 function HeroSiperSection() {
   const [activeIndex, setActiveIndex] = useState(0);
 

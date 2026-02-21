@@ -4,7 +4,6 @@ import { HeaderProvider } from "@/core/features/main/context/HeaderContext";
 import { getUserId } from "@/core/utils/getUserId";
 import { isLogin } from "@/core/utils/isLogin";
 import { Metadata } from "next";
-import React from "react";
 
 export const metadata: Metadata = {
   title: "kicks",

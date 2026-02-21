@@ -9,7 +9,6 @@ import {
   DialogTrigger,
 } from "@/core/components/shadcn/ui/dialog";
 import { cn } from "@/core/utils/shadcn/utils";
-import React from "react";
 import { Button } from "../../shadcn/ui/button";
 function Modal({
   children,

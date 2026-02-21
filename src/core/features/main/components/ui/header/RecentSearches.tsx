@@ -3,7 +3,7 @@ import { getLatestSearches } from "@/core/api-route/site/handlers/searchProducts
 import { Button } from "@/core/components/shadcn/ui/button";
 import { Clock } from "lucide-react";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useHeader } from "../../../context/HeaderContext";
 
 export default function RecentSearches({ userId }: { userId: string }) {

@@ -8,7 +8,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/core/components/shadcn/ui/select";
-import React from "react";
 
 function BlogDashboardStep1({ values, setValues }) {
   const categoriesBlog = [

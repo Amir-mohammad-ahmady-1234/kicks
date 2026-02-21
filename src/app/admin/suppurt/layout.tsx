@@ -1,11 +1,10 @@
 import SideBarChat from "@/core/features/userpanel/components/ui/chat/SideBarChat";
 import { getUserId } from "@/core/utils/getUserId";
-import React from "react";
-
+import type { ReactNode } from "react";
 async function Layout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   const userId = await getUserId();
   return (

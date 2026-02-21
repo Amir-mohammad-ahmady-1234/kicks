@@ -1,5 +1,4 @@
 import { ImgNormalCustom } from "@/core/components/custom/ui/ImgNormalCustom";
-import React from "react";
 
 function BannerShop() {
   return (

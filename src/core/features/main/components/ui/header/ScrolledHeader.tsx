@@ -1,4 +1,3 @@
-import React from "react";
 import { LogInIcon, Menu, Search, User } from "lucide-react";
 import Logo from "../Logo";
 

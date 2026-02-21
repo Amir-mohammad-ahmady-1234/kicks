@@ -5,11 +5,10 @@ import {
 } from "@/core/components/custom/ui/Typography";
 import { Button } from "@/core/components/shadcn/ui/button";
 import { Input } from "@/core/components/shadcn/ui/input";
-import React from "react";
 
 function Footer() {
   return (
-    <footer className="mx-auto max-w-[1380px] p-5 ">
+    <footer className="mx-auto max-w-345 p-5 ">
       <div className="rounded-2xl bg-primary  overflow-hidden">
         <div className="p-6 sm:p-10 lg:p-12 text-secondary">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16">
