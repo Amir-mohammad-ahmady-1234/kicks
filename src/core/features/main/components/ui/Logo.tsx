@@ -6,7 +6,7 @@ function Logo({ width = 100 }: { width?: number }) {
     <Link href={"/"}>
       <ImgNormalCustom
         alt="logo"
-        src={"/common/img/logo.png"}
+        src={"/common/img/logosite.png"}
         width={width}
         height={100}
       />
