@@ -69,15 +69,6 @@ export default function ScrolledHeader({ isSignUp }: { isSignUp: boolean }) {
                 </div>
               </SheetContent>
             </Sheet>
-
-            <Button
-              variant="ghost"
-              size="icon"
-              className="lg:hidden text-white hover:bg-white/20"
-              onClick={() => setSearchModalOpen(true)}
-            >
-              <Search className="h-6 w-6" />
-            </Button>
           </div>
 
           <div className="hidden lg:block">
@@ -94,7 +85,7 @@ export default function ScrolledHeader({ isSignUp }: { isSignUp: boolean }) {
             <Button
               variant="ghost"
               size="icon"
-              className="hidden lg:flex text-white hover:bg-white/20"
+              className=" text-white hover:bg-white/20"
               onClick={() => setSearchModalOpen(true)}
             >
               <Search className="h-5 w-5" />

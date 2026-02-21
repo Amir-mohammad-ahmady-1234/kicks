@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "seed": "tsx src/core/prisma/seed.ts"
+    "seed": "tsx src/core/prisma/seed.ts",
+    "seedproduct": "tsx src/core/prisma/seedproduct.ts",
+    "seedblog": "tsx src/core/prisma/seedblog.ts"
   },
   "dependencies": {
     "@prisma/client": "^6.19.0",

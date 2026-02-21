@@ -66,8 +66,7 @@ function ReviewsSection({ blog }) {
           640: { slidesPerView: 2, spaceBetween: 25 },
           768: { slidesPerView: 2.2, spaceBetween: 25 },
           1024: { slidesPerView: 3, spaceBetween: 30 },
-          1280: { slidesPerView: 3.5, spaceBetween: 30 },
-          1536: { slidesPerView: 4, spaceBetween: 35 },
+          1280: { slidesPerView: 4, spaceBetween: 30 },
         }}
       >
         {blog.map((item: BlogItemType, index: number) => (
