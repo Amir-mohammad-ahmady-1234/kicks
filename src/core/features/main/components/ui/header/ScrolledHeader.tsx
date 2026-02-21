@@ -91,7 +91,6 @@ export default function ScrolledHeader({ isSignUp }: { isSignUp: boolean }) {
               <Search className="h-5 w-5" />
             </Button>
 
-            {/* <ActionHeader /> */}
             <Link href={isSignUp ? "/userpanel" : "/auth"}>
               <div className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition-all">
                 {isSignUp ? (

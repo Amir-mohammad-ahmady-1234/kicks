@@ -38,7 +38,7 @@ function Footer() {
               </div>
             </div>
 
-            <div className="flex-shrink-0">
+            <div className="shrink-0">
               <ImgNormalCustom
                 src="/common/img/logop.png"
                 alt="KicksPlus Logo"
