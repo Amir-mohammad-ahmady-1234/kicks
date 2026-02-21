@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 function PagesContainer({ children }: { children: ReactNode }) {
   return <div className="pages-container">{children}</div>;

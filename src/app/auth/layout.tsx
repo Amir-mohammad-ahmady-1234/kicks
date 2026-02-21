@@ -1,8 +1,8 @@
 import ButtonLoginReturnUrlUser from "@/core/features/auth/components/ui/ButtonLoginReturnUrlUser";
 import Image from "next/image";
-import React from "react";
+import type { ReactNode } from "react";
 
-function layoutauth({ children }: { children: React.ReactNode }) {
+function layoutauth({ children }: { children: ReactNode }) {
   return (
     <section className="flex flex-col sm:flex-row min-h-screen">
       <div className="relative hidden lg:block lg:w-3/5 overflow-hidden">

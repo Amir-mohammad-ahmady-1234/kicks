@@ -1,5 +1,5 @@
-import React, { ReactNode } from "react";
 import PagesContainer from "./PagesContainer";
+import type { ReactNode } from "react";
 
 function SectionLayout({
   children,
@@ -14,5 +14,4 @@ function SectionLayout({
     </section>
   );
 }
-
 export default SectionLayout;

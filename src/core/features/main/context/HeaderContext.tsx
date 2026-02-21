@@ -1,7 +1,7 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { createContext, useContext, useState } from "react";
-
 type HeaderContextType = {
   open: boolean;
   setOpen: (v: boolean) => void;
@@ -13,7 +13,7 @@ type HeaderContextType = {
 
 const HeaderContext = createContext<HeaderContextType | null>(null);
 
-export function HeaderProvider({ children }: { children: React.ReactNode }) {
+export function HeaderProvider({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [searchModalOpen, setSearchModalOpen] = useState(false);
