@@ -40,7 +40,7 @@ function Footer() {
 
             <div className="shrink-0">
               <ImgNormalCustom
-                src="/common/img/logopsite.png"
+                src="/common/img/logo/logopsite.png"
                 alt="KicksPlus Logo"
                 width={500}
                 height={500}
