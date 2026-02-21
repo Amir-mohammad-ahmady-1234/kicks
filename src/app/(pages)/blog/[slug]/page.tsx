@@ -4,10 +4,13 @@ import prisma from "@/core/lib/db/client";
 import { Metadata } from "next";
 import { Suspense } from "react";
 
-type Props = { params: { slug: string } };
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post = await prisma.blog.findUnique({ where: { slug: params.slug } });
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const slug = (await params).slug;
+  const post = await prisma.blog.findUnique({ where: { slug: slug } });
 
   if (!post) {
     return {
