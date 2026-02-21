@@ -8,6 +8,7 @@ import {
 } from "@/core/components/custom/ui/Typography";
 import { Button } from "@/core/components/shadcn/ui/button";
 import { Share } from "lucide-react";
+import Link from "next/link";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Autoplay, Navigation } from "swiper/modules";
@@ -35,7 +36,10 @@ function CategoriesSection() {
         >
           {categoriesData.map((category) => (
             <SwiperSlide key={category.id}>
-              <div className={`"bg-[${category.bgColor}] rounded-tl-2xl `}>
+              <Link
+                href={`/shop?category=${category.title}`}
+                className={`"bg-[${category.bgColor}] rounded-tl-2xl `}
+              >
                 <ImgNormalCustom
                   src={category.img}
                   alt=""
@@ -51,7 +55,7 @@ function CategoriesSection() {
                     <Share />
                   </Button>
                 </div>
-              </div>
+              </Link>
             </SwiperSlide>
           ))}
         </Swiper>

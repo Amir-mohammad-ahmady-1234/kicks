@@ -7,6 +7,8 @@ import HeadeCardProduct from "@/core/features/main/components/ui/HeadeCardProduc
 import ReviewsSection from "@/core/features/main/components/ui/ReviewsSection";
 
 import { getUserId } from "@/core/utils/getUserId";
+import { Suspense } from "react";
+import SkeletonSlide from "./SkeletonSlide";
 async function ProductAndReviews() {
   const pdata = await findAllProduct();
   const pdatablog = await findAllBlog();
@@ -28,7 +30,9 @@ async function ProductAndReviews() {
     <>
       <SectionLayout>
         <HeadeCardProduct />
-        <CardsProduct products={products} />
+        <Suspense fallback={<SkeletonSlide />}>
+          <CardsProduct products={products} />
+        </Suspense>
       </SectionLayout>
       <CategoriesSection />
 
