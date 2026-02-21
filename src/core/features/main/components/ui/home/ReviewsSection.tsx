@@ -27,7 +27,7 @@ import {
   Pagination,
 } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { calculateReadingTime } from "../../utils/calculateReadingTime";
+import { calculateReadingTime } from "../../../utils/calculateReadingTime";
 
 function ReviewsSection({ blog }) {
   if (!blog || blog.length === 0) {

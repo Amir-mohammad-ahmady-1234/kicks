@@ -1,6 +1,8 @@
 import SingalPageProduct from "@/core/features/main/components/ui/product/SingalPageProduct";
+import SkeletonSingleProduct from "@/core/features/main/components/ui/skeleton/SkeletonSingleProduct";
 import prisma from "@/core/lib/db/client";
 import { Metadata } from "next";
+import { Suspense } from "react";
 
 type Props = { params: { slug: string } };
 
@@ -27,5 +29,9 @@ export default function ProductPage({
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  return <SingalPageProduct params={params} />;
+  return (
+    <Suspense fallback={<SkeletonSingleProduct />}>
+      <SingalPageProduct params={params} />
+    </Suspense>
+  );
 }

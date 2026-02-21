@@ -1,7 +1,7 @@
 import SectionLayout from "@/core/components/custom/ui/SectionLayout";
 import { TypographyBig } from "@/core/components/custom/ui/Typography";
-import HeroSiperSection from "@/core/features/main/components/ui/HeroSiperSection";
-import ProductAndReviews from "@/core/features/main/components/ui/ProductAndReviews";
+import HeroSiperSection from "@/core/features/main/components/ui/home/HeroSiperSection";
+import ProductAndReviews from "@/core/features/main/components/ui/home/ProductAndReviews";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

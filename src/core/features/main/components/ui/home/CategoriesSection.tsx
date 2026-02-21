@@ -1,11 +1,7 @@
 "use client";
 
-import { categoriesData } from "@/core/assets/mock/categories";
 import { ImgNormalCustom } from "@/core/components/custom/ui/ImgNormalCustom";
-import {
-  TypographyH1,
-  TypographyH3,
-} from "@/core/components/custom/ui/Typography";
+import { TypographyH3 } from "@/core/components/custom/ui/Typography";
 import { Button } from "@/core/components/shadcn/ui/button";
 import { Share } from "lucide-react";
 import Link from "next/link";
@@ -13,12 +9,9 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Autoplay, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-function CategoriesSection() {
+function CategoriesSection({ categoriesData }) {
   return (
-    <section className="bg-foreground ">
-      <div className="flex justify-start pages-container">
-        <TypographyH1 className="text-secondary">Categories</TypographyH1>
-      </div>
+    <>
       <div className=" ml-10">
         <Swiper
           spaceBetween={20}
@@ -60,7 +53,7 @@ function CategoriesSection() {
           ))}
         </Swiper>
       </div>
-    </section>
+    </>
   );
 }
 

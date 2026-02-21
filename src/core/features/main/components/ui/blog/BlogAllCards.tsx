@@ -21,7 +21,7 @@ async function BlogAllCards({ searchParams }) {
     <SectionLayout>
       <div className="flex gap-2">
         <div className="w-full">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {data.map((blog: BlogDataTs) => (
               <div
                 key={blog.id}
