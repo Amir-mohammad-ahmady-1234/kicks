@@ -37,8 +37,8 @@ export default function Error({
 
           {process.env.NODE_ENV === "development" && (
             <div className="mt-4 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg text-left">
-              <p className="text-sm font-mono text-red-600 dark:text-red-400 wrap-break-word">
-                {error.message}
+              <p className="text-sm font-mono text-red-600 dark:text-red-400 wrap-break-word text-center">
+                {/* {error.message} */} check your connection then try again
               </p>
               {error.digest && (
                 <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">

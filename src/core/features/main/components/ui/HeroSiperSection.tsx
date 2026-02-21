@@ -57,7 +57,7 @@ function HeroSiperSection() {
         return (
           <SwiperSlide key={banner.id}>
             <div
-              className="relative  md:h-[520px] bg-cover bg-center  rounded-2xl"
+              className="relative  md:h-130 bg-cover bg-center  rounded-2xl"
               style={{ backgroundImage: `url(${banner.image})` }}
             >
               <div className="relative h-full  flex flex-col justify-end px-4 pb-8 sm:px-6 sm:pb-10 md:px-16 md:pb-12 max-w-7xl mx-auto">
