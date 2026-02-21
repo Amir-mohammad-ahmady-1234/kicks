@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 👟 Kicks - فروشگاه مدرن کفش و بلاگ
 
-## Getting Started
+![Next.js](https://img.shields.io/badge/Next.js-16.1.6-black?style=for-the-badge&logo=next.js)
+![Prisma](https://img.shields.io/badge/Prisma-6.19.0-2D3748?style=for-the-badge&logo=prisma)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)
+![Tailwind](https://img.shields.io/badge/Tailwind-4.0-38B2AC?style=for-the-badge&logo=tailwind-css)
+![Redis](https://img.shields.io/badge/Upstash_Redis-FF4438?style=for-the-badge&logo=redis)
+![Cloudinary](https://img.shields.io/badge/Cloudinary-3448C5?style=for-the-badge&logo=cloudinary)
 
-First, run the development server:
+## 📋 معرفی پروژه
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**Kicks** یک فروشگاه اینترنتی مدرن و کامل برای فروش کفش است که با **Next.js 16** و **TypeScript** ساخته شده. این پروژه فراتر از یک فروشگاه ساده است و شامل **سیستم بلاگینگ حرفه‌ای**، **پنل مدیریت قدرتمند**، **احراز هویت امن** و **پنل کاربری اختصاصی** می‌باشد.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+> ⚡ **هدف پروژه**: ارائه یک تجربه خرید لذت‌بخش با عملکرد بالا و رابط کاربری مدرن
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## ✨ ویژگی‌های اصلی
 
-## Learn More
+### 🛍️ بخش فروشگاه
+- **نمایش محصولات** در صفحه اصلی با طراحی جذاب
+- **مدیریت کامل محصولات** در پنل ادمین
+- **دسته‌بندی پیشرفته** محصولات
+- **جستجو و فیلتر** هوشمند
 
-To learn more about Next.js, take a look at the following resources:
+### 📝 سیستم بلاگ
+- **ایجاد مقاله** با فرم چندمرحله‌ای هوشمند
+- **نمایش مقالات** در صفحه اصلی و صفحات اختصاصی
+- **مدیریت کامل مقالات** توسط ادمین
+- **دسته‌بندی و برچسب‌گذاری** مقالات
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 👤 احراز هویت و امنیت
+- **سیستم لاگین و ثبت‌نام** امن
+- **کد OTP یکبارمصرف** با ذخیره در Redis
+- **رمزنگاری پسوردها** با bcryptjs
+- **مدیریت نشست کاربران** با Next.js
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 🛡️ پنل‌های مدیریتی
+- **پنل ادمین** کامل با دسترسی‌های سطح‌بندی شده
+- **پنل کاربری** اختصاصی برای هر کاربر
+- **داشبورد تحلیلی** با نمودارهای Recharts
+- **مدیریت فایل‌ها** با Cloudinary و Uploadthing
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🛠️ تکنولوژی‌ها و ابزارها
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| بخش | تکنولوژی‌ها |
+|------|-------------|
+| **⚛️ فریم‌ورک اصلی** | Next.js 16.1.6 · React 19.2.4 · TypeScript 5.0 |
+| **🎨 استایل و UI** | Tailwind CSS v4 · Radix UI · Lucide React · Swiper · Vaul · Sonner · Recharts |
+| **🗄️ دیتابیس و ORM** | PostgreSQL (Neon) · Prisma 6.19.0 · Upstash Redis |
+| **☁️ ذخیره‌سازی** | Cloudinary · Uploadthing |
+| **🔐 احراز هویت** | bcryptjs · Resend (OTP) · Next.js Sessions |
+| **📦 مدیریت حالت** | Next.js App Router · React Hooks |
+| **🛠️ ابزارهای توسعه** | ESLint · Prettier · TSX · PostCSS |
+| **🚀 زیرساخت** | Vercel (پیشنهادی) · Neon DB · Upstash · Cloudinary |
+
+---
+
+## 📁 ساختار پروژه
