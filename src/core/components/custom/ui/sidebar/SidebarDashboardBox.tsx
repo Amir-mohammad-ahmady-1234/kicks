@@ -1,4 +1,5 @@
 "use client";
+import { LogOutUser } from "@/core/api-route/site/handlers/logout/LogOutUser";
 import {
   itemsDashboardAdmin,
   itemsDashboardUser,
@@ -7,12 +8,14 @@ import { TypographySmall } from "@/core/components/custom/ui/Typography";
 import { Button } from "@/core/components/shadcn/ui/button";
 import Logo from "@/core/features/main/components/ui/Logo";
 import { useIsMobile } from "@/core/utils/useIsMobile";
-import { SquareArrowRightIcon, X } from "lucide-react";
+import { LogOut, SquareArrowRightIcon, X } from "lucide-react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { redirect, usePathname } from "next/navigation";
 import { useState } from "react";
+import { toast } from "sonner";
 function SidebarDashboardBox({ userid }) {
   const isMobile = useIsMobile();
+
   const path = usePathname();
 
   const [show, setshow] = useState(false);
@@ -33,6 +36,15 @@ function SidebarDashboardBox({ userid }) {
       return `/${baseurl}/suppurt`;
     }
   };
+  async function handelLogoty(userid) {
+    const logput = await LogOutUser(userid);
+    if (logput.success === true) {
+      toast.message(logput.message);
+      redirect("/");
+    } else {
+      return toast.error(logput.error || "Error logging out");
+    }
+  }
   return isMobile === false || show === true ? (
     <>
       <aside
@@ -72,7 +84,13 @@ function SidebarDashboardBox({ userid }) {
                   <X />
                 </Button>
               )}
-            </div>{" "}
+            </div>
+            <Button
+              className="w-full flex mt-4"
+              onClick={() => handelLogoty(userid)}
+            >
+              <LogOut /> Log Out
+            </Button>
           </div>
         </div>
       </aside>
