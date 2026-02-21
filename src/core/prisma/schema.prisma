@@ -3,9 +3,8 @@ generator client {
 }
 
 datasource db {
-  provider          = "mysql"
+  provider          = "postgresql"
   url               = env("DATABASE_URL")
-  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
 
@@ -126,7 +125,7 @@ model Ticket {
   status      StatusChat  @default(open)
 
 
-  lastMessage String?  @db.Text
+  lastMessage String?
   lastMessageAt DateTime?
   unreadCount Int      @default(0)
 
@@ -143,7 +142,7 @@ model Ticket {
 
 model Message {
   id        String   @id @default(cuid())
-  content   String   @db.Text
+  content   String
   ticketId  String
   userId    String
   createdAt DateTime @default(now())
@@ -199,7 +198,7 @@ model Blog {
   title String
   slug String  @unique
   excerpt String
-  content String @db.LongText
+  content String
   Image String
   author String
   category String
