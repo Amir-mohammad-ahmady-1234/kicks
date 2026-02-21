@@ -17,6 +17,7 @@ function HeadFilterOrder() {
         title="new product"
         description="Please enter product information"
         className="w-2xl"
+        hideDefaultFooter
       >
         <FormCreateProduct />
       </Modal>

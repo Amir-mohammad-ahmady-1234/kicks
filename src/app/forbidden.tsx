@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function Forbidden() {
   return (
-    <section className="min-h-screen bg-linear-to-b from-gray-50 to-white flex items-center justify-center p-4">
+    <section className="fixed w-full h-full bg-linear-to-b from-gray-50 to-white flex items-center justify-center p-4">
       <div className="max-w-md w-full text-center">
         <div className="relative mb-8">
           <div className="absolute inset-0 animate-ping opacity-20">

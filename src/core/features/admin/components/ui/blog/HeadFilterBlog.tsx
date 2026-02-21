@@ -14,9 +14,10 @@ function HeadFilterBlog() {
             <Plus /> ADD NEW Blog
           </Button>
         }
-        title="new product"
+        title="new blog"
         description="Please enter product information"
         className="w-2xl"
+        hideDefaultFooter
       >
         <FormCreateBlog />
       </Modal>

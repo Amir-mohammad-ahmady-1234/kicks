@@ -11,6 +11,9 @@ export default function ProductActions({ sizeselect, idp, userid }) {
   const [qty, setQty] = useState(1);
   const route = useRouter();
   async function handelSubmit() {
+    if (!userid) {
+      return toast.error("Please log-in first 🌱");
+    }
     const additem = await createCart({
       userId: userid,
       productId: idp,
@@ -24,6 +27,9 @@ export default function ProductActions({ sizeselect, idp, userid }) {
     }
   }
   async function handelSubmitNow() {
+    if (!userid) {
+      return toast.error("Please log-in first 🌱");
+    }
     const additem = await createCart({
       userId: userid,
       productId: idp,

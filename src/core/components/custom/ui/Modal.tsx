@@ -43,6 +43,7 @@ function Modal({
             <DialogTitle>{title}</DialogTitle>
             <DialogDescription>{description}</DialogDescription>
           </DialogHeader>
+
           <div className="mt-4">{children}</div>
           {!hideDefaultFooter && (
             <DialogFooter className="mt-6">

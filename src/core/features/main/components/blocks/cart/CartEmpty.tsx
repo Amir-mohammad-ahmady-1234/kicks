@@ -11,7 +11,7 @@ import { Button } from "@/core/components/shadcn/ui/button";
 export default function CartEmpty() {
   return (
     <SectionLayout>
-      <div className="flex flex-col items-center justify-center min-h-[60vh] text-center px-4">
+      <div className="flex flex-col items-center justify-center min-h-[60vh] text-center px-4 mt-20">
         <ShoppingBag
           className="w-20 h-20 text-muted-foreground mb-6"
           strokeWidth={1}
@@ -21,7 +21,7 @@ export default function CartEmpty() {
           Discover something you love and add it to your cart.
         </TypographyP>
         <Button size="lg" asChild>
-          <Link href="/">Explore Products</Link>
+          <Link href="/shop">Explore Products</Link>
         </Button>
       </div>
     </SectionLayout>
