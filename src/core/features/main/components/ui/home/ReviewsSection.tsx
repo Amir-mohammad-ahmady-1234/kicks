@@ -6,11 +6,6 @@ import {
   TypographyH4,
   TypographyMuted,
 } from "@/core/components/custom/ui/Typography";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/core/components/shadcn/ui/avatar";
 import { Badge } from "@/core/components/shadcn/ui/badge";
 import { BlogItemType } from "@/core/features/admin/assets/types/BlogTypes";
 import { formatDate } from "@/core/utils/formatDate";
@@ -61,7 +56,7 @@ function ReviewsSection({ blog }) {
         }}
         modules={[Pagination, Navigation, Autoplay, EffectCoverflow]}
         breakpoints={{
-          320: { slidesPerView: 1.1, spaceBetween: 15 },
+          320: { slidesPerView: 1.7, spaceBetween: 15 },
           480: { slidesPerView: 1.5, spaceBetween: 20 },
           640: { slidesPerView: 2, spaceBetween: 25 },
           768: { slidesPerView: 2.2, spaceBetween: 25 },
@@ -71,8 +66,8 @@ function ReviewsSection({ blog }) {
       >
         {blog.map((item: BlogItemType, index: number) => (
           <SwiperSlide key={item.id}>
-            <div className="h-full group/card">
-              <div className="relative bg-linear-to-br from-background to-background/90 backdrop-blur-sm rounded-2xl overflow-hidden border border-border/50 hover:border-primary/30  transition-all duration-500 hover:-translate-y-2 h-full flex flex-col">
+            <div className="flex flex-col bg-linear-to-br from-background to-background/90 rounded-2xl">
+              <div className="relative bg-linear-to-br from-background to-background/90 backdrop-blur-sm rounded-2xl overflow-hidden border border-border/50 hover:border-primary/30  transition-all duration-500 hover:-translate-y-2  flex flex-col">
                 {index === 0 && (
                   <div className="absolute top-4 right-4 z-10">
                     <Badge className="bg-red-500 hover:bg-red-600 text-white border-0 animate-pulse">
@@ -106,7 +101,7 @@ function ReviewsSection({ blog }) {
                     </span>
                   </div>
 
-                  <TypographyH4 className="font-bold line-clamp-2 mb-2 group-hover/card:text-primary transition-colors">
+                  <TypographyH4 className=" line-clamp-1 mb-2 group-hover/card:text-primary transition-colors">
                     {item.title}
                   </TypographyH4>
 
@@ -122,24 +117,10 @@ function ReviewsSection({ blog }) {
                       </Badge>
                     </div>{" "}
                     <Link href={`/blog/${item.slug}`}>
-                      <TypographyMuted className="flex items-center underline">
+                      <TypographyMuted className="flex items-center underline ">
                         Read More <ChevronRight size={15} />
                       </TypographyMuted>
                     </Link>
-                  </div>
-
-                  <div className="flex items-center justify-between mt-4 pt-4 border-t border-border/50">
-                    <div className="flex items-center gap-2">
-                      <Avatar className="h-6 w-6">
-                        <AvatarImage
-                          src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${item.author}`}
-                        />
-                        <AvatarFallback>{item.author[0]}</AvatarFallback>
-                      </Avatar>
-                      <span className="text-xs font-medium">
-                        {item.author}
-                      </span>{" "}
-                    </div>
                   </div>
                 </div>
               </div>

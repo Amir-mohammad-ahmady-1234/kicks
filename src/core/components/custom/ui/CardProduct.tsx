@@ -86,7 +86,7 @@ function CardProduct({
               <CardFooter className="p-0 flex justify-between flex-col items-center gap-3">
                 <div className="flex justify-between items-center gap-3 w-full">
                   <div className="flex items-center gap-2">
-                    <span className="text-lg font-bold text-foreground">
+                    <span className="text-md font-bold text-foreground">
                       ${product.price}
                     </span>
                     {product.percentOff && (
