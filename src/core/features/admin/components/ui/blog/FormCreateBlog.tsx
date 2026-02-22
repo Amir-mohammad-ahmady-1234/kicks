@@ -7,8 +7,10 @@ import { BlogFormData } from "../../../assets/types/BlogTypes";
 import BlogDashboardStep1 from "./BlogDashboardStep1";
 import BlogDashboardStep2 from "./BlogDashboardStep2";
 import BlogDashboardStep3 from "./BlogDashboardStep3";
+import { useRouter } from "next/navigation";
 
 function FormCreateBlog() {
+  const router = useRouter();
   const [step, setStep] = useState(1);
   const [isSubmit, setIsSubmit] = useState(false);
 
@@ -40,6 +42,7 @@ function FormCreateBlog() {
         toast.success(newblog.success, {
           id: "create-blog",
         });
+        router.refresh();
         return;
       } else {
         toast.error(newblog.error, {
