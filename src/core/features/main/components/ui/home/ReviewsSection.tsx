@@ -26,11 +26,7 @@ import { calculateReadingTime } from "../../../utils/calculateReadingTime";
 
 function ReviewsSection({ blog }) {
   if (!blog || blog.length === 0) {
-    return (
-      <div className="text-center py-12">
-        <TypographyH4>No reviews yet</TypographyH4>
-      </div>
-    );
+    return <div className="text-center py-12"></div>;
   }
 
   return (

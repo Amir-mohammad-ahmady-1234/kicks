@@ -12,6 +12,7 @@
     "seedblog": "tsx src/core/prisma/seedblog.ts"
   },
   "dependencies": {
+    "@authsignal/node": "^2.19.0",
     "@prisma/client": "^6.19.0",
     "@radix-ui/react-checkbox": "^1.3.3",
     "@radix-ui/react-dialog": "^1.1.15",

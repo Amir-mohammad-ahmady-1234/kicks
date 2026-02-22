@@ -87,7 +87,7 @@ export default function TopHeader({ isSignUp }: { isSignUp: boolean }) {
           </Button>
           <ModeToggle istophead={true} textcolor={"text-black"} />
 
-          <Link href={isSignUp ? "/userpanel" : "/auth"}>
+          <Link href={isSignUp ? "/userpanel/profile" : "/auth"}>
             {isSignUp ? (
               <User className="h-5 w-5" />
             ) : (
