@@ -43,15 +43,6 @@ export const metadata: Metadata = {
     locale: "en_US",
     type: "website",
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Kicks - Premium Footwear Store",
-    description:
-      "Step up your shoe game with Kicks! Find the latest styles for men and women, shop online, and get them fast.",
-    images: [
-      "https://kicks-iota-three.vercel.app/common/img/logo/logosite.png",
-    ],
-  },
   icons: {
     icon: [
       { url: "/favicon.ico" },
