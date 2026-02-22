@@ -41,6 +41,7 @@ export async function createUser({
         email: emailformat,
         password: String(hashedPass),
         role,
+        name: `guest${Date.now()}`,
       },
       select: {
         id: true,
