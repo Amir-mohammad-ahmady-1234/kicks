@@ -21,7 +21,7 @@
 
 ---
 
-## 🏗️ معماری پروژه: **Next.js 16 Modular Clean Architecture with DDD Approach** 
+## 🏗️ معماری: **Next.js 16 App Router + Modular Clean Architecture (لایه‌بندی شده با تمرکز بر Domain)**
 
 ### 📐 لایه‌های معماری
 
