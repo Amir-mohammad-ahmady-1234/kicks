@@ -6,7 +6,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/core/components/shadcn/ui/card";
-
 import { Button } from "@/core/components/shadcn/ui/button";
 import { ShoppingBag } from "lucide-react";
 import Link from "next/link";
@@ -39,13 +38,13 @@ function CardProduct({
 }: PropsCardProduct) {
   if (IsPagination) {
     return (
-      <div className={gridcss ? gridcss : ""}>
-        {listproducts.map((product) => (
+      <div className={gridcss}>
+        {listproducts?.map((product) => (
           <div
             key={product.id}
-            className="gap-4 relative max-w-sm rounded-md bg-background border border-border shadow-sm hover:shadow-lg transition-all"
+            className="h-full flex flex-col relative rounded-md bg-background border border-border shadow-sm hover:shadow-lg transition-all overflow-hidden"
           >
-            <div className="w-full aspect-square overflow-hidden rounded-t-md bg-gray-100">
+            <div className="w-full aspect-square overflow-hidden bg-gray-100">
               <ImgNormalCustom
                 src={
                   product.mainImage ||
@@ -54,68 +53,69 @@ function CardProduct({
                 alt={product.title}
                 width={240}
                 height={240}
-                className="object-cover object-center w-full h-full"
+                className="object-cover object-center w-full h-full hover:scale-105 transition-transform duration-300"
               />
             </div>
 
             {product.percentOff ? (
               <Badge
                 variant="secondary"
-                className={`absolute top-3 left-3 bg-${badgecolor} text-white px-3 py-1 rounded-bl-md text-xs `}
+                className={`absolute top-2 left-2 bg-${badgecolor} text-white px-2 py-0.5 rounded-bl-md text-[10px] sm:text-xs`}
               >
-                -{product.percentOff}% OFF
+                -{product.percentOff}%
               </Badge>
             ) : (
-              <>
-                <Badge
-                  variant="secondary"
-                  className={`absolute top-3 left-3 bg-${badgecolor} text-white px-3 py-1 rounded-bl-md text-xs`}
-                >
-                  New
-                </Badge>
-              </>
+              <Badge
+                variant="secondary"
+                className={`absolute top-2 left-2 bg-${badgecolor} text-white px-2 py-0.5 rounded-bl-md text-[10px] sm:text-xs`}
+              >
+                New
+              </Badge>
             )}
 
-            <Card className="border-none bg-background mt-2 p-3">
-              <CardHeader className="p-0">
-                <CardTitle className="text-sm font-medium line-clamp-2 text-foreground/90">
+            <Card className="border-none bg-background p-2 sm:p-3 flex-1 flex flex-col">
+              <CardHeader className="p-0 mb-2">
+                <CardTitle className="text-xs sm:text-sm font-medium line-clamp-2 text-foreground/90 min-h-8 sm:min-h-10">
                   {product.title}
                 </CardTitle>
               </CardHeader>
 
-              <CardFooter className="p-0 flex justify-between flex-col items-center gap-3">
-                <div className="flex justify-between items-center gap-3 w-full">
-                  <div className="flex items-center gap-2">
-                    <span className="text-md font-bold text-foreground">
-                      ${product.price}
+              <CardFooter className="p-0 flex flex-col gap-2 mt-auto">
+                <div className="flex items-center justify-between w-full">
+                  <div className="flex items-center gap-1 sm:gap-2 flex-wrap">
+                    <span className="text-sm sm:text-base font-bold text-foreground">
+                      $
+                      {product.percentOff > 0
+                        ? (
+                            product.price *
+                            (1 - product.percentOff / 100)
+                          ).toFixed(0)
+                        : product.price.toFixed(0)}
                     </span>
-                    {product.percentOff && (
-                      <span className="text-sm text-muted-foreground line-through">
-                        $
-                        {(
-                          product.price /
-                          (1 - product.percentOff / 100)
-                        ).toFixed(0)}
+                    {product.percentOff > 0 && (
+                      <span className="text-[10px] sm:text-xs text-muted-foreground line-through">
+                        ${product.price.toFixed(0)}
                       </span>
                     )}
                   </div>
 
-                  {product.star && (
-                    <div className="flex items-center gap-1">
-                      <span className="text-xs  text-yellow-500">★</span>
-
-                      <span className="text-xs text-muted-foreground ml-1">
-                        ({product.star})
+                  {product.star ? (
+                    <div className="flex items-center gap-0.5">
+                      <span className="text-yellow-500 text-xs">★</span>
+                      <span className="text-[10px] sm:text-xs text-muted-foreground">
+                        {product.star}
                       </span>
                     </div>
-                  )}
+                  ) : null}
                 </div>
+
                 <Link href={`/shop/${product.id}`} className="w-full">
                   <Button
-                    className="w-full bg-black/80  text-secondary  hover:bg-secondary hover:text-black hover:border hover:border-stone-600"
-                    variant="secondary"
+                    className="w-full bg-black/80 text-white hover:bg-black text-xs sm:text-sm py-1 sm:py-2 h-auto"
+                    size="sm"
                   >
-                    <ShoppingBag className="w-4 h-4" /> Buy Now
+                    <ShoppingBag className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+                    Buy Now
                   </Button>
                 </Link>
               </CardFooter>
@@ -125,88 +125,83 @@ function CardProduct({
       </div>
     );
   }
+
   return (
-    <>
-      <div className="w-full aspect-square overflow-hidden rounded-t-md bg-gray-100">
+    <div className="h-full flex flex-col relative rounded-md bg-background border border-border shadow-sm hover:shadow-lg transition-all overflow-hidden">
+      <div className="w-full aspect-square overflow-hidden bg-gray-100">
         <ImgNormalCustom
           src={
-            product.mainImage ||
+            product?.mainImage ||
             "https://placehold.jp/240x240.png?text=default-img"
           }
-          alt={product.title}
+          alt={product?.title || ""}
           width={240}
           height={240}
-          className="object-cover object-center w-full h-full"
+          className="object-cover object-center w-full h-full hover:scale-105 transition-transform duration-300"
         />
       </div>
 
-      {product.percentOff ? (
+      {product?.percentOff ? (
         <Badge
           variant="secondary"
-          className={`absolute top-3 left-3 bg-${badgecolor} text-white px-3 py-1 rounded-bl-md text-xs `}
+          className={`absolute top-2 left-2 bg-${badgecolor} text-white px-2 py-0.5 rounded-bl-md text-[10px] sm:text-xs`}
         >
-          -{product.percentOff}% OFF
+          -{product.percentOff}%
         </Badge>
       ) : (
-        <>
-          <Badge
-            variant="secondary"
-            className={`absolute top-3 left-3 bg-${badgecolor} text-white px-3 py-1 rounded-bl-md text-xs`}
-          >
-            New
-          </Badge>
-        </>
+        <Badge
+          variant="secondary"
+          className={`absolute top-2 left-2 bg-${badgecolor} text-white px-2 py-0.5 rounded-bl-md text-[10px] sm:text-xs`}
+        >
+          New
+        </Badge>
       )}
 
-      <Card className="border-none bg-background mt-2 p-3">
-        <CardHeader className="p-0">
-          <CardTitle className="text-sm font-medium line-clamp-2 text-foreground/90">
-            {product.title}
+      <Card className="border-none bg-background p-2 sm:p-3 flex-1 flex flex-col">
+        <CardHeader className="p-0 -mb-4">
+          <CardTitle className="text-xs sm:text-sm font-medium line-clamp-2 text-foreground/90 min-h-8 sm:min-h-10">
+            {product?.title}
           </CardTitle>
         </CardHeader>
 
-        <CardFooter className="p-0 flex flex-col gap-3">
-          <div className="flex flex-col sm:flex-row justify-between items-center w-full">
-            <div className="flex items-center gap-2">
-              <span className="text-lg font-bold text-foreground">
+        <CardFooter className="p-0 flex flex-col gap-2 mt-auto">
+          <div className="flex items-center justify-between w-full">
+            <div className="flex items-center gap-1 sm:gap-2 flex-wrap">
+              <span className="text-sm sm:text-base font-bold text-foreground">
                 $
-                {(() => {
-                  let finalPrice = product.price;
-                  if (product.percentOff > 0) {
-                    finalPrice = product.price - product.percentOff;
-                  } else if (product.percentOff > 0) {
-                    finalPrice = product.price * (1 - product.percentOff / 100);
-                  }
-                  return finalPrice.toFixed(2);
-                })()}
+                {product && product.percentOff > 0
+                  ? (product.price * (1 - product.percentOff / 100)).toFixed(0)
+                  : product?.price.toFixed(0)}
               </span>
-
-              {product.percentOff > 0 && (
-                <>
-                  <span className="text-sm text-muted-foreground line-through">
-                    ${product.price.toFixed(2)}
-                  </span>
-                </>
+              {product && product.percentOff > 0 && (
+                <span className="text-[10px] sm:text-xs text-muted-foreground line-through">
+                  ${product.price.toFixed(0)}
+                </span>
               )}
             </div>
 
-            {product.star > 0 && (
-              <div className="flex items-center gap-1">
-                <span className="text-yellow-500">★</span>
-                <span className="text-sm">{product.star.toFixed(2)}</span>
+            {product?.star ? (
+              <div className="flex items-center gap-0.5">
+                <span className="text-yellow-500 text-xs">★</span>
+                <span className="text-[10px] sm:text-xs text-muted-foreground">
+                  {product.star}
+                </span>
               </div>
-            )}
+            ) : null}
           </div>
 
-          <Link href={`/shop/${product.id}`} className="w-full">
-            <Button className="w-full bg-black/80 text-white hover:bg-black">
-              <ShoppingBag className="w-4 h-4 mr-2" />
+          <Link href={`/shop/${product?.id}`} className="w-full">
+            <Button
+              className="w-full bg-black/80 text-white hover:bg-black text-xs sm:text-sm py-1 sm:py-2 h-auto"
+              size="sm"
+            >
+              <ShoppingBag className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
               Buy Now
             </Button>
           </Link>
         </CardFooter>
       </Card>
-    </>
+    </div>
   );
 }
 
