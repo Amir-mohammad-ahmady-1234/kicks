@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import NextTopLoader from "nextjs-toploader";
 import { Toaster } from "sonner";
 import "./globals.css";
+
 const rubik = localFont({
   src: [
     {
@@ -21,9 +22,44 @@ const rubik = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "kicks",
+  metadataBase: new URL("https://kicks-iota-three.vercel.app/"),
+  title: "Kicks - Premium Footwear Store",
   description:
     "Step up your shoe game with Kicks! Find the latest styles for men and women, shop online, and get them fast.",
+  openGraph: {
+    title: "Kicks - Premium Footwear Store",
+    description:
+      "Step up your shoe game with Kicks! Find the latest styles for men and women, shop online, and get them fast.",
+    url: "https://kicks-iota-three.vercel.app/",
+    siteName: "Kicks",
+    images: [
+      {
+        url: "https://kicks-iota-three.vercel.app/common/img/logo/logosite.png",
+        width: 1200,
+        height: 630,
+        alt: "Kicks - Premium Footwear Store",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Kicks - Premium Footwear Store",
+    description:
+      "Step up your shoe game with Kicks! Find the latest styles for men and women, shop online, and get them fast.",
+    images: [
+      "https://kicks-iota-three.vercel.app/common/img/logo/logosite.png",
+    ],
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/icon.png", type: "image/png", sizes: "32x32" },
+    ],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
+  },
+  manifest: "/site.webmanifest",
 };
 
 export default async function RootLayout({
@@ -33,7 +69,7 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${rubik.variable} ${rubik.variable} antialiased `}>
+      <body className={`${rubik.variable} ${rubik.variable} antialiased`}>
         <NextTopLoader />
         <Toaster />
         {children}
