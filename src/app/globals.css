@@ -49,7 +49,7 @@
 
   /* Core palette */
   --background: #fafafa;
-  --foreground: #232321; /* Dark Gray */
+  --foreground: #232321;
 
   --card: #ffffff;
   --card-foreground: #232321;
@@ -95,7 +95,7 @@
 }
 
 .dark {
-  --background: #232321; /* Dark Gray */
+  --background: #232321;
   --foreground: #fafafa;
 
   --card: #2d2d2d;

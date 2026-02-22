@@ -12,6 +12,7 @@ import {
 import NavItemsHeaderDesktop from "./NavItemsHeaderDesktop";
 import NavItemsHeaderMobile from "./NavItemsHeaderMobile";
 
+import { ModeToggle } from "@/core/components/custom/ui/ModeToggle";
 import Link from "next/link";
 import { useHeader } from "../../../context/HeaderContext";
 
@@ -39,7 +40,14 @@ export default function ScrolledHeader({ isSignUp }: { isSignUp: boolean }) {
                   <Menu className="h-6 w-6" />
                 </Button>
               </SheetTrigger>
-
+              <Button
+                variant="ghost"
+                size="icon"
+                className=" text-white hover:bg-white/20"
+                onClick={() => setSearchModalOpen(true)}
+              >
+                <Search className="h-5 w-5" />
+              </Button>
               <SheetContent side="left" className="w-72 p-0 flex flex-col">
                 <SheetHeader className="p-6 border-b">
                   <SheetTitle className="flex items-center gap-2">
@@ -81,24 +89,26 @@ export default function ScrolledHeader({ isSignUp }: { isSignUp: boolean }) {
             </div>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center sm:gap-4 gap-2">
             <Button
               variant="ghost"
               size="icon"
-              className=" text-white hover:bg-white/20"
+              className=" text-white hover:bg-white/20 sm:flex hidden"
               onClick={() => setSearchModalOpen(true)}
             >
               <Search className="h-5 w-5" />
             </Button>
+            <ModeToggle istophead={true} />
 
-            <Link href={isSignUp ? "/userpanel" : "/auth"}>
-              <div className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition-all">
-                {isSignUp ? (
-                  <User className="text-white h-5 w-5" />
-                ) : (
-                  <LogInIcon className="text-white h-5 w-5" />
-                )}
-              </div>
+            <Link
+              className="text-white"
+              href={isSignUp ? "/userpanel" : "/auth"}
+            >
+              {isSignUp ? (
+                <User className="h-5 w-5" />
+              ) : (
+                <LogInIcon className="h-5 w-5" />
+              )}
             </Link>
           </div>
         </div>

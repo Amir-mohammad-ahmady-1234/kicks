@@ -1,3 +1,4 @@
+import { ModeToggle } from "@/core/components/custom/ui/ModeToggle";
 import { Button } from "@/core/components/shadcn/ui/button";
 import {
   Sheet,
@@ -32,7 +33,13 @@ export default function TopHeader({ isSignUp }: { isSignUp: boolean }) {
                 <Menu className="h-6 w-6" />
               </Button>
             </SheetTrigger>
-
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setSearchModalOpen(true)}
+            >
+              <Search className="h-8 w-8 scale-120" />
+            </Button>
             <SheetContent side="left" className="w-72 p-0 flex flex-col">
               <SheetHeader className="p-6 border-b">
                 <SheetTitle className="flex items-center gap-2">
@@ -70,14 +77,15 @@ export default function TopHeader({ isSignUp }: { isSignUp: boolean }) {
           <Logo />
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center sm:gap-4 gap-2">
           <Button
             variant="ghost"
             size="icon"
             onClick={() => setSearchModalOpen(true)}
           >
-            <Search className="h-8 w-8 scale-120" />
+            <Search className="h-8 w-8 scale-120 sm:flex hidden" />
           </Button>
+          <ModeToggle istophead={true} textcolor={"text-black"} />
 
           <Link href={isSignUp ? "/userpanel" : "/auth"}>
             {isSignUp ? (
