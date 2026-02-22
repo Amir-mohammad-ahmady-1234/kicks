@@ -1,6 +1,5 @@
 "use client";
 import Modal from "@/core/components/custom/ui/Modal";
-import { ModeToggle } from "@/core/components/custom/ui/ModeToggle";
 import { Button } from "@/core/components/shadcn/ui/button";
 import { Input } from "@/core/components/shadcn/ui/input";
 import { ArrowRight, Search } from "lucide-react";
