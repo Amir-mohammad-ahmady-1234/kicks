@@ -3,10 +3,10 @@ import { NextResponse } from "next/server";
 
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  const isProtectedPath =
+  const isPPath =
     pathname.startsWith("/userpanel") || pathname.startsWith("/admin");
 
-  if (!isProtectedPath) {
+  if (!isPPath) {
     return NextResponse.next();
   }
   const licenseCookie = request.cookies.get("license")?.value;

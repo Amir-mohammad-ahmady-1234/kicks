@@ -1,4 +1,4 @@
-import ContactPage from "@/core/features/main/components/ui/ContactPage";
+import ContactPage from "@/core/features/main/components/ui/contact/ContactPage";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

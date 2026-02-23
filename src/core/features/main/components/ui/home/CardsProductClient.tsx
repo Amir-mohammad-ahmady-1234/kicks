@@ -2,7 +2,7 @@
 
 import { findAllProduct } from "@/core/api-route/site/handlers/shop/findallproduct/findAllProduct";
 import { useEffect, useState } from "react";
-import CardsProduct from "../CardProduct";
+import CardsProduct from "../product/CardProduct";
 import SkeletonSlide from "../skeleton/SkeletonSlide";
 
 export default function CardsProductClient() {

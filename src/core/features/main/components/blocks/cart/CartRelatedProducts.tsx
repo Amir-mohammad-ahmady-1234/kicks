@@ -1,7 +1,7 @@
 import { findAllProduct } from "@/core/api-route/site/handlers/shop/findallproduct/findAllProduct";
+import { ProductCardItem } from "@/core/assets/types/Product";
 import { TypographyH2 } from "@/core/components/custom/ui/Typography";
-import CardsProduct from "@/core/features/main/components/ui/CardProduct";
-import type { ProductCardItem } from "@/core/components/custom/ui/CardProduct";
+import CardsProduct from "@/core/features/main/components/ui/product/CardProduct";
 
 export default async function CartRelatedProducts() {
   const pdata = await findAllProduct();

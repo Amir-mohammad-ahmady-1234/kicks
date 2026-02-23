@@ -82,7 +82,6 @@ function ProductDashboardStep2({ setValues, values }) {
         </div>
       </div>
       <div>
-        {" "}
         <TypographyP>Category</TypographyP>
         <SelectBoxProductsDashboard setValues={setValues} values={values} />
         <TypographyMuted className="flex items-center">

@@ -20,3 +20,8 @@ export type ProductOrderList = {
   discount?: number;
   price: number;
 };
+
+export interface ProductDashboardStep3Ts {
+  setSizes: React.Dispatch<React.SetStateAction<string[]>>;
+  sizes: string[];
+}

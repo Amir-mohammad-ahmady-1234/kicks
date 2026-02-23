@@ -12,11 +12,11 @@ import { Heart } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { toast } from "sonner";
-import { ProductFavoriteCardTs } from "../../assets/types/ProductFavoriteCardTs";
+import { ProductFavoriteCardTs } from "../../../assets/types/ProductFavoriteCardTs";
 
 export function ProductFavoriteCard({
   product,
-    userId,
+  userId,
 }: ProductFavoriteCardTs) {
   const [isRemoving, setIsRemoving] = useState(false);
   const [isRemoved, setIsRemoved] = useState(false);

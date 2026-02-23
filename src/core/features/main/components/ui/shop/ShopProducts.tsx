@@ -1,8 +1,8 @@
 "use client";
 
-import CardProduct from "@/core/components/custom/ui/CardProduct";
 import { Paginations } from "@/core/components/custom/ui/Pagination";
-import { TabelProductsTs } from "@/core/features/admin/components/ui/TabelProducts";
+import CardProduct from "@/core/components/custom/ui/product/CardProduct";
+import { TabelProductsTs } from "@/core/features/admin/components/ui/tabel/TabelProducts";
 import { getProductImage } from "@/core/utils/randomImage";
 
 function ShopProducts({ data, pagination }: TabelProductsTs) {

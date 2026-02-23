@@ -1,7 +1,7 @@
 import { TypographyP } from "@/core/components/custom/ui/Typography";
 import { Button } from "@/core/components/shadcn/ui/button";
 import { Input } from "@/core/components/shadcn/ui/input";
-import { listitems } from "@/core/features/admin/components/ui/product/formproduct/ProductDashboardStep3";
+import { listitems } from "@/core/features/admin/assets/mock/listitems";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 const category = [

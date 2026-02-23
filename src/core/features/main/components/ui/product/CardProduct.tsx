@@ -1,8 +1,7 @@
 "use client";
 
-import CardProduct, {
-  ProductCardItem,
-} from "@/core/components/custom/ui/CardProduct";
+import { ProductCardItem } from "@/core/assets/types/Product";
+import CardProduct from "@/core/components/custom/ui/product/CardProduct";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Autoplay, Navigation } from "swiper/modules";

@@ -1,5 +1,5 @@
 import { Button } from "@/core/components/shadcn/ui/button";
-import { ProductFavoriteCard } from "@/core/features/userpanel/components/ui/ProductFavoriteCard";
+import { ProductFavoriteCard } from "@/core/features/userpanel/components/ui/favorit/ProductFavoriteCard";
 import { Heart } from "lucide-react";
 import Link from "next/link";
 function FavoriteItems({ favoriteItems, userId }) {

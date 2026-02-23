@@ -37,7 +37,7 @@ export default function SalesChart() {
       </CardHeader>
 
       <CardContent>
-        <ChartContainer config={chartConfig} className="h-[320px] w-full">
+        <ChartContainer config={chartConfig} className="h-80 w-full">
           <AreaChart data={salesChartData}>
             <defs>
               <linearGradient id="salesGradient" x1="0" y1="0" x2="0" y2="1">

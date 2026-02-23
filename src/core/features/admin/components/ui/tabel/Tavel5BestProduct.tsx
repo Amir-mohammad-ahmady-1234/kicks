@@ -1,7 +1,7 @@
-import { TypographyH4 } from "@/core/components/custom/ui/Typography";
-import { ProductOrderList } from "../../assets/types/Products";
-import TabelProducts from "./TabelProducts";
 import { filterProductTabel } from "@/core/api-route/admin/handlers/tabel/filterProductTabel";
+import { TypographyH4 } from "@/core/components/custom/ui/Typography";
+import { ProductOrderList } from "../../../assets/types/Products";
+import TabelProducts from "./TabelProducts";
 
 async function Tavel5BestProduct() {
   const Pdata = await filterProductTabel({

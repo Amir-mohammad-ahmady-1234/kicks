@@ -12,7 +12,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 function CategoriesSection({ categoriesData }) {
   return (
     <>
-      <div className=" ml-10">
+      <div className="ml-10 pages-container">
         <Swiper
           spaceBetween={20}
           slidesPerView={5.2}

@@ -14,21 +14,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/core/components/shadcn/ui/chart";
-
-const ordersData = [
-  { month: "Jan", orders: 120 },
-  { month: "Feb", orders: 90 },
-  { month: "Mar", orders: 160 },
-  { month: "Apr", orders: 140 },
-  { month: "May", orders: 180 },
-];
-
-const chartConfig = {
-  orders: {
-    label: "Orders",
-    color: "hsl(var(--chart-4))",
-  },
-};
+import { chartConfig, ordersData } from "../../../assets/mock/chart";
 
 export function OrdersChart() {
   return (

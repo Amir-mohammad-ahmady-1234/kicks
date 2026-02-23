@@ -1,7 +1,7 @@
 import { filterProductTabel } from "@/core/api-route/admin/handlers/tabel/filterProductTabel";
 import HeadFilterOrder from "@/core/features/admin/components/ui/product/HeadFilterOrder";
 
-import TabelProducts from "@/core/features/admin/components/ui/TabelProducts";
+import TabelProducts from "@/core/features/admin/components/ui/tabel/TabelProducts";
 import { validSortOrder } from "@/core/utils/validSortOrder";
 import { categoryP, Gender } from "@prisma/client";
 

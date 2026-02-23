@@ -1,7 +1,7 @@
-import BoxDashboard from "@/core/features/admin/components/ui/BoxDashboard";
+import BoxDashboard from "@/core/features/admin/components/ui/analysis/BoxDashboard";
 import { OrdersChart } from "@/core/features/admin/components/ui/product/OrdersChart";
-import SalesChart from "@/core/features/admin/components/ui/ShadcnCharts";
-import Tavel5BestProduct from "@/core/features/admin/components/ui/Tavel5BestProduct";
+import SalesChart from "@/core/features/admin/components/ui/analysis/ShadcnCharts";
+import Tavel5BestProduct from "@/core/features/admin/components/ui/tabel/Tavel5BestProduct";
 
 function Page() {
   return (

@@ -1,38 +1,8 @@
 import { Button } from "@/core/components/shadcn/ui/button";
+import { listitems } from "@/core/features/admin/assets/mock/listitems";
+import { ProductDashboardStep3Ts } from "@/core/features/admin/assets/types/Products";
 
-export const listitems = [
-  "30",
-  "31",
-  "32",
-  "33",
-  "34",
-  "35",
-  "36",
-  "37",
-  "38",
-  "39",
-  "40",
-  "41",
-  "42",
-  "43",
-  "44",
-  "45",
-  "46",
-  "47",
-  "48",
-  "49",
-  "50",
-];
-
-interface ProductDashboardStep3Props {
-  setSizes: React.Dispatch<React.SetStateAction<string[]>>;
-  sizes: string[];
-}
-
-function ProductDashboardStep3({
-  setSizes,
-  sizes,
-}: ProductDashboardStep3Props) {
+function ProductDashboardStep3({ setSizes, sizes }: ProductDashboardStep3Ts) {
   function toggleSize(size: string) {
     setSizes((prev) => {
       if (prev.includes(size)) {

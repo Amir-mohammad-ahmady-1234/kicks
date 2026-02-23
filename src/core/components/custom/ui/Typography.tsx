@@ -1,34 +1,28 @@
+import {
+  ListItemTypograph,
+  TypographyTs,
+} from "@/core/assets/types/Typography";
 import { cn } from "@/core/utils/shadcn/utils";
-import { ReactNode, HTMLAttributes } from "react";
+import { HTMLAttributes } from "react";
 
-interface TypographyProps extends HTMLAttributes<HTMLElement> {
-  children?: ReactNode;
-  className?: string;
-}
-
-interface ListItem {
-  id?: string | number;
-  content: string;
-}
-
-function TypographyBig({ children, className: className }: TypographyProps) {
+function TypographyBig({ children, className: className }: TypographyTs) {
   return (
     <h1
       className={cn(
         `scroll-m-20 text-center font-extrabold tracking-tight text-balance text-5xl sm:text-9xl`,
-        className
+        className,
       )}
     >
       {children || "Lorem ipsum dolor"}
     </h1>
   );
 }
-function TypographyH1({ children, className: className }: TypographyProps) {
+function TypographyH1({ children, className: className }: TypographyTs) {
   return (
     <h1
       className={cn(
         "scroll-m-20 text-center text-2xl sm:text-[57px]  font-extrabold tracking-tight text-balance",
-        className
+        className,
       )}
     >
       {children || "Lorem ipsum dolor"}
@@ -40,12 +34,12 @@ function TypographyH2({
   children,
   className: className,
   ...props
-}: TypographyProps) {
+}: TypographyTs) {
   return (
     <h2
       className={cn(
         "scroll-m-20  pb-2 text-3xl font-semibold tracking-tight first:mt-0",
-        className
+        className,
       )}
       {...props}
     >
@@ -58,12 +52,12 @@ function TypographyH3({
   children,
   className: className,
   ...props
-}: TypographyProps) {
+}: TypographyTs) {
   return (
     <h3
       className={cn(
         "scroll-m-20 text-2xl font-semibold tracking-tight",
-        className
+        className,
       )}
       {...props}
     >
@@ -76,12 +70,12 @@ function TypographyH4({
   children,
   className: className,
   ...props
-}: TypographyProps) {
+}: TypographyTs) {
   return (
     <h4
       className={cn(
         "scroll-m-20 text-xl font-semibold tracking-tight",
-        className
+        className,
       )}
       {...props}
     >
@@ -94,7 +88,7 @@ function TypographyP({
   children,
   className: className,
   ...props
-}: TypographyProps) {
+}: TypographyTs) {
   return (
     <p
       className={cn("leading-7 [&:not(:first-child)]:mt-2", className)}
@@ -109,11 +103,13 @@ function TypographyList({
   listItems,
   className: className,
   ...props
-}: { listItems?: ListItem[] | string[] } & HTMLAttributes<HTMLUListElement>) {
+}: {
+  listItems?: ListItemTypograph[] | string[];
+} & HTMLAttributes<HTMLUListElement>) {
   return (
     <ul className={cn("my-6 ml-6 list-disc [&>li]:mt-2", className)} {...props}>
-      {listItems?.map((item: ListItem | string, index: number) => (
-        <li key={typeof item === "string" ? index : item.id ?? index}>
+      {listItems?.map((item: ListItemTypograph | string, index: number) => (
+        <li key={typeof item === "string" ? index : (item.id ?? index)}>
           {typeof item === "string" ? item : item.content}
         </li>
       ))}
@@ -125,7 +121,7 @@ function TypographyLead({
   children,
   className: className,
   ...props
-}: TypographyProps) {
+}: TypographyTs) {
   return (
     <p className={cn(className, "text-foreground leading-7")} {...props}>
       {children || "Dolor sit amet consectetur adipiscing elit."}
@@ -137,7 +133,7 @@ function TypographyLarge({
   children,
   className: className,
   ...props
-}: TypographyProps) {
+}: TypographyTs) {
   return (
     <div className={cn("text-lg font-semibold", className)} {...props}>
       {children || "Eiusmod tempor"}
@@ -149,7 +145,7 @@ function TypographySmall({
   children,
   className: className,
   ...props
-}: TypographyProps) {
+}: TypographyTs) {
   return (
     <small
       className={cn("text-sm leading-none font-medium", className)}
@@ -164,7 +160,7 @@ function TypographyMuted({
   children,
   className: className,
   ...props
-}: TypographyProps) {
+}: TypographyTs) {
   return (
     <p className={cn("text-muted-foreground text-sm", className)} {...props}>
       {children || "Labore et dolore"}
@@ -176,7 +172,7 @@ function TypographyInputErrorMassage({
   children,
   className: className,
   ...props
-}: TypographyProps) {
+}: TypographyTs) {
   return (
     children && (
       <p
@@ -195,11 +191,11 @@ export {
   TypographyH2,
   TypographyH3,
   TypographyH4,
-  TypographyP,
-  TypographyList,
-  TypographyLead,
-  TypographyLarge,
-  TypographySmall,
-  TypographyMuted,
   TypographyInputErrorMassage,
+  TypographyLarge,
+  TypographyLead,
+  TypographyList,
+  TypographyMuted,
+  TypographyP,
+  TypographySmall,
 };

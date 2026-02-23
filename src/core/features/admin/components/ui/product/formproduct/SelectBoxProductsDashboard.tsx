@@ -16,7 +16,7 @@ function SelectBoxProductsDashboard({ setValues, values }) {
       value={values.category}
       name="category"
     >
-      <SelectTrigger className="w-[200px] bg-white dark:bg-neutral-900 border border-gray-300 dark:border-neutral-700 rounded-sm px-4 py-2 shadow-sm hover:shadow-md transition-all duration-200 text-sm font-medium">
+      <SelectTrigger className="w-50 bg-white dark:bg-neutral-900 border border-gray-300 dark:border-neutral-700 rounded-sm px-4 py-2 shadow-sm hover:shadow-md transition-all duration-200 text-sm font-medium">
         <SelectValue placeholder="Select a Category" />
       </SelectTrigger>
 

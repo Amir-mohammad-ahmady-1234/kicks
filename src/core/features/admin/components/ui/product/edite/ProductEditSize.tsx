@@ -13,8 +13,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/core/components/shadcn/ui/select";
+import { listitems } from "@/core/features/admin/assets/mock/listitems";
 import { Plus, X } from "lucide-react";
-import { listitems } from "../formproduct/ProductDashboardStep3";
 function ProductEditSize({
   setNewSize,
   selectedSizes,

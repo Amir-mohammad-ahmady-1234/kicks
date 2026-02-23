@@ -2,8 +2,8 @@
 import TabelData from "@/core/components/custom/blocks/tabel/TabelData";
 import { ImgNormalCustom } from "@/core/components/custom/ui/ImgNormalCustom";
 import { categoryP } from "@prisma/client";
-import { ProductOrderList } from "../../assets/types/Products";
-import { TableItemType } from "../../assets/types/TableItemType";
+import { ProductOrderList } from "../../../assets/types/Products";
+import { TableItemType } from "../../../assets/types/TableItemType";
 
 export interface TabelProductsTs {
   ShowFilter?: boolean;

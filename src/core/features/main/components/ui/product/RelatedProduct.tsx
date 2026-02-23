@@ -1,6 +1,6 @@
-import { ProductCardItem } from "@/core/components/custom/ui/CardProduct";
+import { ProductCardItem } from "@/core/assets/types/Product";
 import { TypographyH3 } from "@/core/components/custom/ui/Typography";
-import CardsProduct from "../CardProduct";
+import CardsProduct from "./CardProduct";
 
 function RelatedProduct({ related }) {
   const relatedProducts: ProductCardItem[] = related.map((item) => ({
