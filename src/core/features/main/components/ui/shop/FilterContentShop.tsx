@@ -4,6 +4,7 @@ import { Input } from "@/core/components/shadcn/ui/input";
 import { listitems } from "@/core/features/admin/assets/mock/listitems";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
+
 const category = [
   "crocs",
   "nirkenstock",
@@ -17,6 +18,7 @@ const category = [
 
 export const Gendersdata = ["men", "women"];
 const discountFilter = ["all", "discount", "no-discount"];
+
 export default function FilterContentShop() {
   const searchparams = useSearchParams();
   const ruote = useRouter();
@@ -39,7 +41,6 @@ export default function FilterContentShop() {
     }
 
     params.delete("page");
-
     ruote.push(`?${params.toString()}`, { scroll: false });
   }
 
@@ -54,7 +55,6 @@ export default function FilterContentShop() {
     }
 
     params.delete("page");
-
     const newUrl = `?${params.toString()}`;
     ruote.push(newUrl, { scroll: false });
   }
@@ -63,6 +63,7 @@ export default function FilterContentShop() {
     const current = searchparams.get(name.toLowerCase());
     return current === value.toLowerCase();
   }
+
   return (
     <div className="space-y-6">
       <TypographyP className="font-bold">Gender</TypographyP>
@@ -72,8 +73,8 @@ export default function FilterContentShop() {
             key={item}
             className={
               isActive("gender", item)
-                ? "bg-amber-100 border border-sidebar opacity-70 hover:bg-destructive transition-colors"
-                : "border hover:bg-accent transition-colors"
+                ? "bg-primary text-primary-foreground border-primary hover:bg-primary/90 transition-colors"
+                : "border-border bg-background hover:bg-accent hover:text-accent-foreground transition-colors"
             }
             variant="outline"
             onClick={() => handelSelectItem("gender", item)}
@@ -90,8 +91,8 @@ export default function FilterContentShop() {
             key={item}
             className={
               isActive("discountFilter", item)
-                ? "bg-amber-100 border border-sidebar opacity-70 hover:bg-destructive transition-colors"
-                : "border hover:bg-accent transition-colors"
+                ? "bg-primary text-primary-foreground border-primary hover:bg-primary/90 transition-colors"
+                : "border-border bg-background hover:bg-secondary hover:text-secondary-foreground transition-colors"
             }
             size="sm"
             variant="outline"
@@ -113,8 +114,8 @@ export default function FilterContentShop() {
             key={size}
             className={
               isActive("size", size)
-                ? "bg-amber-100 border border-sidebar opacity-70 hover:bg-destructive transition-colors"
-                : "border hover:bg-accent transition-colors"
+                ? "bg-primary text-primary-foreground border-primary hover:bg-primary/90 transition-colors"
+                : "border-border bg-background hover:bg-secondary hover:text-secondary-foreground transition-colors"
             }
             variant="outline"
             onClick={() => handelSelectItem("size", size)}
@@ -131,8 +132,8 @@ export default function FilterContentShop() {
             key={cat}
             className={
               isActive("category", cat)
-                ? "bg-amber-100 border border-sidebar opacity-70 hover:bg-destructive transition-colors"
-                : "border hover:bg-accent transition-colors"
+                ? "bg-primary text-primary-foreground border-primary hover:bg-primary/90 transition-colors"
+                : "border-border bg-background hover:bg-secondary hover:text-secondary-foreground transition-colors"
             }
             variant="outline"
             onClick={() => handelSelectItem("category", cat)}
@@ -152,6 +153,7 @@ export default function FilterContentShop() {
             value={minPrice}
             onChange={(e) => setMinPrice(e.target.value)}
             min={0}
+            className="border-border focus:border-ring focus:ring-ring"
           />
         </div>
 
@@ -163,11 +165,17 @@ export default function FilterContentShop() {
             value={maxPrice}
             onChange={(e) => setMaxPrice(e.target.value)}
             min={0}
+            className="border-border focus:border-ring focus:ring-ring"
           />
         </div>
       </div>
-      <Button className="w-full" variant="outline" onClick={applyPriceFilter}>
-        Apply Filter Price
+
+      <Button
+        className="w-full bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+        variant="default"
+        onClick={applyPriceFilter}
+      >
+        Apply Price Filter
       </Button>
     </div>
   );

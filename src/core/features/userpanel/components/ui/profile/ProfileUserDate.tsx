@@ -7,20 +7,23 @@ function ProfileUserDate({ user }) {
   const age = user.dateOfBirth
     ? calculateAge(new Date(user.dateOfBirth))
     : null;
+
   return (
     <div className="space-y-4">
       <div className="flex items-center gap-3">
-        <Calendar className="h-5 w-5 text-gray-400" />
+        <Calendar className="h-5 w-5 text-muted-foreground" />
         <div>
-          <TypographyMuted className="text-sm text-gray-800 ">
+          <TypographyMuted className="text-sm text-muted-foreground">
             Date of Birth
           </TypographyMuted>
+
           <div className="flex items-center gap-2">
-            <TypographyMuted className="font-medium">
+            <TypographyMuted className="font-medium text-foreground">
               {formatDate(user.dateOfBirth)}
             </TypographyMuted>
+
             {age && (
-              <span className="px-2 py-1 bg-blue-50 text-blue-700 text-xs rounded">
+              <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-md">
                 {age} years
               </span>
             )}

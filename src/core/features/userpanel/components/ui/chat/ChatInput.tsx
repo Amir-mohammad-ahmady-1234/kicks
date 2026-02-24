@@ -15,11 +15,12 @@ function ChatInput({ sendMessage, disabled = false }: ChatInputTs) {
 
   function handleSend() {
     if (!newMessage.trim() || disabled) return;
-    sendMessage(newMessage);
+
+    sendMessage(newMessage.trim());
     setNewMessage("");
   }
 
-  function handleEnter(e: React.KeyboardEvent<HTMLInputElement>) {
+  function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       handleSend();
@@ -27,19 +28,25 @@ function ChatInput({ sendMessage, disabled = false }: ChatInputTs) {
   }
 
   return (
-    <div className="p-4 border-t border-gray-200 shrink-0 bg-background">
+    <div className="p-4 border-t border-border shrink-0 bg-card">
       <div className="flex items-center gap-2">
-        <Button variant="ghost" size="icon" className="h-9 w-9 shrink-0">
+        <Button
+          variant="ghost"
+          size="icon"
+          className="h-9 w-9 shrink-0 text-muted-foreground hover:text-foreground"
+        >
           <Smile className="h-5 w-5" />
         </Button>
+
         <Input
           placeholder="Type your message..."
           value={newMessage}
           onChange={(e) => setNewMessage(e.target.value)}
-          onKeyPress={handleEnter}
+          onKeyDown={handleKeyDown}
           className="flex-1"
           disabled={disabled}
         />
+
         <Button
           onClick={handleSend}
           size="icon"

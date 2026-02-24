@@ -64,17 +64,20 @@ function SidebarDashboardBox({ userid }) {
             </div>
             <div className="flex-col  flex items-center justify-center gap-y-3">
               {items.map((item) => (
-                <Button key={item.name} className="w-full">
+                <Button
+                  key={item.name}
+                  variant="ghost"
+                  className="w-full justify-start hover:bg-accent hover:text-accent-foreground"
+                >
                   <Link
                     href={
                       item.name === "suppurt"
                         ? getSuppurtLink()
                         : `/${baseurl}/${item.name}`
                     }
-                    className=" rounded-md text-white  w-full flex items-center gap-1 "
+                    className="w-full flex items-center gap-2"
                   >
                     {item.icon}
-
                     <TypographySmall>{item.name}</TypographySmall>
                   </Link>
                 </Button>

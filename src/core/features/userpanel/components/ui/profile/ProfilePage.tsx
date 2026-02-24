@@ -20,7 +20,7 @@ async function ProfilePage() {
     <section className="mx-auto px-4 py-8">
       <div className="mx-auto">
         <div className="mb-8">
-          <TypographyH3 className="text-3xl font-bold text-gray-900">
+          <TypographyH3 className="text-3xl font-bold text-foreground">
             My Profile
           </TypographyH3>
         </div>

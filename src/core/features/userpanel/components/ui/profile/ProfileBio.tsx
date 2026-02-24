@@ -9,7 +9,7 @@ import ProfileInformation from "./ProfileInformation";
 
 function ProfileBio({ user }) {
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+    <div className="bg-background rounded-xl shadow-sm border border-border p-6">
       <div className="flex justify-between items-start mb-6">
         <TypographyH3 className="text-xl font-semibold">
           Personal Information
@@ -28,7 +28,7 @@ function ProfileBio({ user }) {
         {user.bio && (
           <div className="pt-4 border-t">
             <h4 className="font-medium mb-2">About</h4>
-            <TypographyMuted className="text-gray-600 whitespace-pre-line">
+            <TypographyMuted className="text-muted-foreground whitespace-pre-line">
               {user.bio}
             </TypographyMuted>
           </div>

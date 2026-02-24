@@ -14,11 +14,13 @@ export async function searchProducts(search: string) {
           {
             name: {
               contains: search,
+              mode: "insensitive",
             },
           },
           {
             description: {
               contains: search,
+              mode: "insensitive",
             },
           },
         ],
