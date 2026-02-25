@@ -33,7 +33,7 @@ function MessageItem({ message, userId }: MessageItemTs) {
           ${
             isMe
               ? "bg-primary text-primary-foreground rounded-br-none"
-              : "bg-gray-100 rounded-bl-none"
+              : "bg-secondary rounded-bl-none"
           }
         `}
       >

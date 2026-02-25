@@ -49,7 +49,7 @@ function SuppurtChat({ id, userRole }: SuppurtChatTs) {
   }
 
   return (
-    <div className="flex-1 flex flex-col h-full bg-foreground w-full rounded-2xl">
+    <div className="flex-1 flex flex-col h-full bg-foreground dark:bg-accent-foreground w-full rounded-2xl">
       <ChatHeader otherUser={otherUser} />
 
       <SuppurtChatMessage

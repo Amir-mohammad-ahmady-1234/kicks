@@ -13,7 +13,7 @@ export default function CartItem({ item }: CartItemTs) {
   const finalPrice = itemTotal - discountAmount;
 
   return (
-    <div className="flex flex-col sm:flex-row gap-5 border-b pb-6 last:border-b-0 bg-chart-3 rounded-sm p-2 items-center">
+    <div className="flex flex-col sm:flex-row gap-5 border-b pb-6 last:border-b-0 bg-chart-3 dark:bg-chart-4 rounded-sm p-2 items-center">
       <div className="w-full sm:w-32 h-32 shrink-0">
         <ImgNormalCustom
           src={item.product.mainImage || "/placeholder.png"}

@@ -28,9 +28,7 @@ function ChatHeader({ otherUser }: ChatHeaderProps) {
       <div className="flex items-center gap-3">
         <Avatar className="h-10 w-10">
           <AvatarImage src={otherUser?.avatar || ""} />
-          <AvatarFallback>
-            {otherUser?.name?.slice(0, 2) || "U"}
-          </AvatarFallback>
+          <AvatarFallback>{otherUser?.name?.slice(0, 2) || "U"}</AvatarFallback>
         </Avatar>
         <div>
           <TypographyH4 className="font-semibold text-white">
@@ -44,11 +42,7 @@ function ChatHeader({ otherUser }: ChatHeaderProps) {
       <div className="flex items-center gap-2">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="h-8 w-8 text-white"
-            >
+            <Button variant="ghost" size="icon" className="h-8 w-8 text-white">
               <MoreVertical className="h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>
@@ -60,4 +54,3 @@ function ChatHeader({ otherUser }: ChatHeaderProps) {
 }
 
 export default ChatHeader;
-
